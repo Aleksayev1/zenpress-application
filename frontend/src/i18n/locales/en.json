@@ -1,0 +1,299 @@
+{
+  "app": {
+    "name": "ZenPress",
+    "tagline": "Natural Pain Relief",
+    "description": "Discover ancient acupressure and craniopuncture techniques to treat headaches, muscle pain, digestive issues and boost immunity"
+  },
+  "navigation": {
+    "home": "Home",
+    "premium": "Premium",
+    "consultation": "Consultation",
+    "favorites": "Favorites",
+    "history": "History",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "fullName": "Full Name",
+    "loginButton": "Sign In",
+    "registerButton": "Create Account",
+    "forgotPassword": "Forgot Password?",
+    "alreadyAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "loginSuccess": "Login successful!",
+    "registerSuccess": "Account created successfully!",
+    "loginError": "Invalid email or password",
+    "registerError": "Error creating account",
+    "passwordMismatch": "Passwords don't match",
+    "passwordTooShort": "Password must be at least 6 characters"
+  },
+  "home": {
+    "developmentNotice": {
+      "title": "This app is being improved!",
+      "forQuestions": "For questions",
+      "or": "or"
+    },
+    "hero": {
+      "title": "Natural Pain Relief",
+      "subtitle": "Discover ancient acupressure and craniopuncture techniques to treat headaches, muscle pain, digestive issues and boost immunity"
+    },
+    "disclaimer": {
+      "title": "Medical Notice:",
+      "text": "This application is for educational and informational purposes only. It does not replace professional medical consultation. Always consult a healthcare professional for diagnoses and treatments."
+    },
+    "mentalHealth": {
+      "title": "Mental Health and Wellness Promotion",
+      "description": "Discover how acupressure techniques can significantly contribute to your emotional balance, stress reduction, sleep improvement and mental wellness promotion. Our holistic approach connects body and mind for a fuller and healthier life.",
+      "benefits": {
+        "stress": {
+          "title": "Stress Reduction",
+          "description": "Specific techniques to reduce tension and promote deep relaxation"
+        },
+        "sleep": {
+          "title": "Sleep Improvement",
+          "description": "Acupressure points that favor restorative and quality sleep"
+        },
+        "balance": {
+          "title": "Emotional Balance",
+          "description": "Energy harmonization for greater emotional and mental stability"
+        }
+      },
+      "exploreButton": "Explore Mental Wellness Techniques",
+      "techniques": {
+        "title": "Quick Wellness Techniques",
+        "subtitle": "Press the points for 1 minute each - Available to everyone"
+      },
+      "premium": {
+        "badge": "Exclusive Techniques for Users"
+      },
+      "breathing": {
+        "title": "🌬️ Guided Breathing 4-7-8",
+        "description": "Breathing technique for deep relaxation and anxiety reduction"
+      }
+    },
+    "categories": {
+      "craniopuncture": {
+        "name": "Craniopuncture",
+        "description": "Scalp stimulation techniques for pain relief and general health improvement"
+      },
+      "tcm": {
+        "name": "TCM (Traditional Chinese Medicine)",
+        "description": "Acupressure points based on traditional Chinese medicine for energy balance"
+      }
+    },
+    "exploreButton": "Explore Techniques",
+    "techniques": "techniques",
+    "stats": {
+      "title": "Most Common Complaints",
+      "subtitle": "Based on community usage - see what others are treating"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "subtitle": "Direct access to the most used techniques for immediate relief",
+      "beginnerFriendly": "Beginner Friendly",
+      "immediate": "Immediate Relief",
+      "personalized": "Personalized",
+      "complexCase": "Complex Case?"
+    }
+  },
+  "techniques": {
+    "startTechnique": "Start Technique",
+    "duration": "Duration",
+    "pressure": "Pressure",
+    "breathing": {
+      "title": "Guided Breathing",
+      "prepare": "Press Start to begin with guided breathing",
+      "inhale": "Breathe in through nose slowly",
+      "hold": "Hold your breath",
+      "exhale": "Breathe out through mouth completely",
+      "pause": "Natural pause",
+      "diaphragmatic": "Breathe naturally, feeling the abdomen expand",
+      "technique478": "4-7-8 Technique: Optimizes oxygenation and relaxation",
+      "diaphragmaticInfo": "Diaphragmatic Breathing: Relaxing finish"
+    },
+    "stats": {
+      "title": "Most Common Complaints",
+      "subtitle": "Based on community usage - see what others are treating"
+    },
+    "quickActions": {
+      "beginner": {
+        "title": "Getting Started",
+        "description": "New to acupressure? Start with basic and safe techniques.",
+        "button": "Basic Techniques"
+      },
+      "quick": {
+        "title": "Quick Relief",
+        "description": "Need immediate relief? 1-minute emergency techniques.",
+        "button": "Yintang - Headache"
+      },
+      "personalized": {
+        "title": "Personalized",
+        "description": "Access your favorite techniques and treatment history.",
+        "button": "My Favorites"
+      },
+      "complex": {
+        "title": "Complex Case?",
+        "description": "Chronic pain or conditions that don't improve? Talk to a specialist.",
+        "button": "WhatsApp Consultation"
+      }
+    },
+    "warnings": "Warnings",
+    "instructions": "Instructions",
+    "location": "Location",
+    "application": "Application",
+    "benefits": "Benefits",
+    "precautions": "Precautions",
+    "recommendedFor": "Recommended for",
+    "notRecommendedFor": "Not recommended for",
+    "timer": "Timer",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "completed": "Session Completed!",
+    "congratulations": "Congratulations! You completed the technique.",
+    "addToFavorites": "Add to Favorites",
+    "removeFromFavorites": "Remove from Favorites",
+    "shareResult": "Share Result",
+    "backToCategory": "Back to Category",
+    "nextTechnique": "Next Technique",
+    "relatedTechniques": "Related Techniques",
+    "difficulty": "Difficulty",
+    "effectiveness": "Effectiveness",
+    "safetyLevel": "Safety Level",
+    "warningsTitle": "Important Warnings",
+    "contraindications": "Contraindications:",
+    "seekHelp": "Seek medical help if:"
+  },
+  "payment": {
+    "title": "Plans and Courses",
+    "subtitle": "Choose the best plan for your needs",
+    "premium": {
+      "title": "Premium Subscriptions",
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "mostPopular": "Most Popular",
+      "subscribeNow": "Subscribe Now",
+      "features": "Features"
+    },
+    "courses": {
+      "title": "Specialized Courses",
+      "duration": "Duration:",
+      "instructor": "Instructor:",
+      "modules": "Modules:",
+      "buyCourse": "Buy Course",
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "corporate": {
+      "title": "Corporate Plans",
+      "users": "users",
+      "month": "month",
+      "requestDemo": "Request Demo"
+    },
+    "analytics": {
+      "title": "B2B Analytics",
+      "month": "month",
+      "hirePlan": "Hire Plan"
+    },
+    "paymentSuccess": "Payment Approved!",
+    "paymentError": "Payment Error",
+    "paymentCanceled": "Payment canceled. You can try again whenever you want.",
+    "backToHome": "Back to Home",
+    "explorePremium": "Explore Premium Content"
+  },
+  "consultation": {
+    "title": "Specialized Consultation",
+    "subtitle": "For complex cases that need personalized attention",
+    "form": {
+      "title": "Consultation Form",
+      "subtitle": "Fill out the data below to receive personalized service via WhatsApp",
+      "personalInfo": "Personal Information",
+      "medicalInfo": "Medical Information",
+      "fullName": "Full Name",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "age": "Age",
+      "gender": "Gender",
+      "city": "City",
+      "mainComplaint": "Main Complaint",
+      "symptoms": "Symptoms",
+      "duration": "Duration",
+      "intensity": "Pain Intensity (0-10)",
+      "medications": "Current Medications",
+      "allergies": "Allergies",
+      "previousTreatments": "Previous Treatments",
+      "expectations": "Expectations",
+      "additionalNotes": "Additional Notes",
+      "submit": "Send Consultation",
+      "submitting": "Sending...",
+      "submitSuccess": "Consultation sent successfully!",
+      "submitError": "Error sending consultation"
+    },
+    "whatsapp": {
+      "title": "Direct Contact via WhatsApp",
+      "subtitle": "Talk directly with our specialists",
+      "description": "For urgent cases or if you prefer direct contact, click the button below to talk to our specialists via WhatsApp.",
+      "button": "Contact via WhatsApp",
+      "number": "WhatsApp Number:",
+      "hours": "Service Hours:",
+      "monday": "Monday to Friday: 8am to 6pm",
+      "saturday": "Saturday: 8am to 12pm",
+      "sunday": "Sunday: Closed"
+    }
+  },
+  "favorites": {
+    "title": "My Favorites",
+    "subtitle": "Your saved techniques for quick access",
+    "empty": "No favorite techniques yet",
+    "emptyDescription": "Start exploring techniques and add your favorites here",
+    "removeConfirm": "Remove from favorites?",
+    "removeSuccess": "Removed from favorites",
+    "addSuccess": "Added to favorites"
+  },
+  "history": {
+    "title": "Session History",
+    "subtitle": "Track your acupressure sessions",
+    "empty": "No sessions recorded yet",
+    "emptyDescription": "Start using techniques to build your session history",
+    "session": "Session",
+    "date": "Date",
+    "technique": "Technique",
+    "duration": "Duration",
+    "notes": "Notes",
+    "clearHistory": "Clear History",
+    "clearConfirm": "Clear all history?",
+    "clearSuccess": "History cleared"
+  },
+  "complaints": [
+    "Tensional headache",
+    "Anxiety and stress",
+    "Back pain",
+    "Insomnia",
+    "Mental fatigue",
+    "Digestive problems",
+    "Migraine",
+    "Low immunity"
+  ],
+  "spotify": {
+    "title": "Relaxing Music with Spotify",
+    "description": "Connect your Spotify account to listen to relaxing music during your acupressure sessions",
+    "connectButton": "Connect Spotify",
+    "disconnect": "Disconnect",
+    "search": "Search Music",
+    "searchPlaceholder": "Enter song name or artist...",
+    "searchButton": "Search",
+    "playlistsRecommended": "Recommended Playlists for Wellness",
+    "tracksCount": "tracks",
+    "openPlaylist": "Open",
+    "premiumRequired": "Premium required for playback",
+    "greeting": "Hello",
+    "premium": "Premium",
+    "free": "Free"
+  }
+}

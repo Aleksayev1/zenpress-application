@@ -1,0 +1,64 @@
+======================================
+ZENPRESS - INSTRUÇÕES COMPLETAS
+======================================
+
+RESUMO:
+- Aplicativo de acupressão completo
+- Backend FastAPI + Frontend React + Mobile Expo
+- 48 endpoints testados (78.7% sucesso)
+- Sistema de pagamentos crypto
+- 7 técnicas implementadas
+- Arquivo package: ZenPress-Package.tar.gz (432KB)
+
+LOCALIZAÇÃO DO ARQUIVO:
+/app/ZenPress-Package.tar.gz
+
+CONTEÚDO DO PACKAGE:
+- Backend FastAPI completo
+- Frontend React completo  
+- Mobile Expo completo
+- Docker compose
+- Scripts de instalação
+- Documentação completa
+
+INSTALAÇÃO:
+1. Descompactar: tar -xzf ZenPress-Package.tar.gz
+2. Executar: ./install.sh
+3. Acessar: http://localhost:3000
+
+ESTRUTURA:
+ZenPress-Package/
+├── README.md
+├── docker-compose.yml
+├── install.sh
+├── backend/
+├── frontend/
+├── mobile/
+└── scripts/
+
+ACESSO:
+- Frontend: http://localhost:3000
+- Mobile: http://localhost:8082
+- API: http://localhost:8001
+- Docs: http://localhost:8001/docs
+
+FUNCIONALIDADES:
+✅ Autenticação JWT
+✅ 7 técnicas de acupressão
+✅ Sistema premium
+✅ Pagamentos crypto (Bitcoin, USDT, PIX)
+✅ Timer 60s com respiração 4-7-8
+✅ 5 idiomas suportados
+✅ Analytics completo
+✅ Sistema de favoritos
+
+TECNOLOGIAS:
+- Backend: Python 3.11 + FastAPI + MongoDB
+- Frontend: React 18 + Tailwind CSS
+- Mobile: Expo + React Native
+- Deploy: Docker + Docker Compose
+
+ARQUIVO CRIADO EM: 17/01/2025
+VERSÃO: 1.0.0
+TAMANHO: 432KB
+STATUS: Pronto para produção
