@@ -1,0 +1,309 @@
+{
+  "app": {
+    "name": "ZenPress",
+    "tagline": "Alivio Natural del Dolor",
+    "description": "Descubre técnicas milenarias de acupresión y craniopuntura para tratar dolores de cabeza, dolores musculares, problemas digestivos y fortalecer tu inmunidad"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "premium": "Premium",
+    "consultation": "Consulta",
+    "favorites": "Favoritos",
+    "history": "Historial",
+    "login": "Ingresar",
+    "logout": "Salir"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "fullName": "Nombre Completo",
+    "loginButton": "Ingresar",
+    "registerButton": "Crear Cuenta",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "alreadyAccount": "¿Ya tienes una cuenta?",
+    "noAccount": "¿No tienes una cuenta?",
+    "loginSuccess": "¡Inicio de sesión exitoso!",
+    "registerSuccess": "¡Cuenta creada exitosamente!",
+    "loginError": "Correo o contraseña inválidos",
+    "registerError": "Error al crear la cuenta",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres"
+  },
+  "home": {
+    "developmentNotice": {
+      "title": "¡Esta aplicación está siendo mejorada!",
+      "forQuestions": "Para dudas",
+      "or": "o"
+    },
+    "hero": {
+      "title": "Alivio Natural del Dolor",
+      "subtitle": "Descubre técnicas milenarias de acupresión y craniopuntura para tratar dolores de cabeza, dolores musculares, problemas digestivos y fortalecer tu inmunidad"
+    },
+    "disclaimer": {
+      "title": "Aviso Médico:",
+      "text": "Esta aplicación es solo para fines educativos e informativos. No sustituye la consulta médica profesional. Consulta siempre a un profesional de la salud para diagnósticos y tratamientos."
+    },
+    "categories": {
+      "craniopuncture": {
+        "name": "Craniopuntura",
+        "description": "Técnicas de estimulación del cuero cabelludo para alivio del dolor y mejora de la salud general"
+      },
+      "tcm": {
+        "name": "MTC (Medicina Tradicional China)",
+        "description": "Puntos de acupresión basados en la medicina tradicional china para equilibrio energético"
+      }
+    },
+    "techniques": "técnicas",
+    "exploreButton": "Explorar Técnicas",
+    "stats": {
+      "title": "Quejas Más Comunes",
+      "subtitle": "Basado en el uso de la comunidad - ve lo que otros están tratando"
+    },
+    "quickActions": {
+      "beginner": {
+        "title": "Comenzando",
+        "description": "¿Nuevo en acupresión? Comienza con técnicas básicas y seguras.",
+        "button": "Técnicas Básicas"
+      },
+      "quick": {
+        "title": "Alivio Rápido",
+        "description": "¿Necesitas alivio inmediato? Técnicas de 1 minuto para emergencias.",
+        "button": "Alivio de Dolor de Cabeza"
+      },
+      "personalized": {
+        "title": "Personalizado",
+        "description": "Accede a tus técnicas favoritas e historial de tratamientos.",
+        "button": "Mis Favoritos"
+      },
+      "complex": {
+        "title": "¿Caso Complejo?",
+        "description": "¿Dolor crónico o condiciones que no mejoran? Habla con un especialista.",
+        "button": "Consulta WhatsApp"
+      }
+    }
+  },
+  "techniques": {
+    "duration": "Duración",
+    "pressure": "Presión",
+    "warnings": "Advertencias",
+    "instructions": "Instrucciones Paso a Paso",
+    "timer": "Temporizador de Aplicación",
+    "start": "Iniciar",
+    "pause": "Pausar",
+    "reset": "Reiniciar",
+    "completed": "¡Sesión Completada!",
+    "addToFavorites": "Agregar a Favoritos",
+    "removeFromFavorites": "Quitar de Favoritos",
+    "viewDetails": "Ver Detalles y Aplicar",
+    "applyNow": "Aplicar Ahora",
+    "previousStep": "Paso Anterior",
+    "nextStep": "Siguiente Paso",
+    "sessionCompleted": "¡Sesión completada! ¿Cómo te sientes?",
+    "rateSession": "Califica esta sesión"
+  },
+  "categories": {
+    "craniopuncture": "Craniopuntura",
+    "tcm": "MTC",
+    "techniques": "técnicas",
+    "availableTechniques": "técnicas disponibles",
+    "safetyInfo": "Información de Seguridad",
+    "contraindications": "Contraindicaciones:",
+    "seekHelp": "Busca ayuda médica si:"
+  },
+  "payment": {
+    "title": "Planes y Cursos",
+    "subtitle": "Elige el mejor plan para tus necesidades",
+    "premium": {
+      "title": "Suscripciones Premium",
+      "monthly": "Mensual",
+      "annual": "Anual",
+      "mostPopular": "Más Popular",
+      "subscribeNow": "Suscribirse Ahora",
+      "features": "Características"
+    },
+    "courses": {
+      "title": "Cursos Especializados",
+      "duration": "Duración:",
+      "instructor": "Instructor:",
+      "modules": "Módulos:",
+      "buyCourse": "Comprar Curso",
+      "beginner": "Principiante",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado"
+    },
+    "corporate": {
+      "title": "Planes Corporativos",
+      "users": "usuarios",
+      "month": "mes",
+      "requestDemo": "Solicitar Demo"
+    },
+    "analytics": {
+      "title": "Analytics B2B",
+      "month": "mes",
+      "hirePlan": "Contratar Plan"
+    },
+    "paymentSuccess": "¡Pago Aprobado!",
+    "paymentError": "Error en el Pago",
+    "paymentCanceled": "Pago cancelado. Puedes intentar nuevamente cuando quieras.",
+    "backToHome": "Volver al Inicio",
+    "explorePremium": "Explorar Contenido Premium"
+  },
+  "consultation": {
+    "title": "Consulta Especializada",
+    "subtitle": "Para casos complejos que necesitan atención personalizada",
+    "form": {
+      "title": "Formulario de Consulta",
+      "subtitle": "Completa la información a continuación para recibir atención personalizada vía WhatsApp",
+      "personalInfo": "Información Personal",
+      "medicalInfo": "Información Médica",
+      "fullName": "Nombre Completo",
+      "whatsapp": "WhatsApp",
+      "urgency": "Nivel de Urgencia",
+      "mainCondition": "Condición Principal",
+      "symptomDuration": "¿Cuánto tiempo has tenido estos síntomas?",
+      "symptomsDescription": "Describe tus síntomas detalladamente",
+      "previousTreatments": "Tratamientos previos",
+      "currentMedications": "Medicamentos actuales",
+      "preferredTime": "Hora preferida para contacto de retorno",
+      "sendWhatsApp": "Enviar vía WhatsApp",
+      "urgencyLevels": {
+        "low": "🟢 Baja - Puedo esperar unos días",
+        "medium": "🟡 Media - Me gustaría respuesta hoy",
+        "high": "🟠 Alta - Necesito respuesta urgente",
+        "emergency": "🔴 Emergencia - Dolor insoportable"
+      },
+      "timePreferences": {
+        "morning": "Mañana (8am-12pm)",
+        "afternoon": "Tarde (12pm-6pm)",
+        "evening": "Noche (6pm-10pm)",
+        "anytime": "Cualquier hora"
+      }
+    },
+    "features": {
+      "specialist": {
+        "title": "Profesional Calificado",
+        "description": "Alexandre Pinheiro - 15 años de experiencia"
+      },
+      "fastResponse": {
+        "title": "Respuesta Rápida",
+        "description": "Respuesta en máximo 2 horas durante horario comercial"
+      },
+      "whatsappDirect": {
+        "title": "WhatsApp Directo",
+        "description": "Atención personalizada vía mensaje"
+      }
+    },
+    "whenToSeek": {
+      "title": "¿Cuándo Buscar?",
+      "items": [
+        "Dolores crónicos que no mejoran",
+        "Condiciones neurológicas complejas",
+        "Casos que no responden al tratamiento estándar",
+        "Necesidad de protocolo personalizado"
+      ]
+    },
+    "disclaimer": "Importante: Este servicio no sustituye la consulta médica. En caso de emergencia, busca atención médica inmediatamente."
+  },
+  "favorites": {
+    "title": "Técnicas Favoritas",
+    "subtitle": "Tus técnicas de acupresión guardadas para acceso rápido",
+    "empty": {
+      "title": "Aún no tienes técnicas favoritas",
+      "description": "Explora las técnicas y agrega tus favoritas para acceso rápido",
+      "button": "Explorar Técnicas"
+    },
+    "count": "técnica",
+    "countPlural": "técnicas",
+    "saved": "guardada",
+    "exploreMore": "Explorar Más Técnicas"
+  },
+  "history": {
+    "title": "Historial de Tratamientos",
+    "subtitle": "Sigue tu progreso y analiza tus sesiones de acupresión",
+    "empty": {
+      "title": "Aún no hay sesiones registradas",
+      "description": "Comienza a usar las técnicas para ver tu historial y progreso aquí",
+      "button": "Iniciar Primera Sesión"
+    },
+    "stats": {
+      "totalSessions": "Total de Sesiones",
+      "averageRating": "Calificación Promedio",
+      "mainComplaint": "Queja Principal",
+      "sessionsPerformed": "sesiones realizadas",
+      "outOf": "de 5"
+    },
+    "recentSessions": "Sesiones Recientes",
+    "communityTrends": "Tendencias de la Comunidad",
+    "people": "personas"
+  },
+  "common": {
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información",
+    "close": "Cerrar",
+    "open": "Abrir",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "required": "Requerido",
+    "optional": "Opcional",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "export": "Exportar",
+    "import": "Importar",
+    "share": "Compartir",
+    "copy": "Copiar",
+    "paste": "Pegar",
+    "select": "Seleccionar",
+    "selectAll": "Seleccionar Todo",
+    "clear": "Limpiar",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "undo": "Deshacer",
+    "redo": "Rehacer"
+  },
+  "currency": {
+    "symbol": "$",
+    "code": "USD"
+  },
+  "complaints": [
+    "Dolor de cabeza tensional",
+    "Ansiedad y estrés",
+    "Dolor de espalda",
+    "Insomnio",
+    "Fatiga mental",
+    "Problemas digestivos",
+    "Migraña",
+    "Baja inmunidad"
+  ],
+  "spotify": {
+    "title": "Música Relajante con Spotify",
+    "description": "Conecta tu cuenta de Spotify para escuchar música relajante durante tus sesiones de acupresión",
+    "connectButton": "Conectar Spotify",
+    "disconnect": "Desconectar",
+    "search": "Buscar Música",
+    "searchPlaceholder": "Ingresa el nombre de la canción o artista...",
+    "searchButton": "Buscar",
+    "playlistsRecommended": "Listas Recomendadas para Bienestar",
+    "tracksCount": "canciones",
+    "openPlaylist": "Abrir",
+    "premiumRequired": "Premium necesario para reproducción",
+    "greeting": "Hola",
+    "premium": "Premium",
+    "free": "Gratis"
+  }
+}
