@@ -615,7 +615,7 @@ const Home = () => {
               {t('techniques.quickActions.quick.description', 'Precisa de alívio imediato? Técnicas de 1 minuto para emergências.')}
             </p>
             <Button variant="outline" asChild size="sm">
-              <Link to="/technique/1">{t('techniques.quickActions.quick.button', 'Yintang - Dor de Cabeça')}</Link>
+              <Link to="/technique/1">{t('techniques.quickActions.quick.button', 'Yintang Ex2 - Dor de Cabeça')}</Link>
             </Button>
           </CardContent>
         </Card>
