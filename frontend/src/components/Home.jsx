@@ -351,10 +351,10 @@ const Home = () => {
         </AlertDescription>
       </Alert>
 
-      {/* Spotify Player Integration */}
-      <div className="mb-12">
+      {/* Spotify Player Integration - Temporarily disabled */}
+      {/* <div className="mb-12">
         <SpotifyPlayer onSpotifyReady={setSpotifyReady} />
-      </div>
+      </div> */}
 
       {/* Promoção da Saúde Mental e Bem Estar - Seção Destacada */}
       <div className="mb-12">
