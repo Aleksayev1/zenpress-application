@@ -23,7 +23,7 @@ const LanguageSelector = ({ variant = 'default' }) => {
   if (variant === 'compact') {
     return (
       <Select value={i18n.language} onValueChange={handleLanguageChange}>
-        <SelectTrigger className="w-16 h-8 p-1 border-none shadow-none">
+        <SelectTrigger className="w-16 h-8 p-1 border border-gray-300 shadow-sm hover:border-gray-400 bg-white">
           <SelectValue>
             <span className="text-lg">{currentLanguage.flag}</span>
           </SelectValue>
