@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Globe } from 'lucide-react';
+import { Globe, ChevronDown } from 'lucide-react';
+import { Button } from './ui/button';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -22,48 +28,52 @@ const LanguageSelector = ({ variant = 'default' }) => {
 
   if (variant === 'compact') {
     return (
-      <Select value={i18n.language} onValueChange={handleLanguageChange}>
-        <SelectTrigger className="w-16 h-8 p-1 border border-gray-300 shadow-sm hover:border-gray-400 bg-white">
-          <SelectValue>
-            <span className="text-lg">{currentLanguage.flag}</span>
-          </SelectValue>
-        </SelectTrigger>
-        <SelectContent>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" size="sm" className="h-8 px-2 border-gray-300">
+            <span className="text-sm mr-1">{currentLanguage.flag}</span>
+            <ChevronDown className="h-3 w-3" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
           {languages.map((language) => (
-            <SelectItem key={language.code} value={language.code}>
-              <div className="flex items-center space-x-2">
-                <span>{language.flag}</span>
-                <span className="text-sm">{language.name}</span>
-              </div>
-            </SelectItem>
+            <DropdownMenuItem
+              key={language.code}
+              onClick={() => handleLanguageChange(language.code)}
+              className="cursor-pointer"
+            >
+              <span className="mr-2">{language.flag}</span>
+              <span className="text-sm">{language.name}</span>
+            </DropdownMenuItem>
           ))}
-        </SelectContent>
-      </Select>
+        </DropdownMenuContent>
+      </DropdownMenu>
     );
   }
 
   return (
-    <Select value={i18n.language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-40">
-        <Globe className="h-4 w-4 mr-2" />
-        <SelectValue>
-          <div className="flex items-center space-x-2">
-            <span>{currentLanguage.flag}</span>
-            <span>{currentLanguage.name}</span>
-          </div>
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="w-40">
+          <Globe className="h-4 w-4 mr-2" />
+          <span className="mr-2">{currentLanguage.flag}</span>
+          <span>{currentLanguage.name}</span>
+          <ChevronDown className="h-4 w-4 ml-2" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
         {languages.map((language) => (
-          <SelectItem key={language.code} value={language.code}>
-            <div className="flex items-center space-x-2">
-              <span>{language.flag}</span>
-              <span>{language.name}</span>
-            </div>
-          </SelectItem>
+          <DropdownMenuItem
+            key={language.code}
+            onClick={() => handleLanguageChange(language.code)}
+            className="cursor-pointer"
+          >
+            <span className="mr-2">{language.flag}</span>
+            <span>{language.name}</span>
+          </DropdownMenuItem>
         ))}
-      </SelectContent>
-    </Select>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
