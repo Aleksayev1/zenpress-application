@@ -119,7 +119,7 @@ export const mockData = {
           "Mantenha por 1 minuto em cada perna",
           "Realize movimentos circulares pequenos"
         ],
-        image: "https://images.unsplash.com/photo-1716929157614-f964cfa1acda",
+        image: "https://i.imgur.com/b5K0duf.jpeg",
         duration: 60,
         pressure: "Moderada",
         warnings: ["Localização precisa é importante", "Pode sentir sensação elétrica"]
