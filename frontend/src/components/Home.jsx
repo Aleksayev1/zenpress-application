@@ -643,7 +643,7 @@ const Home = () => {
               {t('techniques.quickActions.complex.description', 'Dores crônicas ou condições que não melhoram? Fale com especialista.')}
             </p>
             <Button asChild size="sm" className="bg-green-600 hover:bg-green-700">
-              <Link to="/consultation">{t('techniques.quickActions.complex.button', 'Consulta WhatsApp')}</Link>
+              <Link to="/consultation">{t('techniques.quickActions.complex.button', 'Consulta Especializada')}</Link>
             </Button>
           </CardContent>
         </Card>
