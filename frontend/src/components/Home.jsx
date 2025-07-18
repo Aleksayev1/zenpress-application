@@ -351,10 +351,10 @@ const Home = () => {
         </AlertDescription>
       </Alert>
 
-      {/* Spotify Player Integration */}
-      <div className="mb-12">
+      {/* Spotify Player Integration - Temporarily disabled */}
+      {/* <div className="mb-12">
         <SpotifyPlayer onSpotifyReady={setSpotifyReady} />
-      </div>
+      </div> */}
 
       {/* Promoção da Saúde Mental e Bem Estar - Seção Destacada */}
       <div className="mb-12">
@@ -615,7 +615,7 @@ const Home = () => {
               {t('techniques.quickActions.quick.description', 'Precisa de alívio imediato? Técnicas de 1 minuto para emergências.')}
             </p>
             <Button variant="outline" asChild size="sm">
-              <Link to="/technique/1">{t('techniques.quickActions.quick.button', 'Yintang - Dor de Cabeça')}</Link>
+              <Link to="/technique/1">{t('techniques.quickActions.quick.button', 'Yintang Ex2 - Dor de Cabeça')}</Link>
             </Button>
           </CardContent>
         </Card>

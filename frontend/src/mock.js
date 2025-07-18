@@ -21,17 +21,17 @@ export const mockData = {
     craniopuntura: [
       {
         id: 1,
-        name: "Dor de Cabeça - Craniopuntura Ponto A",
+        name: "Dor de Cabeça MTC Yintang Ex2",
         category: "craniopuntura",
-        condition: "Dor de cabeça, cefaleia",
-        description: "Técnica específica do Ponto A da Craniopuntura para alívio de dores de cabeça",
+        condition: "Yintang para alívio de dores de cabeça",
+        description: "Técnica específica do ponto Yintang (Ex2) para alívio de dores de cabeça",
         instructions: [
           "Localize o ponto no centro da testa, entre as sobrancelhas",
           "Use o dedo médio para aplicar pressão suave e constante",
           "Mantenha a pressão por 1 minuto, respirando profundamente",
           "Realize movimentos circulares leves no sentido horário"
         ],
-        image: "https://i.imgur.com/3yulsbz.jpeg",
+        image: "https://i.imgur.com/G8fP2KJ.jpeg",
         duration: 60,
         pressure: "Leve a moderada",
         warnings: ["Não aplicar muita pressão", "Parar se sentir tontura"]
