@@ -31,5 +31,13 @@ module.exports = {
       return webpackConfig;
     },
   },
+  devServer: {
+    // Configure WebSocket to avoid connection errors
+    client: {
+      webSocketURL: 'ws://localhost:3000/ws',
+    },
+    hot: true,
+    liveReload: true,
+  },
 };
   
