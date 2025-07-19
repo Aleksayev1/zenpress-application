@@ -31,20 +31,9 @@ export const apiService = {
       return response.data;
     } catch (error) {
       console.warn('API failed, using offline data:', error.message);
-      // Fallback para dados offline
-      const mockData = await import('../mock');
-      
-      if (category === 'craniopuntura') {
-        return mockData.default.techniques.craniopuntura || [];
-      } else if (category === 'mtc') {
-        return mockData.default.techniques.mtc || [];
-      } else {
-        // Retorna todas as técnicas se não especificar categoria
-        return [
-          ...(mockData.default.techniques.craniopuntura || []),
-          ...(mockData.default.techniques.mtc || [])
-        ];
-      }
+      // Fallback para dados offline usando a função específica
+      const { getMockTechniques } = await import('../mock');
+      return getMockTechniques(category);
     }
   },
 
