@@ -225,7 +225,7 @@ Enviado pelo App ZenPress
                   </div>
                   
                   <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">Email (opcional)</Label>
                     <Input
                       id="email"
                       type="email"
@@ -233,6 +233,7 @@ Enviado pelo App ZenPress
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       placeholder="seu@email.com"
                     />
+                    <p className="text-xs text-gray-500 mt-1">Para receber atualizações sobre sua consulta</p>
                   </div>
                 </div>
 
