@@ -82,7 +82,7 @@ export const mockData = {
           "Mantenha pressão constante por 1 minuto",
           "Realize movimentos circulares lentos no sentido horário"
         ],
-        image: "https://i.imgur.com/6GnGbqz.jpeg",
+        image: "https://imgur.com/a/F1r0ALI",
         duration: 60,
         pressure: "Moderada",
         warnings: ["Técnica para assinantes", "Consulte profissional para dores crônicas"],
