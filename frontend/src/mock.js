@@ -31,7 +31,7 @@ export const mockData = {
           "Mantenha a pressão por 1 minuto, respirando profundamente",
           "Realize movimentos circulares leves no sentido horário"
         ],
-        image: "https://imgur.com/a/F1r0ALI",
+        image: "https://i.imgur.com/CFq3uNn_d.jpeg?maxwidth=520&shape=thumb&fidelity=high",
         duration: 60,
         pressure: "Leve a moderada",
         warnings: ["Não aplicar muita pressão", "Parar se sentir tontura"]
