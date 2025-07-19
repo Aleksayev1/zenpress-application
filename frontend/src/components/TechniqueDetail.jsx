@@ -82,16 +82,6 @@ const TechniqueDetail = () => {
         console.log('Final translated technique:', translatedTechnique);
         setTechnique(translatedTechnique);
         setTimeLeft(data.duration || 60);
-      } catch (err) {
-        console.error('Error loading technique:', err);
-        setError(`Erro ao carregar técnica: ${err.message}. Verifique os logs.`);
-        // Fallback para mock data
-        const { getMockTechniqueById } = await import('../mock');
-        const mockTechnique = getMockTechniqueById(techniqueId);
-        setTechnique(mockTechnique);
-        if (mockTechnique) {
-          setTimeLeft(mockTechnique.duration);
-        }
       } finally {
         setLoading(false);
       }
