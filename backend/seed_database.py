@@ -22,7 +22,7 @@ SEED_TECHNIQUES = [
             "Mantenha a pressão por 1 minuto, respirando profundamente",
             "Realize movimentos circulares leves no sentido horário"
         ],
-        "image": "https://i.imgur.com/3yulsbz.jpeg",
+        "image": "https://imgur.com/a/F1r0ALI",
         "duration": 60,
         "pressure": "Leve a moderada",
         "warnings": ["Não aplicar muita pressão", "Parar se sentir tontura"],
