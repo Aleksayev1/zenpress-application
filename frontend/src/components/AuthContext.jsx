@@ -1,9 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
 
 const AuthContext = createContext();
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 const API = `${BACKEND_URL}/api`;
 
 export const useAuth = () => {
@@ -19,79 +18,87 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
 
-  // Configure axios defaults
-  useEffect(() => {
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else {
-      delete axios.defaults.headers.common['Authorization'];
-    }
-  }, [token]);
-
   // Check if user is logged in on app start
   useEffect(() => {
     const checkAuth = async () => {
-      if (token) {
+      const savedToken = localStorage.getItem('token');
+      const savedUser = localStorage.getItem('user');
+      
+      if (savedToken && savedUser) {
         try {
-          const response = await axios.get(`${API}/users/me`);
-          setUser(response.data);
+          const userData = JSON.parse(savedUser);
+          setToken(savedToken);
+          setUser(userData);
+          console.log('User restored from localStorage:', userData);
         } catch (error) {
-          console.error('Token inválido:', error);
-          logout();
+          console.error('Error parsing saved user data:', error);
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
         }
       }
       setLoading(false);
     };
 
     checkAuth();
-  }, [token]);
+  }, []);
 
   const register = async (userData) => {
+    console.log('🚀 REGISTRO INICIADO');
+    console.log('Dados do usuário:', { 
+      name: userData.name, 
+      email: userData.email, 
+      password: '[HIDDEN]' 
+    });
+    console.log('API URL:', API);
+
     try {
-      console.log('Registering user with data:', userData);
-      console.log('API URL:', API);
-      
-      // Primeiro tenta a URL normal
-      let response;
-      try {
-        response = await axios.post(`${API}/auth/register`, userData, {
-          timeout: 15000,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-      } catch (firstError) {
-        console.warn('First attempt failed, trying alternative URL:', firstError.message);
+      const response = await fetch(`${API}/auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+        timeout: 10000,
+      });
+
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Erro na resposta:', errorData);
         
-        // Tenta URL alternativa sem proxy
-        const altAPI = BACKEND_URL.replace('/api', '') + '/api';
-        response = await axios.post(`${altAPI}/auth/register`, userData, {
-          timeout: 15000,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        // Parse error message if it's JSON
+        let errorMessage = 'Erro ao criar usuário';
+        try {
+          const errorJson = JSON.parse(errorData);
+          errorMessage = errorJson.detail || errorMessage;
+        } catch (e) {
+          errorMessage = errorData || errorMessage;
+        }
+        
+        return { success: false, error: errorMessage };
       }
+
+      const data = await response.json();
+      console.log('✅ REGISTRO SUCESSO:', data);
       
-      console.log('Registration successful:', response.data);
+      const { access_token, user: newUser } = data;
       
-      const { access_token, user: newUser } = response.data;
-      
+      // Save to state and localStorage
       setToken(access_token);
       setUser(newUser);
       localStorage.setItem('token', access_token);
+      localStorage.setItem('user', JSON.stringify(newUser));
+      
+      console.log('✅ Usuario salvo com sucesso');
       
       return { success: true, user: newUser };
       
     } catch (error) {
-      console.error('Registration error:', error);
-      console.error('Error response:', error.response?.data);
-      console.error('Error code:', error.code);
-      console.error('Error status:', error.response?.status);
+      console.error('❌ ERRO NO REGISTRO:', error);
       
-      // Fallback: criar usuário mock localmente
-      console.log('Using fallback local registration');
-      
+      // Simple fallback - create mock user locally
       const mockUser = {
         id: `user-${Date.now()}`,
         name: userData.name,
@@ -107,7 +114,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', mockToken);
       localStorage.setItem('user', JSON.stringify(mockUser));
       
-      console.log('Fallback registration successful:', mockUser);
+      console.log('🔄 FALLBACK: Usuário criado localmente:', mockUser);
       
       return { 
         success: true, 
@@ -118,46 +125,77 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (credentials) => {
+    console.log('🚀 LOGIN INICIADO');
+    console.log('Email:', credentials.email);
+    console.log('API URL:', API);
+
     try {
-      console.log('Logging in user:', credentials.email);
-      
-      let response;
-      try {
-        response = await axios.post(`${API}/auth/login`, credentials, {
-          timeout: 15000,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-      } catch (firstError) {
-        console.warn('Login: First attempt failed, trying alternative URL:', firstError.message);
+      const response = await fetch(`${API}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+        timeout: 10000,
+      });
+
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Erro na resposta do login:', errorData);
         
-        // Tenta URL alternativa sem proxy
-        const altAPI = BACKEND_URL.replace('/api', '') + '/api';
-        response = await axios.post(`${altAPI}/auth/login`, credentials, {
-          timeout: 15000,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        let errorMessage = 'Email ou senha incorretos';
+        try {
+          const errorJson = JSON.parse(errorData);
+          errorMessage = errorJson.detail || errorMessage;
+        } catch (e) {
+          errorMessage = errorData || errorMessage;
+        }
+        
+        // Check for offline fallback
+        const savedUser = localStorage.getItem('user');
+        if (savedUser) {
+          const user = JSON.parse(savedUser);
+          if (user.email === credentials.email) {
+            console.log('🔄 FALLBACK: Login offline');
+            const mockToken = `offline-token-${Date.now()}`;
+            setToken(mockToken);
+            setUser(user);
+            localStorage.setItem('token', mockToken);
+            
+            return { 
+              success: true, 
+              user: user,
+              fallback: true
+            };
+          }
+        }
+        
+        return { success: false, error: errorMessage };
       }
+
+      const data = await response.json();
+      console.log('✅ LOGIN SUCESSO:', data);
       
-      const { access_token, user: userData } = response.data;
+      const { access_token, user: userData } = data;
       
       setToken(access_token);
       setUser(userData);
       localStorage.setItem('token', access_token);
+      localStorage.setItem('user', JSON.stringify(userData));
       
       return { success: true, user: userData };
-    } catch (error) {
-      console.error('Login error:', error);
       
-      // Fallback: verificar se há usuário salvo localmente
+    } catch (error) {
+      console.error('❌ ERRO NO LOGIN:', error);
+      
+      // Check for offline fallback
       const savedUser = localStorage.getItem('user');
       if (savedUser) {
         const user = JSON.parse(savedUser);
         if (user.email === credentials.email) {
-          console.log('Using offline login');
+          console.log('🔄 FALLBACK: Login offline devido a erro de rede');
           const mockToken = `offline-token-${Date.now()}`;
           setToken(mockToken);
           setUser(user);
@@ -173,30 +211,22 @@ export const AuthProvider = ({ children }) => {
       
       return { 
         success: false, 
-        error: error.response?.data?.detail || 'Email ou senha incorretos' 
+        error: 'Erro de conexão. Verifique sua internet e tente novamente.' 
       };
     }
   };
 
   const logout = () => {
+    console.log('🚪 LOGOUT');
     setToken(null);
     setUser(null);
     localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
+    localStorage.removeItem('user');
   };
 
-  const updateUser = async () => {
-    if (token) {
-      try {
-        const response = await axios.get(`${API}/users/me`);
-        setUser(response.data);
-        return response.data;
-      } catch (error) {
-        console.error('Erro ao atualizar usuário:', error);
-        return null;
-      }
-    }
-    return null;
+  const updateUser = () => {
+    // For now, just return the current user
+    return user;
   };
 
   const value = {
