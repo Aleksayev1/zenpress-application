@@ -210,6 +210,80 @@
     "contraindications": "Contraindicações:",
     "seekHelp": "Procure ajuda médica se:"
   },
+  "techniques": {
+    "yintang": {
+      "name": "Dor de Cabeça MTC Yintang Ex2",
+      "condition": "Yintang para alívio de dores de cabeça",
+      "description": "Técnica específica do ponto Yintang (Ex2) para alívio de dores de cabeça",
+      "instructions": [
+        "Localize o ponto no centro da testa, entre as sobrancelhas",
+        "Use o dedo médio para aplicar pressão suave e constante",
+        "Mantenha a pressão por 1 minuto, respirando profundamente",
+        "Realize movimentos circulares leves no sentido horário"
+      ],
+      "warnings": ["Pressão suave apenas", "Parar se sentir tontura"]
+    },
+    "fengchi": {
+      "name": "Fengchi (GB20) - Pescoço",
+      "condition": "Dor de cabeça, tensão cervical",
+      "description": "Ponto localizado na base do crânio, na nuca",
+      "instructions": [
+        "Localize os dois pontos na base do crânio, nas depressões laterais",
+        "Use os polegares para aplicar pressão ascendente",
+        "Mantenha por 30-60 segundos",
+        "Respire profundamente durante a aplicação"
+      ],
+      "warnings": ["Não aplicar muita força", "Cuidado com tontura"]
+    },
+    "yinbai": {
+      "name": "Yinbai (SP1) - Dedão",
+      "condition": "Digestão, menstruação, ansiedade",
+      "description": "Localizado na lateral interna do dedão do pé",
+      "instructions": [
+        "Encontre o ponto na base da unha do dedão, lado interno",
+        "Aplique pressão com a unha do polegar",
+        "Mantenha por 1-2 minutos",
+        "Alterne entre os pés"
+      ],
+      "warnings": ["Pressão moderada", "Não usar se grávida"]
+    },
+    "hegu": {
+      "name": "Hegu (LI4) - Mão",
+      "condition": "Dor de cabeça, estresse, dor geral",
+      "description": "Entre o polegar e indicador, um dos pontos mais importantes",
+      "instructions": [
+        "Localize entre os ossos do polegar e indicador",
+        "Aplique pressão firme com o polegar da outra mão",
+        "Mantenha por 1 minuto em cada mão",
+        "Pressione em direção ao osso do indicador"
+      ],
+      "warnings": ["Evitar durante gravidez", "Não aplicar força excessiva"]
+    },
+    "zusanli": {
+      "name": "Ponto Zusanli (ST36)",
+      "condition": "Digestão, energia, imunidade",
+      "description": "Localizado na perna, abaixo do joelho",
+      "instructions": [
+        "Localize o ponto 4 dedos abaixo da rótula, na lateral externa da perna",
+        "Use o polegar para aplicar pressão firme",
+        "Mantenha por 1 minuto em cada perna",
+        "Realize movimentos circulares pequenos"
+      ],
+      "warnings": ["Localização precisa é importante", "Pode sentir sensação elétrica"]
+    },
+    "shenmen": {
+      "name": "Ponto C7 - Shenmen (HE7)",
+      "condition": "Ansiedade, insônia, stress",
+      "description": "C7 acalma a mente - localizado no punho, na dobra junto ao dedo mínimo",
+      "instructions": [
+        "Localize na dobra do punho, do lado do dedo mínimo",
+        "Use o polegar para aplicar pressão suave",
+        "Mantenha por 1 minuto, respirando calmamente",
+        "Pode ser feito várias vezes ao dia"
+      ],
+      "warnings": ["Pressão suave", "Ideal para relaxamento"]
+    }
+  },
   "payment": {
     "title": "Planos e Cursos",
     "subtitle": "Escolha o melhor plano para suas necessidades",
