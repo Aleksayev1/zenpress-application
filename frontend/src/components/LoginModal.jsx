@@ -110,6 +110,7 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
     setRegisterData({ name: '', email: '', password: '', confirmPassword: '' });
     setError('');
     setActiveTab('login');
+    setLoading(false);
   };
 
   const handleClose = () => {
@@ -117,13 +118,20 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
     onClose();
   };
 
+  // Handle quando clica no overlay ou pressiona ESC
+  const handleOpenChange = (open) => {
+    if (!open) {
+      handleClose();
+    }
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md">
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+      <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto" onPointerDownOutside={handleClose}>
         <DialogHeader>
           <DialogTitle>Acesse sua conta</DialogTitle>
           <DialogDescription>
-            Entre ou crie uma conta para continuar
+            Entre com sua conta ou crie uma nova para acessar recursos premium
           </DialogDescription>
         </DialogHeader>
 
