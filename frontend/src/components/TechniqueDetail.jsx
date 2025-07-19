@@ -57,7 +57,23 @@ const TechniqueDetail = () => {
       try {
         setLoading(true);
         const data = await apiService.getTechniqueById(techniqueId);
-        setTechnique(data);
+        
+        // Apply translations based on technique
+        const techniqueKey = getTechniqueKey(data.name);
+        const translatedTechnique = {
+          ...data,
+          name: t(`techniques.${techniqueKey}.name`, data.name),
+          condition: t(`techniques.${techniqueKey}.condition`, data.condition),
+          description: t(`techniques.${techniqueKey}.description`, data.description),
+          instructions: data.instructions.map((instruction, index) => 
+            t(`techniques.${techniqueKey}.instructions.${index}`, instruction)
+          ),
+          warnings: data.warnings?.map((warning, index) => 
+            t(`techniques.${techniqueKey}.warnings.${index}`, warning)
+          ) || []
+        };
+        
+        setTechnique(translatedTechnique);
         setTimeLeft(data.duration || 60);
       } catch (err) {
         console.error('Erro ao carregar técnica:', err);
@@ -75,7 +91,18 @@ const TechniqueDetail = () => {
     };
 
     loadTechnique();
-  }, [techniqueId]);
+  }, [techniqueId, t]);
+
+  // Helper function to get technique translation key
+  const getTechniqueKey = (name) => {
+    if (name.includes('Yintang')) return 'yintang';
+    if (name.includes('Fengchi')) return 'fengchi';
+    if (name.includes('Yinbai')) return 'yinbai';
+    if (name.includes('Hegu')) return 'hegu';
+    if (name.includes('Zusanli')) return 'zusanli';
+    if (name.includes('Shenmen')) return 'shenmen';
+    return 'yintang'; // default
+  };
 
   useEffect(() => {
     if (technique) {
