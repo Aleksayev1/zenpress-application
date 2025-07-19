@@ -364,8 +364,15 @@ const Home = () => {
             <div className="mb-4">
               <div className="text-7xl mb-3">🧘‍♀️</div>
             </div>
-            <CardTitle className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent mb-4 px-4">
-              <span className="block leading-tight break-words">
+            <CardTitle className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent mb-4 px-2 sm:px-4">
+              <span className="block leading-tight break-words text-center hyphens-auto" style={{
+                wordBreak: 'break-word',
+                overflowWrap: 'anywhere',
+                hyphens: 'auto',
+                lineHeight: '1.2',
+                fontSize: 'clamp(1.25rem, 4vw, 2.5rem)',
+                padding: '0 0.5rem'
+              }}>
                 {t('home.mentalHealth.title', 'Promoção da Saúde Mental e Bem Estar')}
               </span>
             </CardTitle>
