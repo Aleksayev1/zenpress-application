@@ -47,14 +47,9 @@ const ConsultationPage = () => {
   };
 
   const handleWhatsAppContact = () => {
-    if (!isAuthenticated) {
-      setShowLoginModal(true);
-      return;
-    }
-
-    // Validate required fields
+    // Validate required fields (sem necessidade de login)
     if (!formData.name || !formData.phone || !formData.condition || !formData.symptoms) {
-      alert('Por favor, preencha todos os campos obrigatórios');
+      alert('Por favor, preencha todos os campos obrigatórios: Nome, Telefone, Condição e Sintomas');
       return;
     }
 
