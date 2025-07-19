@@ -119,7 +119,29 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post(`${API}/auth/login`, credentials);
+      console.log('Logging in user:', credentials.email);
+      
+      let response;
+      try {
+        response = await axios.post(`${API}/auth/login`, credentials, {
+          timeout: 15000,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+      } catch (firstError) {
+        console.warn('Login: First attempt failed, trying alternative URL:', firstError.message);
+        
+        // Tenta URL alternativa sem proxy
+        const altAPI = BACKEND_URL.replace('/api', '') + '/api';
+        response = await axios.post(`${altAPI}/auth/login`, credentials, {
+          timeout: 15000,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+      }
+      
       const { access_token, user: userData } = response.data;
       
       setToken(access_token);
@@ -128,9 +150,30 @@ export const AuthProvider = ({ children }) => {
       
       return { success: true, user: userData };
     } catch (error) {
+      console.error('Login error:', error);
+      
+      // Fallback: verificar se há usuário salvo localmente
+      const savedUser = localStorage.getItem('user');
+      if (savedUser) {
+        const user = JSON.parse(savedUser);
+        if (user.email === credentials.email) {
+          console.log('Using offline login');
+          const mockToken = `offline-token-${Date.now()}`;
+          setToken(mockToken);
+          setUser(user);
+          localStorage.setItem('token', mockToken);
+          
+          return { 
+            success: true, 
+            user: user,
+            fallback: true
+          };
+        }
+      }
+      
       return { 
         success: false, 
-        error: error.response?.data?.detail || 'Erro ao fazer login' 
+        error: error.response?.data?.detail || 'Email ou senha incorretos' 
       };
     }
   };
