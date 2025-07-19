@@ -196,6 +196,13 @@ Enviado pelo App ZenPress
               <CardDescription>
                 Preencha os dados abaixo para receber atendimento personalizado via WhatsApp
               </CardDescription>
+              
+              <Alert className="bg-green-50 border-green-200">
+                <CheckCircle className="h-4 w-4 text-green-600" />
+                <AlertDescription className="text-green-700">
+                  <strong>Consulta Gratuita:</strong> Não é necessário login ou pagamento para solicitar consulta via WhatsApp
+                </AlertDescription>
+              </Alert>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Personal Information */}
