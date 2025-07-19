@@ -31,8 +31,23 @@ export const apiService = {
   },
 
   async getTechniqueById(id) {
-    const response = await api.get(`/techniques/${id}`);
-    return response.data;
+    try {
+      const response = await api.get(`/techniques/${id}`);
+      return response.data;
+    } catch (error) {
+      console.warn('API failed, using offline data:', error.message);
+      // Fallback para dados offline
+      const mockData = await import('../mock');
+      const allTechniques = [
+        ...mockData.default.techniques.craniopuntura,
+        ...mockData.default.techniques.mtc
+      ];
+      const technique = allTechniques.find(t => t.id === parseInt(id));
+      if (!technique) {
+        throw new Error(`Técnica com ID ${id} não encontrada`);
+      }
+      return technique;
+    }
   },
 
   // Autenticação
