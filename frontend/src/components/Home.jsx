@@ -364,8 +364,10 @@ const Home = () => {
             <div className="mb-4">
               <div className="text-7xl mb-3">🧘‍♀️</div>
             </div>
-            <CardTitle className="text-4xl font-bold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent mb-4">
-              {t('home.mentalHealth.title', 'Promoção da Saúde Mental e Bem Estar')}
+            <CardTitle className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent mb-4 px-4">
+              <span className="block leading-tight break-words">
+                {t('home.mentalHealth.title', 'Promoção da Saúde Mental e Bem Estar')}
+              </span>
             </CardTitle>
             <CardDescription className="text-xl text-gray-800 max-w-4xl mx-auto leading-relaxed font-medium">
               {t('home.mentalHealth.description', 'Descubra como as técnicas de acupressão podem contribuir significativamente para o seu equilíbrio emocional, redução do estresse, melhoria do sono e promoção do bem-estar mental. Nossa abordagem holística conecta corpo e mente para uma vida mais plena e saudável.')}
