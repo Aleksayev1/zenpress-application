@@ -25,9 +25,27 @@ api.interceptors.request.use((config) => {
 export const apiService = {
   // Técnicas
   async getTechniques(category = null) {
-    const url = category ? `/techniques?category=${category}` : '/techniques';
-    const response = await api.get(url);
-    return response.data;
+    try {
+      const url = category ? `/techniques?category=${category}` : '/techniques';
+      const response = await api.get(url);
+      return response.data;
+    } catch (error) {
+      console.warn('API failed, using offline data:', error.message);
+      // Fallback para dados offline
+      const mockData = await import('../mock');
+      
+      if (category === 'craniopuntura') {
+        return mockData.default.techniques.craniopuntura || [];
+      } else if (category === 'mtc') {
+        return mockData.default.techniques.mtc || [];
+      } else {
+        // Retorna todas as técnicas se não especificar categoria
+        return [
+          ...(mockData.default.techniques.craniopuntura || []),
+          ...(mockData.default.techniques.mtc || [])
+        ];
+      }
+    }
   },
 
   async getTechniqueById(id) {
