@@ -22,26 +22,14 @@ const CategoryView = () => {
 
   useEffect(() => {
     const loadTechniques = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await apiService.getTechniques(categoryId);
-        setTechniques(data);
-      } catch (err) {
-        console.error('Erro ao carregar técnicas:', err);
-        setError('Erro ao carregar técnicas. Usando dados offline.');
-        // Fallback adicional se o apiService falhar
-        try {
-          const { getMockTechniques } = await import('../mock');
-          const mockTechniques = getMockTechniques(categoryId);
-          setTechniques(mockTechniques);
-        } catch (mockError) {
-          console.error('Erro no fallback offline:', mockError);
-          setTechniques([]);
-        }
-      } finally {
-        setLoading(false);
-      }
+      setLoading(true);
+      setError(null);
+      
+      // apiService.getTechniques já tem fallback interno para mock data
+      const data = await apiService.getTechniques(categoryId);
+      setTechniques(data);
+      
+      setLoading(false);
     };
 
     if (categoryId) {
