@@ -507,14 +507,24 @@ const Home = () => {
               </div>
             </div>
             
-            <div className="text-center px-2 sm:px-4">
+            <div className="text-center px-1 sm:px-4 w-full">
               <Button 
                 asChild 
                 size="lg" 
-                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-2 sm:px-4 md:px-10 py-3 sm:py-4 text-xs sm:text-sm md:text-lg font-bold shadow-xl w-full max-w-full min-h-0"
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-1 sm:px-2 md:px-10 py-2 sm:py-3 md:py-4 text-xs sm:text-sm md:text-lg font-bold shadow-xl w-full max-w-full min-h-fit overflow-hidden"
+                style={{ wordWrap: 'break-word', overflowWrap: 'anywhere', hyphens: 'auto' }}
               >
-                <Link to="/category/craniopuntura" className="block text-center p-1">
-                  <span className="break-words leading-none sm:leading-tight hyphens-auto" style={{wordBreak: 'break-word', overflowWrap: 'break-word'}}>
+                <Link to="/category/craniopuntura" className="block text-center w-full h-full flex items-center justify-center p-1">
+                  <span 
+                    className="break-all leading-tight text-center whitespace-normal inline-block w-full"
+                    style={{
+                      wordBreak: 'break-word', 
+                      overflowWrap: 'anywhere',
+                      hyphens: 'auto',
+                      lineHeight: '1.1',
+                      maxWidth: '100%'
+                    }}
+                  >
                     {t('home.mentalHealth.exploreButton', 'Explorar Técnicas para Bem Estar Mental')}
                   </span>
                 </Link>
