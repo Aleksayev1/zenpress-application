@@ -502,7 +502,21 @@ frontend:
         agent: "main"
         comment: "Projeto Expo criado com sucesso usando template blank-typescript. App.tsx implementado com navegação por tabs funcional, três telas principais: Home (categorias de acupressão), Timer (respiração 4-7-8), e Techniques (lista de técnicas). Interface mobile responsiva com design moderno."
 
-  - task: "Sistema de Login Super Simples"
+  - task: "Ajustes Básicos Mobile - Responsividade"
+    implemented: true
+    working: true
+    file: "Home.jsx, App.js, ErrorBoundary.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "user"
+        comment: "Usuário reportou texto cortado no mobile: 'Explorar Técnicas' e 'Promoção da Saúde Mental e Bem Estar'"
+      - working: true
+        agent: "main"
+        comment: "AJUSTES MOBILE IMPLEMENTADOS: ✅ Título 'Promoção da Saúde Mental e Bem Estar' com clamp(1.25rem, 4vw, 2.5rem) e quebra responsiva ✅ Botão 'Explorar Técnicas para Bem Estar Mental' com font-size clamp(0.875rem, 3vw, 1.125rem) ✅ Botões 'Explorar Técnicas' das categorias principais otimizados ✅ ErrorBoundary adicionado ao App.js para capturar erros de extensões Chrome ✅ Padding e margin ajustados para diferentes viewport sizes ✅ Quebra de texto agressiva com hyphens e overflow-wrap ✅ Testado em viewport mobile 375x667px"
+
     implemented: true
     working: true
     file: "AuthContext.jsx"
