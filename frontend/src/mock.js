@@ -214,8 +214,20 @@ export const getMockTechniques = (category) => {
 };
 
 export const getMockTechniqueById = (id) => {
-  const allTechniques = [...mockData.techniques.craniopuntura, ...mockData.techniques.mtc];
-  return allTechniques.find(tech => tech.id === parseInt(id));
+  console.log('🔍 MOCK - Buscando técnica ID:', id);
+  const allTechniques = [
+    ...mockData.techniques.craniopuntura, 
+    ...mockData.techniques.mtc,
+    ...mockData.techniques.premium  // ADICIONADO - estava faltando!
+  ];
+  const technique = allTechniques.find(tech => tech.id === parseInt(id));
+  if (technique) {
+    console.log('✅ MOCK - Técnica encontrada:', technique.name);
+  } else {
+    console.log('❌ MOCK - Técnica não encontrada para ID:', id);
+    console.log('📋 MOCK - Técnicas disponíveis:', allTechniques.map(t => `${t.id}: ${t.name}`));
+  }
+  return technique;
 };
 
 export const addToMockFavorites = (techniqueId) => {
