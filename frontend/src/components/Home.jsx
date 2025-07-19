@@ -505,14 +505,14 @@ const Home = () => {
               </div>
             </div>
             
-            <div className="text-center px-4">
+            <div className="text-center px-2 sm:px-4">
               <Button 
                 asChild 
                 size="lg" 
-                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-4 sm:px-10 py-4 text-sm sm:text-lg font-bold shadow-xl w-full max-w-full"
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-2 sm:px-4 md:px-10 py-3 sm:py-4 text-xs sm:text-sm md:text-lg font-bold shadow-xl w-full max-w-full min-h-0"
               >
-                <Link to="/category/craniopuntura" className="block text-center">
-                  <span className="break-words leading-tight">
+                <Link to="/category/craniopuntura" className="block text-center p-1">
+                  <span className="break-words leading-none sm:leading-tight hyphens-auto" style={{wordBreak: 'break-word', overflowWrap: 'break-word'}}>
                     {t('home.mentalHealth.exploreButton', 'Explorar Técnicas para Bem Estar Mental')}
                   </span>
                 </Link>
