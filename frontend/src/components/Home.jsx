@@ -614,8 +614,15 @@ const Home = () => {
             <p className="text-sm text-gray-600 mb-4">
               {t('techniques.quickActions.quick.description', 'Precisa de alívio imediato? Técnicas de 1 minuto para emergências.')}
             </p>
-            <Button variant="outline" asChild size="sm">
-              <Link to="/technique/1">{t('techniques.quickActions.quick.button', 'Yintang Ex2 - Dor de Cabeça')}</Link>
+            <Button 
+              variant="outline" 
+              asChild 
+              size="sm"
+              className="w-full max-w-full text-xs sm:text-sm px-2 py-1 h-auto leading-tight"
+            >
+              <Link to="/technique/1" className="text-center break-words">
+                {t('techniques.quickActions.quick.button', 'Yintang Ex2 - Dor de Cabeça')}
+              </Link>
             </Button>
           </CardContent>
         </Card>
