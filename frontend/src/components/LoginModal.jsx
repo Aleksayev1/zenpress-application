@@ -86,6 +86,9 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
       });
       
       if (result.success) {
+        if (result.fallback) {
+          alert('Conta criada com sucesso! (Modo offline - suas preferências serão salvas localmente)');
+        }
         onSuccess?.(result.user);
         onClose();
         resetForms();
