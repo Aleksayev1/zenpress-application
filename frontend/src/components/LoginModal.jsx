@@ -29,6 +29,28 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
     confirmPassword: ''
   });
 
+  // Reset form data quando o modal fecha
+  const resetForms = () => {
+    setLoginData({ email: '', password: '' });
+    setRegisterData({ name: '', email: '', password: '', confirmPassword: '' });
+    setError('');
+    setLoading(false);
+    setActiveTab('login');
+  };
+
+  // Fechar modal e limpar dados
+  const handleClose = () => {
+    resetForms();
+    onClose();
+  };
+
+  // Handle Escape key
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      handleClose();
+    }
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
