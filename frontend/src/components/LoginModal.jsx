@@ -52,32 +52,49 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
     setLoading(true);
     setError('');
 
-    // Validate passwords match
+    // Validation
+    if (!registerData.name || !registerData.email || !registerData.password || !registerData.confirmPassword) {
+      setError('Todos os campos são obrigatórios');
+      setLoading(false);
+      return;
+    }
+
     if (registerData.password !== registerData.confirmPassword) {
       setError('As senhas não coincidem');
       setLoading(false);
       return;
     }
 
-    // Validate password strength
     if (registerData.password.length < 6) {
       setError('A senha deve ter pelo menos 6 caracteres');
       setLoading(false);
       return;
     }
 
-    const result = await register({
-      name: registerData.name,
-      email: registerData.email,
-      password: registerData.password
-    });
-    
-    if (result.success) {
-      onSuccess?.(result.user);
-      onClose();
-      resetForms();
-    } else {
-      setError(result.error);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(registerData.email)) {
+      setError('Digite um email válido');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const result = await register({
+        name: registerData.name,
+        email: registerData.email,
+        password: registerData.password
+      });
+      
+      if (result.success) {
+        onSuccess?.(result.user);
+        onClose();
+        resetForms();
+      } else {
+        setError(result.error || 'Erro ao registrar usuário');
+      }
+    } catch (err) {
+      setError('Erro inesperado ao registrar usuário');
+      console.error('Register error:', err);
     }
     
     setLoading(false);
