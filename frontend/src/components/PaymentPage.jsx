@@ -119,7 +119,19 @@ const PaymentPage = () => {
   };
 
   const handlePurchase = async (productId, productType) => {
+    console.log('🛒 MOBILE PAYMENT - INICIANDO');
+    console.log('Usuario autenticado:', isAuthenticated);
+    console.log('Token presente:', !!token);
+    console.log('Token preview:', token ? token.substring(0, 20) + '...' : 'null');
+    
     if (!isAuthenticated) {
+      console.log('❌ Usuário não autenticado - abrindo modal');
+      setShowLoginModal(true);
+      return;
+    }
+
+    if (!token) {
+      console.log('❌ Token não encontrado - forçando nova autenticação');
       setShowLoginModal(true);
       return;
     }
@@ -127,31 +139,65 @@ const PaymentPage = () => {
     setProcessingPayment(true);
 
     try {
-      // Configure axios with authorization header
+      // Configure axios with authorization header - MOBILE OPTIMIZED
       const headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        // Add mobile-specific headers
+        'User-Agent': navigator.userAgent,
+        'X-Requested-With': 'XMLHttpRequest'
       };
       
-      if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-      }
+      console.log('🔑 MOBILE - Headers configurados:', {
+        hasAuth: !!headers.Authorization,
+        authPreview: headers.Authorization ? headers.Authorization.substring(0, 30) + '...' : 'null'
+      });
 
-      const response = await axios.post(`${API}/payments/v1/checkout/session`, {
+      const requestData = {
         product_id: productId,
         product_type: productType,
         origin_url: window.location.origin,
         quantity: 1
-      }, { headers });
+      };
+      
+      console.log('📦 MOBILE - Request data:', requestData);
+      console.log('🌐 MOBILE - URL:', `${API}/payments/v1/checkout/session`);
 
+      const response = await axios.post(`${API}/payments/v1/checkout/session`, requestData, { 
+        headers,
+        timeout: 15000,
+        withCredentials: false // Sometimes helps on mobile
+      });
+
+      console.log('✅ MOBILE - Response received:', response.status);
+      
       // Redirect to Stripe Checkout
       if (response.data.url) {
+        console.log('🔄 MOBILE - Redirecting to:', response.data.url);
         window.location.href = response.data.url;
+      } else {
+        console.log('❌ MOBILE - No redirect URL received');
+        throw new Error('No redirect URL received');
       }
     } catch (error) {
-      console.error('Erro ao iniciar pagamento:', error);
+      console.error('❌ MOBILE PAYMENT ERROR:', error);
+      console.error('❌ Error status:', error.response?.status);
+      console.error('❌ Error data:', error.response?.data);
+      
+      let errorMessage = 'Erro ao processar pagamento. Tente novamente.';
+      
+      if (error.response?.status === 401) {
+        errorMessage = 'Sessão expirada. Faça login novamente.';
+        // Force re-login
+        setShowLoginModal(true);
+      } else if (error.response?.status === 403) {
+        errorMessage = 'Acesso negado. Verifique sua conta.';
+      }
+      
       setPaymentStatus({
         status: 'error',
-        message: 'Erro ao processar pagamento. Tente novamente.'
+        message: errorMessage
       });
     } finally {
       setProcessingPayment(false);
