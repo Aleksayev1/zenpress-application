@@ -130,13 +130,11 @@ const PaymentPage = () => {
       return;
     }
 
-    // CRITICAL: Se token não é JWT válido, força re-login
+    // CRITICAL: Se token não é JWT válido, força re-login com backend
     if (!token.startsWith('eyJ')) {
-      console.log('❌ Token local detectado - forçando login real no backend');
-      setPaymentStatus({
-        status: 'error',
-        message: 'Sessão inválida. Faça login novamente para efetuar pagamentos.'
-      });
+      console.log('❌ Token local detectado - forçando login real para pagamentos');
+      alert('Para efetuar pagamentos, você precisa fazer login com conexão à internet. Por favor, faça login novamente.');
+      logout(); // Limpa dados locais
       setShowLoginModal(true);
       return;
     }
@@ -150,7 +148,7 @@ const PaymentPage = () => {
         'Authorization': `Bearer ${token}`
       };
       
-      console.log('🔑 MOBILE - Usando JWT token válido');
+      console.log('🔑 MOBILE - Usando JWT token válido para pagamento');
 
       const requestData = {
         product_id: productId,
@@ -181,8 +179,9 @@ const PaymentPage = () => {
       
       let errorMessage = 'Erro ao processar pagamento. Tente novamente.';
       
-      if (error.response?.status === 401) {
-        errorMessage = 'Token inválido. Faça login novamente.';
+      if (error.response?.status === 401 || error.response?.status === 403) {
+        errorMessage = 'Sessão inválida. Faça login novamente para efetuar pagamentos.';
+        logout(); // Limpa sessão inválida
         setShowLoginModal(true);
       }
       
