@@ -503,10 +503,16 @@ const Home = () => {
               </div>
             </div>
             
-            <div className="text-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-10 py-4 text-lg font-bold shadow-xl">
-                <Link to="/category/craniopuntura">
-                  {t('home.mentalHealth.exploreButton', 'Explorar Técnicas para Bem Estar Mental')}
+            <div className="text-center px-4">
+              <Button 
+                asChild 
+                size="lg" 
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-4 sm:px-10 py-4 text-sm sm:text-lg font-bold shadow-xl w-full max-w-full"
+              >
+                <Link to="/category/craniopuntura" className="block text-center">
+                  <span className="break-words leading-tight">
+                    {t('home.mentalHealth.exploreButton', 'Explorar Técnicas para Bem Estar Mental')}
+                  </span>
                 </Link>
               </Button>
             </div>
