@@ -122,35 +122,67 @@ export const AuthProvider = ({ children }) => {
     console.log('Email:', credentials.email);
     
     try {
-      // Check localStorage first (may not work on all mobile browsers)
-      let savedUser = null;
+      // TRY BACKEND LOGIN FIRST - para ter token JWT válido
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      if (backendUrl) {
+        try {
+          console.log('🌐 MOBILE - Tentando login no backend');
+          const response = await fetch(`${backendUrl}/api/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(credentials)
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            console.log('✅ MOBILE - Login backend sucesso:', data);
+            
+            // Use REAL JWT token from backend
+            setUser(data.user);
+            setToken(data.access_token);
+            
+            try {
+              localStorage.setItem('zenpress_user', JSON.stringify(data.user));
+              localStorage.setItem('zenpress_token', data.access_token);
+            } catch (e) {
+              console.warn('⚠️ localStorage save failed');
+            }
+            
+            return { success: true, user: data.user, realToken: true };
+          } else {
+            console.log('⚠️ MOBILE - Backend login falhou:', response.status);
+          }
+        } catch (backendError) {
+          console.warn('⚠️ MOBILE - Backend login error:', backendError.message);
+        }
+      }
+      
+      // FALLBACK LOCAL - Check localStorage
       try {
         const savedUserStr = localStorage.getItem('zenpress_user');
         if (savedUserStr) {
-          savedUser = JSON.parse(savedUserStr);
+          const savedUser = JSON.parse(savedUserStr);
+          if (savedUser.email === credentials.email) {
+            const loginToken = savedUser.localOnly ? `mobile_login_${Date.now()}` : localStorage.getItem('zenpress_token');
+            
+            setUser(savedUser);
+            setToken(loginToken);
+            
+            console.log('✅ MOBILE - Login local sucesso:', savedUser);
+            return { 
+              success: true, 
+              user: savedUser, 
+              localOnly: savedUser.localOnly,
+              warning: savedUser.localOnly ? 'Login local - pagamentos podem não funcionar' : null
+            };
+          }
         }
-      } catch (storageError) {
-        console.warn('⚠️ MOBILE - localStorage read failed:', storageError);
+      } catch (e) {
+        console.warn('⚠️ MOBILE - localStorage read failed:', e);
       }
       
-      if (savedUser && savedUser.email === credentials.email) {
-        // Existing user login
-        const loginToken = `mobile_login_${Date.now()}`;
-        setUser(savedUser);
-        setToken(loginToken);
-        
-        try {
-          localStorage.setItem('zenpress_token', loginToken);
-        } catch (e) {
-          console.warn('⚠️ localStorage token save failed');
-        }
-        
-        console.log('✅ MOBILE - Login local sucesso:', savedUser);
-        return { success: true, user: savedUser };
-      }
-      
-      // No existing user, create new one
-      console.log('🆕 MOBILE - Criando novo usuário via login');
+      // No existing user - try to register
+      console.log('🆕 MOBILE - Nenhum usuário encontrado, registrando');
       return await register({
         name: credentials.email.split('@')[0],
         email: credentials.email,
@@ -158,24 +190,8 @@ export const AuthProvider = ({ children }) => {
       });
       
     } catch (error) {
-      console.error('❌ MOBILE LOGIN - ERRO:', error);
-      
-      // Ultra fallback - always succeed with basic user
-      const emergencyUser = {
-        id: `emergency_${Date.now()}`,
-        name: 'Usuário Mobile',
-        email: credentials.email,
-        is_premium: false
-      };
-      
-      const emergencyToken = `emergency_${Date.now()}`;
-      
-      setUser(emergencyUser);
-      setToken(emergencyToken);
-      
-      console.log('🆘 MOBILE - Emergency login:', emergencyUser);
-      
-      return { success: true, user: emergencyUser, emergency: true };
+      console.error('❌ MOBILE LOGIN - ERRO TOTAL:', error);
+      return { success: false, error: 'Erro no login' };
     }
   };
 
