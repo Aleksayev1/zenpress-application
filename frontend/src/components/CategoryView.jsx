@@ -29,6 +29,17 @@ const CategoryView = () => {
       const data = await apiService.getTechniques(categoryId);
       setTechniques(data);
       
+      // FORCE IMAGE PRELOAD for web browsers
+      if (data && data.length > 0) {
+        data.forEach(technique => {
+          if (technique.image) {
+            const img = new Image();
+            img.src = technique.image;
+            console.log('🖼️ WEB - Preloading image:', technique.image);
+          }
+        });
+      }
+      
       setLoading(false);
     };
 
