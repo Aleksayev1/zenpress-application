@@ -239,3 +239,34 @@ export const addToMockHistory = (session) => {
   };
   mockData.userHistory.unshift(newEntry);
 };
+
+// FUNÇÃO QUE ESTAVA FALTANDO - para fallback offline
+export const getMockTechniqueById = (id) => {
+  console.log('🔍 OFFLINE - Buscando técnica ID:', id);
+  
+  // Convert id to number
+  const numId = parseInt(id);
+  
+  // Search in all categories
+  const allTechniques = [
+    ...mockData.techniques.craniopuntura,
+    ...mockData.techniques.mtc,
+    ...mockData.techniques.premium
+  ];
+  
+  const technique = allTechniques.find(t => t.id === numId);
+  
+  if (technique) {
+    console.log('✅ OFFLINE - Técnica encontrada:', technique.name);
+    return technique;
+  } else {
+    console.log('❌ OFFLINE - Técnica não encontrada para ID:', id);
+    return null;
+  }
+};
+
+// FUNÇÃO para buscar todas as técnicas offline
+export const getMockTechniques = () => {
+  console.log('📋 OFFLINE - Retornando todas as técnicas');
+  return mockData.techniques;
+};
