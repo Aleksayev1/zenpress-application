@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     console.log('🚀 MOBILE REGISTER - INÍCIO');
-    console.log('Dados:', userData.name, userData.email);
+    console.log('Dados:', userData);
     
     try {
       // TRY BACKEND FIRST - para ter token JWT válido
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
           
           if (response.ok) {
             const data = await response.json();
-            console.log('✅ MOBILE - Backend sucesso:', data);
+            console.log('✅ MOBILE - Backend register sucesso:', data);
             
             // Use REAL JWT token from backend
             setUser(data.user);
@@ -66,24 +66,27 @@ export const AuthProvider = ({ children }) => {
             return { success: true, user: data.user, realToken: true };
           } else {
             const errorData = await response.text();
-            console.log('⚠️ MOBILE - Backend falhou:', response.status, errorData);
+            console.log('⚠️ MOBILE - Backend register falhou:', response.status, errorData);
             
-            // Se email já existe, tenta login
+            // Se email já existe, tenta login automaticamente
             if (response.status === 400 && errorData.includes('already registered')) {
-              console.log('🔄 MOBILE - Email já existe, tentando login');
+              console.log('🔄 MOBILE - Email já existe, tentando login automático');
               return await login({ email: userData.email, password: userData.password });
+            } else {
+              console.log('❌ MOBILE - Outro erro no backend, usando fallback local');
             }
           }
         } catch (backendError) {
-          console.warn('⚠️ MOBILE - Backend error:', backendError.message);
+          console.warn('⚠️ MOBILE - Backend register error:', backendError.message);
         }
       }
       
-      // FALLBACK LOCAL (como antes, mas com aviso)
+      // FALLBACK LOCAL (se backend falhou)
+      console.log('🔄 MOBILE - Usando fallback local');
       const timestamp = Date.now();
       const newUser = {
         id: `mobile_${timestamp}`,
-        name: userData.name || 'Usuário',
+        name: userData.name || 'Usuário Mobile',
         email: userData.email || `user${timestamp}@example.com`,
         is_premium: false,
         created_at: new Date().toISOString(),
@@ -92,7 +95,7 @@ export const AuthProvider = ({ children }) => {
       
       const newToken = `mobile_token_${timestamp}`;
       
-      console.log('🔄 MOBILE - Criando usuário LOCAL (pagamentos não funcionarão):', newUser);
+      console.log('✅ MOBILE - Usuário local criado:', newUser);
       
       setUser(newUser);
       setToken(newToken);
@@ -108,7 +111,7 @@ export const AuthProvider = ({ children }) => {
         success: true, 
         user: newUser, 
         localOnly: true,
-        warning: 'Usuário criado localmente - pagamentos podem não funcionar' 
+        warning: 'Usuário criado localmente - para pagamentos, faça login com conexão estável' 
       };
       
     } catch (error) {
