@@ -90,7 +90,20 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
         onClose();
         resetForms();
       } else {
-        setError(result.error || 'Erro ao registrar usuário');
+        // Mostrar erro específico baseado no tipo
+        let userFriendlyError = result.error || 'Erro ao registrar usuário';
+        
+        if (userFriendlyError.includes('already registered') || userFriendlyError.includes('já cadastrado')) {
+          userFriendlyError = 'Este email já está cadastrado. Tente fazer login.';
+        } else if (userFriendlyError.includes('network') || userFriendlyError.includes('Network')) {
+          userFriendlyError = 'Erro de conexão. Verifique sua internet e tente novamente.';
+        } else if (userFriendlyError.includes('500') || userFriendlyError.includes('Internal Server')) {
+          userFriendlyError = 'Erro no servidor. Tente novamente em alguns instantes.';
+        } else if (userFriendlyError.includes('validation') || userFriendlyError.includes('invalid')) {
+          userFriendlyError = 'Dados inválidos. Verifique as informações e tente novamente.';
+        }
+        
+        setError(userFriendlyError);
       }
     } catch (err) {
       setError('Erro inesperado ao registrar usuário');
