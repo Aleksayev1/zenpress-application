@@ -48,7 +48,10 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
+      console.log('Registering user with data:', userData);
       const response = await axios.post(`${API}/auth/register`, userData);
+      console.log('Registration successful:', response.data);
+      
       const { access_token, user: newUser } = response.data;
       
       setToken(access_token);
@@ -57,9 +60,12 @@ export const AuthProvider = ({ children }) => {
       
       return { success: true, user: newUser };
     } catch (error) {
+      console.error('Registration error:', error);
+      console.error('Error response:', error.response?.data);
+      
       return { 
         success: false, 
-        error: error.response?.data?.detail || 'Erro ao registrar usuário' 
+        error: error.response?.data?.detail || error.message || 'Erro ao registrar usuário' 
       };
     }
   };
