@@ -606,8 +606,15 @@ const Home = () => {
             <p className="text-sm text-gray-600 mb-4">
               {t('techniques.quickActions.beginner.description', 'Novo na acupressão? Comece com técnicas básicas e seguras.')}
             </p>
-            <Button variant="outline" asChild size="sm">
-              <Link to="/category/craniopuntura">{t('techniques.quickActions.beginner.button', 'Técnicas Básicas')}</Link>
+            <Button 
+              variant="outline" 
+              asChild 
+              size="sm"
+              className="w-full max-w-full text-xs sm:text-sm px-2 py-1 h-auto leading-tight"
+            >
+              <Link to="/category/craniopuntura" className="text-center break-words">
+                {t('techniques.quickActions.beginner.button', 'Técnicas Básicas')}
+              </Link>
             </Button>
           </CardContent>
         </Card>
