@@ -518,19 +518,20 @@ const Home = () => {
               <Button 
                 size="lg" 
                 asChild 
-                className="w-full max-w-sm mx-auto bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-4 px-2 sm:px-6 text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="w-full max-w-xs mx-auto bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-3 px-1 text-center transition-all duration-300 shadow-lg"
               >
-                <Link to="/category/mental-health" className="block">
+                <Link to="/category/mental-health" className="block p-1">
                   <span 
-                    className="block text-sm sm:text-base md:text-lg leading-tight text-center"
+                    className="block text-center leading-none"
                     style={{
                       wordBreak: 'break-word', 
-                      overflowWrap: 'anywhere',
+                      overflowWrap: 'break-word',
                       hyphens: 'auto',
-                      lineHeight: '1.1',
-                      maxWidth: '100%',
-                      fontSize: 'clamp(0.875rem, 3vw, 1.125rem)',
-                      padding: '0.25rem'
+                      lineHeight: '1.0',
+                      fontSize: 'clamp(0.7rem, 2.5vw, 0.9rem)',
+                      padding: '0.1rem',
+                      whiteSpace: 'normal',
+                      display: 'block'
                     }}
                   >
                     {t('home.mentalHealth.exploreButton', 'Explorar Técnicas para Bem Estar Mental')}
