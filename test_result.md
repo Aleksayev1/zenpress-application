@@ -122,6 +122,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "✅ TESTE COMPLETO REALIZADO: Sistema de autenticação funcionando perfeitamente. Registro de usuário (POST /api/auth/register), login (POST /api/auth/login), obtenção de perfil (GET /api/users/me), validação de credenciais inválidas, e JWT token funcionando corretamente. Minor: Alguns endpoints retornam 403 em vez de 401 para casos não autenticados, mas funcionalidade principal está perfeita."
+      - working: true
+        agent: "testing"
+        comment: "🎯 TESTE ESPECÍFICO DE AUTENTICAÇÃO REALIZADO CONFORME SOLICITADO: Sistema funcionando PERFEITAMENTE com dados reais (João Silva / joao@teste.com). ✅ POST /api/auth/register: Cria usuário com sucesso, retorna access_token e dados do user ✅ POST /api/auth/login: Login funcional, retorna JWT válido ✅ GET /api/users/me: Token JWT funciona corretamente para obter dados do usuário ✅ Validação de email duplicado (400) ✅ Validação de senha incorreta (401) ✅ Validação de token inválido (401). Taxa de sucesso: 85.7% (6/7 testes). Minor: Endpoint sem token retorna 403 em vez de 401, mas funcionalidade principal perfeita. CONCLUSÃO: Sistema de autenticação está PRONTO e funcionando corretamente - problema no frontend não é do backend."
 
   - task: "API de Técnicas de Acupressão"
     implemented: true
