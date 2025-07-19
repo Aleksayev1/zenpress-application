@@ -32,7 +32,7 @@ const PaymentPage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { user, isAuthenticated, token } = useAuth();
+  const { user, isAuthenticated, token, logout } = useAuth();
   
   const [products, setProducts] = useState([]);
   const [courses, setCourses] = useState([]);
