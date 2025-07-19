@@ -37,57 +37,83 @@ export const AuthProvider = ({ children }) => {
     console.log('Dados:', userData.name, userData.email);
     
     try {
-      // VERSÃO ULTRA SIMPLES PARA MOBILE
+      // TRY BACKEND FIRST - para ter token JWT válido
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      if (backendUrl) {
+        try {
+          console.log('🌐 MOBILE - Tentando backend primeiro');
+          const response = await fetch(`${backendUrl}/api/auth/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            console.log('✅ MOBILE - Backend sucesso:', data);
+            
+            // Use REAL JWT token from backend
+            setUser(data.user);
+            setToken(data.access_token);
+            
+            try {
+              localStorage.setItem('zenpress_user', JSON.stringify(data.user));
+              localStorage.setItem('zenpress_token', data.access_token);
+            } catch (e) {
+              console.warn('⚠️ localStorage failed');
+            }
+            
+            return { success: true, user: data.user, realToken: true };
+          } else {
+            const errorData = await response.text();
+            console.log('⚠️ MOBILE - Backend falhou:', response.status, errorData);
+            
+            // Se email já existe, tenta login
+            if (response.status === 400 && errorData.includes('already registered')) {
+              console.log('🔄 MOBILE - Email já existe, tentando login');
+              return await login({ email: userData.email, password: userData.password });
+            }
+          }
+        } catch (backendError) {
+          console.warn('⚠️ MOBILE - Backend error:', backendError.message);
+        }
+      }
+      
+      // FALLBACK LOCAL (como antes, mas com aviso)
       const timestamp = Date.now();
       const newUser = {
         id: `mobile_${timestamp}`,
         name: userData.name || 'Usuário',
         email: userData.email || `user${timestamp}@example.com`,
         is_premium: false,
-        created_at: new Date().toISOString()
+        created_at: new Date().toISOString(),
+        localOnly: true // Mark as local-only user
       };
       
       const newToken = `mobile_token_${timestamp}`;
       
-      console.log('✅ MOBILE - Criando usuário:', newUser);
+      console.log('🔄 MOBILE - Criando usuário LOCAL (pagamentos não funcionarão):', newUser);
       
-      // Save immediately 
       setUser(newUser);
       setToken(newToken);
       
-      // Try localStorage (may fail on some mobile browsers)
       try {
         localStorage.setItem('zenpress_user', JSON.stringify(newUser));
         localStorage.setItem('zenpress_token', newToken);
-        console.log('✅ MOBILE - localStorage salvo');
-      } catch (storageError) {
-        console.warn('⚠️ MOBILE - localStorage falhou:', storageError);
-        // Continue anyway - user is still logged in memory
+      } catch (e) {
+        console.warn('⚠️ localStorage failed');
       }
       
-      console.log('✅ MOBILE - Usuário criado com sucesso!');
-      
-      return { success: true, user: newUser, mobile: true };
-      
-    } catch (error) {
-      console.error('❌ MOBILE REGISTER - ERRO:', error);
-      
-      // FALLBACK EXTREMO - criar usuário básico
-      const fallbackUser = {
-        id: `fallback_${Date.now()}`,
-        name: 'Usuário Mobile',
-        email: 'mobile@usuario.com',
-        is_premium: false
+      return { 
+        success: true, 
+        user: newUser, 
+        localOnly: true,
+        warning: 'Usuário criado localmente - pagamentos podem não funcionar' 
       };
       
-      const fallbackToken = `fallback_${Date.now()}`;
-      
-      setUser(fallbackUser);
-      setToken(fallbackToken);
-      
-      console.log('🔄 MOBILE - Fallback criado:', fallbackUser);
-      
-      return { success: true, user: fallbackUser, fallback: true };
+    } catch (error) {
+      console.error('❌ MOBILE REGISTER - ERRO TOTAL:', error);
+      return { success: false, error: 'Erro ao criar usuário' };
     }
   };
 
