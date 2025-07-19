@@ -564,7 +564,17 @@ const Home = () => {
             <CardContent>
               <Button asChild className="w-full" size="lg">
                 <Link to={`/category/${category.id === 1 ? 'craniopuntura' : 'mtc'}`}>
-                  {t('home.exploreButton', 'Explorar Técnicas')}
+                  <span 
+                    className="block leading-tight text-center text-sm sm:text-base"
+                    style={{
+                      wordBreak: 'break-word',
+                      overflowWrap: 'anywhere',
+                      fontSize: 'clamp(0.875rem, 3vw, 1rem)',
+                      lineHeight: '1.2'
+                    }}
+                  >
+                    {t('home.exploreButton', 'Explorar Técnicas')}
+                  </span>
                 </Link>
               </Button>
             </CardContent>
