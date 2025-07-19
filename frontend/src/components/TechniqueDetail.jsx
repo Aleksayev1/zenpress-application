@@ -56,10 +56,16 @@ const TechniqueDetail = () => {
     const loadTechnique = async () => {
       try {
         setLoading(true);
+        setError(null);
+        console.log('Loading technique ID:', techniqueId);
+        
         const data = await apiService.getTechniqueById(techniqueId);
+        console.log('Technique loaded:', data);
         
         // Apply translations based on technique
         const techniqueKey = getTechniqueKey(data.name);
+        console.log('Using translation key:', techniqueKey);
+        
         const translatedTechnique = {
           ...data,
           name: t(`techniques.${techniqueKey}.name`, data.name),
@@ -73,11 +79,12 @@ const TechniqueDetail = () => {
           ) || []
         };
         
+        console.log('Final translated technique:', translatedTechnique);
         setTechnique(translatedTechnique);
         setTimeLeft(data.duration || 60);
       } catch (err) {
-        console.error('Erro ao carregar técnica:', err);
-        setError('Erro ao carregar técnica. Usando dados offline.');
+        console.error('Error loading technique:', err);
+        setError(`Erro ao carregar técnica: ${err.message}. Verifique os logs.`);
         // Fallback para mock data
         const { getMockTechniqueById } = await import('../mock');
         const mockTechnique = getMockTechniqueById(techniqueId);
