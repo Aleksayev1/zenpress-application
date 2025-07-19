@@ -1,38 +1,93 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="A product of emergent.sh" />
-        <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-        <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-        <title>Emergent | Fullstack App</title>
+        <meta name="theme-color" content="#059669" />
+        <meta name="description" content="ZenPress - Natural pain relief and wellness through Traditional Chinese Medicine and acupressure techniques" />
+        
+        <!-- PWA Configuration -->
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        
+        <!-- PWA Meta Tags -->
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="ZenPress" />
+        <meta name="application-name" content="ZenPress" />
+        <meta name="msapplication-TileColor" content="#059669" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        
+        <!-- Social Media Tags -->
+        <meta property="og:title" content="ZenPress - Acupressure & TCM" />
+        <meta property="og:description" content="Natural pain relief and wellness through Traditional Chinese Medicine" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="ZenPress" />
+        
+        <title>ZenPress - Acupressure & TCM</title>
     </head>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
-        <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        
+        <!-- PWA Install Prompt -->
+        <div id="pwa-install-prompt" style="display: none;">
+            <div style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: #059669; color: white; padding: 16px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;">
+                <p style="margin: 0 0 12px 0; font-weight: bold;">Instalar ZenPress como App?</p>
+                <p style="margin: 0 0 16px 0; font-size: 14px; opacity: 0.9;">Acesse suas técnicas de acupressão offline!</p>
+                <div style="display: flex; gap: 12px;">
+                    <button id="pwa-install-btn" style="flex: 1; background: white; color: #059669; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Instalar</button>
+                    <button id="pwa-dismiss-btn" style="background: transparent; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px;">Agora não</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PWA Service Worker Registration -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then(function(registration) {
+                            console.log('ZenPress: SW registered successfully');
+                        })
+                        .catch(function(error) {
+                            console.log('ZenPress: SW registration failed');
+                        });
+                });
+            }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+            // PWA Install Prompt
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                document.getElementById('pwa-install-prompt').style.display = 'block';
+            });
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+            document.getElementById('pwa-install-btn')?.addEventListener('click', (e) => {
+                document.getElementById('pwa-install-prompt').style.display = 'none';
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('User accepted the install prompt');
+                        }
+                        deferredPrompt = null;
+                    });
+                }
+            });
+
+            document.getElementById('pwa-dismiss-btn')?.addEventListener('click', (e) => {
+                document.getElementById('pwa-install-prompt').style.display = 'none';
+            });
+
+            // Track install event
+            window.addEventListener('appinstalled', (evt) => {
+                console.log('ZenPress: App was installed');
+            });
+        </script>
+        
         <a
             id="emergent-badge"
             target="_blank"
