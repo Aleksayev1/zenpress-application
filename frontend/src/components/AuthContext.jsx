@@ -49,7 +49,16 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       console.log('Registering user with data:', userData);
-      const response = await axios.post(`${API}/auth/register`, userData);
+      console.log('API URL:', API);
+      
+      // Timeout de 30 segundos para requests
+      const response = await axios.post(`${API}/auth/register`, userData, {
+        timeout: 30000,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
       console.log('Registration successful:', response.data);
       
       const { access_token, user: newUser } = response.data;
@@ -63,9 +72,23 @@ export const AuthProvider = ({ children }) => {
       console.error('Registration error:', error);
       console.error('Error response:', error.response?.data);
       
+      let errorMessage = 'Erro ao registrar usuário';
+      
+      if (error.code === 'ECONNABORTED') {
+        errorMessage = 'Timeout: Conexão muito lenta. Tente novamente.';
+      } else if (error.code === 'NETWORK_ERROR' || !error.response) {
+        errorMessage = 'Erro de rede. Verifique sua conexão.';
+      } else if (error.response?.status === 400) {
+        errorMessage = error.response.data?.detail || 'Dados inválidos';
+      } else if (error.response?.status === 409) {
+        errorMessage = 'Email já cadastrado';
+      } else if (error.response?.status >= 500) {
+        errorMessage = 'Erro no servidor. Tente mais tarde.';
+      }
+      
       return { 
         success: false, 
-        error: error.response?.data?.detail || error.message || 'Erro ao registrar usuário' 
+        error: errorMessage
       };
     }
   };
