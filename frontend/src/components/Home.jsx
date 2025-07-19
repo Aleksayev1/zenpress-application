@@ -369,8 +369,10 @@ const Home = () => {
                 {t('home.mentalHealth.title', 'Promoção da Saúde Mental e Bem Estar')}
               </span>
             </CardTitle>
-            <CardDescription className="text-xl text-gray-800 max-w-4xl mx-auto leading-relaxed font-medium">
-              {t('home.mentalHealth.description', 'Descubra como as técnicas de acupressão podem contribuir significativamente para o seu equilíbrio emocional, redução do estresse, melhoria do sono e promoção do bem-estar mental. Nossa abordagem holística conecta corpo e mente para uma vida mais plena e saudável.')}
+            <CardDescription className="text-lg sm:text-xl text-gray-800 max-w-4xl mx-auto leading-relaxed font-medium px-4">
+              <span className="block break-words">
+                {t('home.mentalHealth.description', 'Descubra como as técnicas de acupressão podem contribuir significativamente para o seu equilíbrio emocional, redução do estresse, melhoria do sono e promoção do bem-estar mental. Nossa abordagem holística conecta corpo e mente para uma vida mais plena e saudável.')}
+              </span>
             </CardDescription>
           </CardHeader>
           <CardContent className="bg-gradient-to-br from-emerald-50/80 to-green-50/80">
