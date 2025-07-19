@@ -477,31 +477,31 @@ const Home = () => {
             )}
 
             {/* Benefícios - Seção existente */}
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="text-center p-6 bg-white/80 rounded-xl shadow-lg border-2 border-emerald-200">
+            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mb-8 px-2 sm:px-0">
+              <div className="text-center p-4 sm:p-6 bg-white/80 rounded-xl shadow-lg border-2 border-emerald-200">
                 <div className="text-4xl mb-4">😌</div>
-                <h3 className="font-bold text-emerald-800 mb-3 text-lg">
+                <h3 className="font-bold text-emerald-800 mb-3 text-base sm:text-lg break-words">
                   {t('home.mentalHealth.benefits.stress.title', 'Redução do Estresse')}
                 </h3>
-                <p className="text-gray-700 font-medium">
+                <p className="text-gray-700 font-medium text-sm sm:text-base break-words">
                   {t('home.mentalHealth.benefits.stress.description', 'Técnicas específicas para diminuir tensões e promover relaxamento profundo')}
                 </p>
               </div>
-              <div className="text-center p-6 bg-white/80 rounded-xl shadow-lg border-2 border-emerald-200">
+              <div className="text-center p-4 sm:p-6 bg-white/80 rounded-xl shadow-lg border-2 border-emerald-200">
                 <div className="text-4xl mb-4">😴</div>
-                <h3 className="font-bold text-emerald-800 mb-3 text-lg">
+                <h3 className="font-bold text-emerald-800 mb-3 text-base sm:text-lg break-words">
                   {t('home.mentalHealth.benefits.sleep.title', 'Melhoria do Sono')}
                 </h3>
-                <p className="text-gray-700 font-medium">
+                <p className="text-gray-700 font-medium text-sm sm:text-base break-words">
                   {t('home.mentalHealth.benefits.sleep.description', 'Pontos de acupressão que favorecem um sono reparador e de qualidade')}
                 </p>
               </div>
-              <div className="text-center p-6 bg-white/80 rounded-xl shadow-lg border-2 border-emerald-200">
+              <div className="text-center p-4 sm:p-6 bg-white/80 rounded-xl shadow-lg border-2 border-emerald-200">
                 <div className="text-4xl mb-4">⚖️</div>
-                <h3 className="font-bold text-emerald-800 mb-3 text-lg">
+                <h3 className="font-bold text-emerald-800 mb-3 text-base sm:text-lg break-words">
                   {t('home.mentalHealth.benefits.balance.title', 'Equilíbrio Emocional')}
                 </h3>
-                <p className="text-gray-700 font-medium">
+                <p className="text-gray-700 font-medium text-sm sm:text-base break-words">
                   {t('home.mentalHealth.benefits.balance.description', 'Harmonização energética para maior estabilidade emocional e mental')}
                 </p>
               </div>
