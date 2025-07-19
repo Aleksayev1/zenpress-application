@@ -514,27 +514,27 @@ const Home = () => {
               </div>
             </div>
             
-            <div className="text-center px-1 sm:px-4 w-full">
+            <div className="text-center px-1 w-full">
               <Button 
-                size="lg" 
+                size="sm"
                 asChild 
-                className="w-full max-w-xs mx-auto bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-3 px-1 text-center transition-all duration-300 shadow-lg"
+                className="w-full max-w-xs mx-auto bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-2 px-1 text-center shadow-lg"
               >
-                <Link to="/category/mental-health" className="block p-1">
+                <Link to="/category/mental-health" className="block p-0">
                   <span 
-                    className="block text-center leading-none"
+                    className="block text-center leading-none whitespace-normal"
                     style={{
                       wordBreak: 'break-word', 
                       overflowWrap: 'break-word',
                       hyphens: 'auto',
-                      lineHeight: '1.0',
-                      fontSize: 'clamp(0.7rem, 2.5vw, 0.9rem)',
-                      padding: '0.1rem',
-                      whiteSpace: 'normal',
+                      lineHeight: '0.9',
+                      fontSize: '10px',
+                      padding: '0',
+                      maxWidth: '100%',
                       display: 'block'
                     }}
                   >
-                    {t('home.mentalHealth.exploreButton', 'Explorar Técnicas para Bem Estar Mental')}
+                    Explorar Técnicas Bem Estar Mental
                   </span>
                 </Link>
               </Button>
