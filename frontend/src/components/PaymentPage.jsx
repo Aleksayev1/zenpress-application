@@ -127,12 +127,21 @@ const PaymentPage = () => {
     setProcessingPayment(true);
 
     try {
+      // Configure axios with authorization header
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+      
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await axios.post(`${API}/payments/v1/checkout/session`, {
         product_id: productId,
         product_type: productType,
         origin_url: window.location.origin,
         quantity: 1
-      });
+      }, { headers });
 
       // Redirect to Stripe Checkout
       if (response.data.url) {
