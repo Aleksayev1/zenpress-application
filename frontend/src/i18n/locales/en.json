@@ -207,6 +207,80 @@
     "backToHome": "Back to Home",
     "explorePremium": "Explore Premium Content"
   },
+  "techniques": {
+    "yintang": {
+      "name": "TCM Headache Yintang Ex2",
+      "condition": "Yintang for headache relief",
+      "description": "Specific technique of the Yintang point (Ex2) for headache relief",
+      "instructions": [
+        "Locate the point at the center of the forehead, between the eyebrows",
+        "Use the middle finger to apply gentle, constant pressure",
+        "Hold the pressure for 1 minute, breathing deeply",
+        "Perform gentle circular movements clockwise"
+      ],
+      "warnings": ["Gentle pressure only", "Stop if feeling dizzy"]
+    },
+    "fengchi": {
+      "name": "Fengchi (GB20) - Neck",
+      "condition": "Headache, neck tension",
+      "description": "Point located at the base of the skull, on the nape",
+      "instructions": [
+        "Locate the two points at the base of the skull, in the lateral depressions",
+        "Use thumbs to apply upward pressure",
+        "Hold for 30-60 seconds",
+        "Breathe deeply during application"
+      ],
+      "warnings": ["Do not apply too much force", "Be careful with dizziness"]
+    },
+    "yinbai": {
+      "name": "Yinbai (SP1) - Big Toe",
+      "condition": "Digestion, menstruation, anxiety",
+      "description": "Located on the inner side of the big toe",
+      "instructions": [
+        "Find the point at the base of the big toenail, inner side",
+        "Apply pressure with thumbnail",
+        "Hold for 1-2 minutes",
+        "Alternate between feet"
+      ],
+      "warnings": ["Moderate pressure", "Do not use if pregnant"]
+    },
+    "hegu": {
+      "name": "Hegu (LI4) - Hand",
+      "condition": "Headache, stress, general pain",
+      "description": "Between thumb and index finger, one of the most important points",
+      "instructions": [
+        "Locate between the thumb and index finger bones",
+        "Apply firm pressure with the thumb of the other hand",
+        "Hold for 1 minute on each hand",
+        "Press towards the index finger bone"
+      ],
+      "warnings": ["Avoid during pregnancy", "Do not apply excessive force"]
+    },
+    "zusanli": {
+      "name": "Zusanli Point (ST36)",
+      "condition": "Digestion, energy, immunity",
+      "description": "Located on the leg, below the knee",
+      "instructions": [
+        "Locate the point 4 fingers below the kneecap, on the outer side of the leg",
+        "Use thumb to apply firm pressure",
+        "Hold for 1 minute on each leg",
+        "Perform small circular movements"
+      ],
+      "warnings": ["Precise location is important", "May feel electrical sensation"]
+    },
+    "shenmen": {
+      "name": "C7 Point - Shenmen (HE7)",
+      "condition": "Anxiety, insomnia, stress",
+      "description": "C7 calms the mind - located on the wrist, in the fold next to the little finger",
+      "instructions": [
+        "Locate in the wrist fold, on the little finger side",
+        "Use thumb to apply gentle pressure",
+        "Hold for 1 minute, breathing calmly",
+        "Can be done several times a day"
+      ],
+      "warnings": ["Gentle pressure", "Ideal for relaxation"]
+    }
+  },
   "consultation": {
     "title": "Specialized Consultation",
     "subtitle": "For complex cases that need personalized attention",
