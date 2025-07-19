@@ -54,13 +54,9 @@ export const apiService = {
       return response.data;
     } catch (error) {
       console.warn('API failed, using offline data:', error.message);
-      // Fallback para dados offline
-      const mockData = await import('../mock');
-      const allTechniques = [
-        ...mockData.default.techniques.craniopuntura,
-        ...mockData.default.techniques.mtc
-      ];
-      const technique = allTechniques.find(t => t.id === parseInt(id));
+      // Fallback para dados offline usando a função específica
+      const { getMockTechniqueById } = await import('../mock');
+      const technique = getMockTechniqueById(id);
       if (!technique) {
         throw new Error(`Técnica com ID ${id} não encontrada`);
       }
