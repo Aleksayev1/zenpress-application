@@ -14,9 +14,13 @@ const api = axios.create({
 
 // Interceptor para adicionar token automaticamente
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  // Try both token keys (legacy 'token' and new 'zenpress_token')
+  const token = localStorage.getItem('zenpress_token') || localStorage.getItem('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
+    console.log('🔑 API - Token enviado:', token.substring(0, 20) + '...');
+  } else {
+    console.log('⚠️ API - Nenhum token encontrado no localStorage');
   }
   return config;
 });
