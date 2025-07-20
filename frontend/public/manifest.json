@@ -58,7 +58,7 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "pt-BR",
-  "categories": ["health", "medical", "wellness"],
+  "categories": ["health", "medical", "wellness", "lifestyle", "productivity"],
   "edge_side_panel": {
     "preferred_width": 400
   },
