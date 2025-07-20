@@ -59,7 +59,7 @@ const Navigation = () => {
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
                 <span className="text-white text-sm font-bold">ZP</span>
               </div>
-              <span className="text-xl font-bold text-gray-800">{safeT('app.name', 'ZenPress')}</span>
+              <span className="text-xl font-bold text-gray-800">{safeT('app.name', 'AcuPress')}</span>
             </Link>
             
             <div className="flex items-center space-x-2">
