@@ -95,8 +95,24 @@
     "type": "classic",
     "update_via_cache": "imports"
   },
-  "background_sync": [
-    "zenpress-sync"
+  "widgets": [
+    {
+      "name": "Quick Relief Widget",
+      "description": "Quick access to pain relief techniques",
+      "tag": "quick-relief",
+      "template": "timer",
+      "ms_ac_template": "timer",
+      "data": {
+        "title": "ZenPress Quick Relief",
+        "subtitle": "Tap for instant pain relief"
+      },
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
   ],
   "screenshots": [
     {
