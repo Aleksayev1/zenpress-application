@@ -95,6 +95,9 @@
     "type": "classic",
     "update_via_cache": "imports"
   },
+  "background_sync": [
+    "zenpress-sync"
+  ],
   "widgets": [
     {
       "name": "Quick Relief Widget",
