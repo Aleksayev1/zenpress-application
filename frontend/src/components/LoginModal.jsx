@@ -54,45 +54,48 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
     setLoading(true);
     setError('');
 
-    // Simplified validation with logs
-    console.log('📝 VALIDAÇÃO - Dados:', {
-      name: registerData.name,
-      email: registerData.email,
-      password: registerData.password,
-      confirmPassword: registerData.confirmPassword
-    });
-
-    if (!registerData.name) {
-      console.log('❌ VALIDAÇÃO - Nome vazio');
-      setError('Nome é obrigatório');
+    // TIMEOUT DE SEGURANÇA - força reset após 15 segundos
+    const timeoutId = setTimeout(() => {
+      console.log('⏰ TIMEOUT - Forçando reset do loading');
       setLoading(false);
-      return;
-    }
-
-    if (!registerData.email) {
-      console.log('❌ VALIDAÇÃO - Email vazio');
-      setError('Email é obrigatório');
-      setLoading(false);
-      return;
-    }
-
-    if (!registerData.password) {
-      console.log('❌ VALIDAÇÃO - Senha vazia');
-      setError('Senha é obrigatória');
-      setLoading(false);
-      return;
-    }
-
-    if (registerData.password !== registerData.confirmPassword) {
-      console.log('❌ VALIDAÇÃO - Senhas não coincidem');
-      setError('As senhas não coincidem');
-      setLoading(false);
-      return;
-    }
-
-    console.log('✅ VALIDAÇÃO - Passou em todas as validações');
+      setError('Tempo limite atingido. Tente novamente.');
+    }, 15000);
 
     try {
+      // Simplified validation with logs
+      console.log('📝 VALIDAÇÃO - Dados:', {
+        name: registerData.name,
+        email: registerData.email,
+        password: registerData.password,
+        confirmPassword: registerData.confirmPassword
+      });
+
+      if (!registerData.name) {
+        console.log('❌ VALIDAÇÃO - Nome vazio');
+        setError('Nome é obrigatório');
+        return;
+      }
+
+      if (!registerData.email) {
+        console.log('❌ VALIDAÇÃO - Email vazio');
+        setError('Email é obrigatório');
+        return;
+      }
+
+      if (!registerData.password) {
+        console.log('❌ VALIDAÇÃO - Senha vazia');
+        setError('Senha é obrigatória');
+        return;
+      }
+
+      if (registerData.password !== registerData.confirmPassword) {
+        console.log('❌ VALIDAÇÃO - Senhas não coincidem');
+        setError('As senhas não coincidem');
+        return;
+      }
+
+      console.log('✅ VALIDAÇÃO - Passou em todas as validações');
+
       console.log('🚀 LOGIN MODAL - Iniciando registro');
       console.log('📝 LOGIN MODAL - Dados:', { name: registerData.name, email: registerData.email });
       
@@ -104,8 +107,18 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
       
       console.log('✅ LOGIN MODAL - Resultado:', result);
       
+      // Limpar timeout se chegou até aqui
+      clearTimeout(timeoutId);
+      
       if (result.success) {
         console.log('✅ LOGIN MODAL - Registro bem-sucedido');
+        
+        // FORÇA FECHAMENTO DO MODAL
+        setTimeout(() => {
+          onClose();
+          resetForms();
+        }, 500);
+        
         if (result.fallback) {
           alert('Conta criada com sucesso! (Modo offline - suas preferências serão salvas localmente)');
         } else if (result.localOnly) {
@@ -113,13 +126,20 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
         } else {
           alert('Conta criada com sucesso!');
         }
+        
         onSuccess?.(result.user);
-        onClose();
-        resetForms();
       } else {
         console.log('❌ LOGIN MODAL - Falha no registro:', result.error);
         setError(result.error || 'Erro ao registrar usuário');
       }
+    } catch (error) {
+      console.log('❌ LOGIN MODAL - Erro catch:', error);
+      clearTimeout(timeoutId);
+      setError('Erro inesperado. Tente novamente.');
+    } finally {
+      console.log('🏁 LOGIN MODAL - Finalizando, resetando loading');
+      setLoading(false);
+    }
     } catch (err) {
       setError('Erro inesperado ao registrar usuário');
       console.error('Register error:', err);
