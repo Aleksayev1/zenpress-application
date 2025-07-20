@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "ZenPress",
+    "name": "ZenPress - Acupressão e TCM",
     "slug": "zenpress",
     "version": "1.0.0",
+    "description": "Aplicativo de acupressão e medicina tradicional chinesa para alívio de dores e bem-estar",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -26,7 +27,11 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.zenpress.app",
-      "versionCode": 1
+      "versionCode": 1,
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -35,6 +40,8 @@
       "eas": {
         "projectId": "f7f10f8a"
       }
-    }
+    },
+    "privacy": "public",
+    "primaryColor": "#10b981"
   }
 }
