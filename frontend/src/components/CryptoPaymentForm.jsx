@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from './AuthContext';
 import apiService from '../services/api';
 
 const CryptoPaymentForm = ({ subscriptionType, onPaymentCreated, onClose }) => {
   const { t } = useTranslation();
+  const { isAuthenticated, token, user } = useAuth();
   const [selectedCrypto, setSelectedCrypto] = useState('PIX');
   const [paymentData, setPaymentData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -11,6 +13,20 @@ const CryptoPaymentForm = ({ subscriptionType, onPaymentCreated, onClose }) => {
   const [paymentStatus, setPaymentStatus] = useState('selecting'); // selecting, payment_created, confirming, confirmed
   const [confirmationMessage, setConfirmationMessage] = useState('');
   const [txHash, setTxHash] = useState('');
+
+  // Check authentication on mount
+  useEffect(() => {
+    console.log('🔐 CRYPTO PAYMENT - Auth check:', {
+      authenticated: isAuthenticated,
+      hasToken: !!token,
+      tokenType: token ? (token.startsWith('eyJ') ? 'JWT' : 'LOCAL') : 'NONE',
+      user: user?.email || 'None'
+    });
+    
+    if (!isAuthenticated || !token || !token.startsWith('eyJ')) {
+      setError('Para efetuar pagamentos, você precisa estar logado com uma conta válida.');
+    }
+  }, [isAuthenticated, token, user]);
 
   // Preços das assinaturas
   const prices = {
