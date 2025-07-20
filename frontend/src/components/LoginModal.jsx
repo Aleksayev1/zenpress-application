@@ -140,12 +140,6 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
       console.log('🏁 LOGIN MODAL - Finalizando, resetando loading');
       setLoading(false);
     }
-    } catch (err) {
-      setError('Erro inesperado ao registrar usuário');
-      console.error('Register error:', err);
-    }
-    
-    setLoading(false);
   };
 
   const resetForms = () => {
