@@ -50,6 +50,33 @@
                     navigator.serviceWorker.register('/sw.js')
                         .then(function(registration) {
                             console.log('ZenPress: SW registered successfully');
+                            
+                            // Register Background Sync
+                            if ('sync' in window.ServiceWorkerRegistration.prototype) {
+                                console.log('ZenPress: Background Sync supported');
+                                
+                                // Example: Queue sync when offline action occurs
+                                window.addEventListener('offline', () => {
+                                    console.log('ZenPress: App went offline - background sync active');
+                                });
+                                
+                                window.addEventListener('online', () => {
+                                    console.log('ZenPress: App back online - processing sync queue');
+                                    registration.sync.register('zenpress-sync');
+                                });
+                                
+                                // Helper function to queue actions for sync
+                                window.queueForSync = function(action) {
+                                    if (navigator.serviceWorker.controller) {
+                                        navigator.serviceWorker.controller.postMessage({
+                                            type: 'QUEUE_SYNC',
+                                            payload: action
+                                        });
+                                    }
+                                };
+                            } else {
+                                console.log('ZenPress: Background Sync not supported');
+                            }
                         })
                         .catch(function(error) {
                             console.log('ZenPress: SW registration failed');
