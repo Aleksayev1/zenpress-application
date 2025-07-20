@@ -79,20 +79,31 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
     }
 
     try {
+      console.log('🚀 LOGIN MODAL - Iniciando registro');
+      console.log('📝 LOGIN MODAL - Dados:', { name: registerData.name, email: registerData.email });
+      
       const result = await register({
         name: registerData.name,
         email: registerData.email,
         password: registerData.password
       });
       
+      console.log('✅ LOGIN MODAL - Resultado:', result);
+      
       if (result.success) {
+        console.log('✅ LOGIN MODAL - Registro bem-sucedido');
         if (result.fallback) {
           alert('Conta criada com sucesso! (Modo offline - suas preferências serão salvas localmente)');
+        } else if (result.localOnly) {
+          alert('Conta criada localmente! Para pagamentos, certifique-se de ter conexão estável.');
+        } else {
+          alert('Conta criada com sucesso!');
         }
         onSuccess?.(result.user);
         onClose();
         resetForms();
       } else {
+        console.log('❌ LOGIN MODAL - Falha no registro:', result.error);
         // Mostrar erro específico baseado no tipo
         let userFriendlyError = result.error || 'Erro ao registrar usuário';
         
