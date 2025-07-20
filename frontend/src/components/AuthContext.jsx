@@ -33,78 +33,60 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const register = async (userData) => {
-    console.log('🚀 MOBILE REGISTER - INÍCIO EMERGENCIAL');
+    console.log('🚀 FINAL FIX - REGISTRO');
     console.log('Dados:', userData);
     
     try {
-      // SOLUÇÃO EMERGENCIAL - FORÇA SUCESSO IMEDIATO
-      console.log('🆘 EMERGÊNCIA - Criando usuário local SEMPRE');
+      // FORÇA BACKEND SEMPRE - sem fallback
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      console.log('🌐 FORÇANDO BACKEND SEMPRE:', backendUrl);
       
-      const timestamp = Date.now();
-      const emergencyUser = {
-        id: `emergency_${timestamp}`,
-        name: userData.name || 'Usuário Mobile',
-        email: userData.email || `user${timestamp}@emergency.com`,
-        is_premium: false,
-        created_at: new Date().toISOString(),
-        emergency: true
-      };
+      const response = await fetch(`${backendUrl}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: userData.name,
+          email: userData.email.trim().toLowerCase(), // Sanitize email
+          password: userData.password
+        }),
+        timeout: 30000 // 30 seconds timeout
+      });
       
-      const emergencyToken = `emergency_token_${timestamp}`;
+      console.log('Response status:', response.status);
       
-      // Save immediately 
-      setUser(emergencyUser);
-      setToken(emergencyToken);
-      
-      // Try localStorage
-      try {
-        localStorage.setItem('zenpress_user', JSON.stringify(emergencyUser));
-        localStorage.setItem('zenpress_token', emergencyToken);
-        console.log('✅ EMERGÊNCIA - localStorage salvo');
-      } catch (e) {
-        console.warn('⚠️ localStorage failed');
+      if (response.ok) {
+        const data = await response.json();
+        console.log('✅ BACKEND SUCESSO:', data);
+        
+        // Use REAL JWT token
+        setUser(data.user);
+        setToken(data.access_token);
+        
+        localStorage.setItem('zenpress_user', JSON.stringify(data.user));
+        localStorage.setItem('zenpress_token', data.access_token);
+        
+        return { success: true, user: data.user, realToken: true };
+      } else {
+        const errorText = await response.text();
+        console.log('❌ BACKEND ERROR:', response.status, errorText);
+        
+        // Se email já existe, tenta login
+        if (response.status === 400 && errorText.includes('already registered')) {
+          console.log('🔄 Email já existe, tentando login');
+          return await login({ email: userData.email, password: userData.password });
+        }
+        
+        return { success: false, error: `Erro do servidor: ${response.status}` };
       }
       
-      console.log('✅ EMERGÊNCIA - Usuário criado:', emergencyUser);
-      
-      // Try backend in background but don't wait
-      setTimeout(async () => {
-        try {
-          const backendUrl = process.env.REACT_APP_BACKEND_URL;
-          if (backendUrl) {
-            const response = await fetch(`${backendUrl}/api/auth/register`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(userData),
-              timeout: 5000
-            });
-            
-            if (response.ok) {
-              const data = await response.json();
-              console.log('✅ BACKGROUND - Backend sync sucesso:', data);
-              
-              // Update with real token if possible
-              setUser(data.user);
-              setToken(data.access_token);
-              localStorage.setItem('zenpress_user', JSON.stringify(data.user));
-              localStorage.setItem('zenpress_token', data.access_token);
-            }
-          }
-        } catch (error) {
-          console.log('⚠️ Background sync failed (not important):', error.message);
-        }
-      }, 100);
-      
-      return { 
-        success: true, 
-        user: emergencyUser,
-        emergency: true,
-        message: 'Conta criada com sucesso! (Sistema de emergência ativo)'
-      };
-      
     } catch (error) {
-      console.error('❌ EMERGENCY REGISTER FAILED:', error);
-      return { success: false, error: 'Erro crítico no sistema de emergência' };
+      console.error('❌ ERRO TOTAL:', error);
+      
+      if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+        return { success: false, error: 'Erro de conexão. Verifique sua internet e tente novamente.' };
+      }
+      
+      return { success: false, error: 'Erro inesperado. Tente novamente.' };
     }
   };
 
