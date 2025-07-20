@@ -10,7 +10,7 @@ class AcuPressaoAPITest(unittest.TestCase):
     """Test suite for AcuPressão backend API"""
     
     # Base URL from frontend .env
-    BASE_URL = "https://4056fc8a-6f77-408a-9a05-e104bf1c8341.preview.emergentagent.com/api"
+    BASE_URL = "https://7c91efa5-eccf-49fb-bbc9-fe44ce8fab17.preview.emergentagent.com/api"
     
     # Test user credentials
     test_user = {
