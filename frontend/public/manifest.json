@@ -50,6 +50,30 @@
   "launch_handler": {
     "client_mode": "navigate-existing"
   },
+  "file_handlers": [
+    {
+      "action": "/technique/",
+      "accept": {
+        "application/json": [".json"]
+      }
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "zenpress",
+      "url": "/technique/%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share/",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
   "screenshots": [
     {
       "src": "/images/screenshot-mobile.png",
