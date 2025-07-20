@@ -49,34 +49,48 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    console.log('🚀 LOGIN MODAL - INICIADO - handleRegister executado!');
+    
     setLoading(true);
     setError('');
 
-    // Validation
-    if (!registerData.name || !registerData.email || !registerData.password || !registerData.confirmPassword) {
-      setError('Todos os campos são obrigatórios');
+    // Simplified validation with logs
+    console.log('📝 VALIDAÇÃO - Dados:', {
+      name: registerData.name,
+      email: registerData.email,
+      password: registerData.password,
+      confirmPassword: registerData.confirmPassword
+    });
+
+    if (!registerData.name) {
+      console.log('❌ VALIDAÇÃO - Nome vazio');
+      setError('Nome é obrigatório');
+      setLoading(false);
+      return;
+    }
+
+    if (!registerData.email) {
+      console.log('❌ VALIDAÇÃO - Email vazio');
+      setError('Email é obrigatório');
+      setLoading(false);
+      return;
+    }
+
+    if (!registerData.password) {
+      console.log('❌ VALIDAÇÃO - Senha vazia');
+      setError('Senha é obrigatória');
       setLoading(false);
       return;
     }
 
     if (registerData.password !== registerData.confirmPassword) {
+      console.log('❌ VALIDAÇÃO - Senhas não coincidem');
       setError('As senhas não coincidem');
       setLoading(false);
       return;
     }
 
-    if (registerData.password.length < 6) {
-      setError('A senha deve ter pelo menos 6 caracteres');
-      setLoading(false);
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(registerData.email)) {
-      setError('Digite um email válido');
-      setLoading(false);
-      return;
-    }
+    console.log('✅ VALIDAÇÃO - Passou em todas as validações');
 
     try {
       console.log('🚀 LOGIN MODAL - Iniciando registro');
@@ -104,20 +118,7 @@ const LoginModal = ({ isOpen, onClose, onSuccess }) => {
         resetForms();
       } else {
         console.log('❌ LOGIN MODAL - Falha no registro:', result.error);
-        // Mostrar erro específico baseado no tipo
-        let userFriendlyError = result.error || 'Erro ao registrar usuário';
-        
-        if (userFriendlyError.includes('already registered') || userFriendlyError.includes('já cadastrado')) {
-          userFriendlyError = 'Este email já está cadastrado. Tente fazer login.';
-        } else if (userFriendlyError.includes('network') || userFriendlyError.includes('Network')) {
-          userFriendlyError = 'Erro de conexão. Verifique sua internet e tente novamente.';
-        } else if (userFriendlyError.includes('500') || userFriendlyError.includes('Internal Server')) {
-          userFriendlyError = 'Erro no servidor. Tente novamente em alguns instantes.';
-        } else if (userFriendlyError.includes('validation') || userFriendlyError.includes('invalid')) {
-          userFriendlyError = 'Dados inválidos. Verifique as informações e tente novamente.';
-        }
-        
-        setError(userFriendlyError);
+        setError(result.error || 'Erro ao registrar usuário');
       }
     } catch (err) {
       setError('Erro inesperado ao registrar usuário');
