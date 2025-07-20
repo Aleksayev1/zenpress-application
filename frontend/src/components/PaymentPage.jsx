@@ -130,12 +130,18 @@ const PaymentPage = () => {
       return;
     }
 
-    // CRITICAL: Se token não é JWT válido, força re-login com backend
+    // CRITICAL FIX: Se token é local, NÃO force logout - apenas avise
     if (!token.startsWith('eyJ')) {
-      console.log('❌ Token local detectado - forçando login real para pagamentos');
-      alert('Para efetuar pagamentos, você precisa fazer login com conexão à internet. Por favor, faça login novamente.');
-      logout(); // Limpa dados locais
-      setShowLoginModal(true);
+      console.log('⚠️ Token local detectado - tentando obter token real');
+      
+      setPaymentStatus({
+        status: 'error',
+        message: 'Para pagamentos, você precisa de conexão com internet. Tente mais tarde ou conecte-se à internet e atualize a página.'
+      });
+      
+      // NÃO MAIS: logout(); - isso causava o loop
+      // NÃO MAIS: setShowLoginModal(true); - isso causava o loop
+      
       return;
     }
 
@@ -180,9 +186,8 @@ const PaymentPage = () => {
       let errorMessage = 'Erro ao processar pagamento. Tente novamente.';
       
       if (error.response?.status === 401 || error.response?.status === 403) {
-        errorMessage = 'Sessão inválida. Faça login novamente para efetuar pagamentos.';
-        logout(); // Limpa sessão inválida
-        setShowLoginModal(true);
+        errorMessage = 'Para fazer pagamentos, você precisa estar conectado à internet. Tente mais tarde.';
+        // REMOVIDO: logout() e setShowLoginModal(true) que causavam o loop
       }
       
       setPaymentStatus({
