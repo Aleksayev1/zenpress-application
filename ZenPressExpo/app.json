@@ -42,6 +42,9 @@
       }
     },
     "privacy": "public",
-    "primaryColor": "#10b981"
+    "primaryColor": "#10b981",
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }
