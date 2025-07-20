@@ -89,6 +89,15 @@
       "url": "url"
     }
   },
+  "serviceworker": {
+    "src": "/sw.js",
+    "scope": "/",
+    "type": "classic",
+    "update_via_cache": "imports"
+  },
+  "background_sync": [
+    "zenpress-sync"
+  ],
   "screenshots": [
     {
       "src": "/images/screenshot-mobile.png",
