@@ -111,5 +111,43 @@
       "type": "image/png",
       "form_factor": "wide"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quick Relief",
+      "short_name": "Relief",
+      "description": "Access quick pain relief techniques",
+      "url": "/category/craniopuntura",
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Mental Wellness",
+      "short_name": "Wellness", 
+      "description": "Mental health and breathing exercises",
+      "url": "/category/mental-health",
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Premium Access",
+      "short_name": "Premium",
+      "description": "Access premium techniques and features",
+      "url": "/payment",
+      "icons": [
+        {
+          "src": "/images/icon-192.png", 
+          "sizes": "192x192"
+        }
+      ]
+    }
   ]
 }
