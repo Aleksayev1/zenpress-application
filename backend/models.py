@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 import uuid
@@ -6,17 +6,17 @@ import uuid
 # User Models
 class UserCreate(BaseModel):
     name: str
-    email: EmailStr
+    email: str  # Changed from EmailStr to str for mobile compatibility
     password: str
 
 class UserLogin(BaseModel):
-    email: EmailStr
+    email: str  # Changed from EmailStr to str for mobile compatibility
     password: str
 
 class User(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
-    email: EmailStr
+    email: str  # Changed from EmailStr to str for mobile compatibility
     password_hash: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
     is_premium: bool = False
