@@ -1,0 +1,16 @@
+{
+  "appId": "com.acupress.app",
+  "appName": "AcuPress - Natural Pain Relief",
+  "webDir": "../frontend/build",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#059669",
+      "showSpinner": true,
+      "spinnerColor": "#ffffff"
+    }
+  }
+}
