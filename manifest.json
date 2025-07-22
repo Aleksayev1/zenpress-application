@@ -1,0 +1,82 @@
+{
+  "name": "XZenPress - Acupressão e Bem-estar Natural",
+  "short_name": "XZenPress",
+  "description": "Técnicas de acupressão e medicina tradicional chinesa para alívio natural da dor",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#059669",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["health", "medical", "wellness", "lifestyle", "productivity"],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "XZenPress Home"
+    },
+    {
+      "src": "/screenshot-desktop.png", 
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "XZenPress Desktop"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512", 
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Alívio Rápido",
+      "short_name": "Alívio",
+      "description": "Acesso rápido a técnicas de alívio da dor",
+      "url": "/#techniques",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Bem-estar Mental",
+      "short_name": "Mental", 
+      "description": "Exercícios de respiração e relaxamento",
+      "url": "/#breathing",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Acesso Premium",
+      "short_name": "Premium",
+      "description": "Acesso a técnicas e recursos premium",
+      "url": "/#premium",
+      "icons": [
+        {
+          "src": "/icon-192.png", 
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
