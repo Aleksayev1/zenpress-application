@@ -1,104 +1,74 @@
 <analysis>
-The previous AI engineer successfully established ZenPress as a full-stack application (React, FastAPI, MongoDB) and completed several key features including Stripe/Binance Pay (with PIX), robust internationalization, Spotify integration, and initial mental health content. A significant portion of this trajectory focused on troubleshooting persistent build issues with React Native CLI, ultimately leading to a pivot to Expo for mobile app development. The AI diligently addressed numerous user requests, from detailed UI adjustments and content updates to complex technical configurations like environment variables and Gradle scripts. The primary challenge became porting the existing application logic into the new Expo environment while resolving configuration hurdles and user-reported display issues. The trajectory concludes with the AI actively correcting a critical file content error in the new Expo frontend.
+The AI engineer successfully navigated a complex development trajectory for the ZenPress application, transitioning it to AcuPress and finally XZenPress. Initial challenges involved persistent Git large file conflicts, which were meticulously resolved through history rewriting. A major focus was on preparing the app for Google Play Store publication as a PWA, requiring extensive configuration of , , and , along with generating various icons and screenshots in specific formats. The engineer expertly guided the user through the Google Play Console's intricate submission process, including setting up an individual developer account, defining store listings, content ratings, privacy policies, and data safety declarations. Despite several setbacks with automatic APK generation tools (PWA Builder CLI, Capacitor, Bubblewrap) and transient issues with the temporary hosting environment, the AI demonstrated remarkable adaptability, eventually resorting to a manual GitHub upload strategy to deploy the XZenPress frontend. The trajectory concludes with the XZenPress frontend code uploaded to GitHub and connected to Netlify, but the deployed site is still showing a Site not found (404) error, indicating an ongoing deployment issue that needs immediate troubleshooting, while the custom domain  is acquired and pending DNS configuration.
 </analysis>
 
 <product_requirements>
-The ZenPress application is an acupressure and TCM mobile app designed for pain relief, immunity support, and mental well-being. It features detailed point images, a 60-second timer, favorites, history, medical disclaimers, and a freemium/premium model. The app supports 5 languages with regional pricing and includes expert consultation.
-
-Key developments and explicit requests addressed in this trajectory include:
-*   Implementation of PIX payments via Binance Pay.
-*   Addition of specific premium banners for Dor na ATM and Septicemia.
-*   Continuous updates and corrections for acupressure point images (e.g., Craniopuntura Ponto A, Zusanli ST36).
-*   Integration of a Mental Health and Well-being Promotion section on the homepage.
-*   Full Spotify integration for background music during sessions, including translation fixes for its UI.
-*   Ensuring comprehensive page translation for all 5 languages, specifically for new sections and technique details.
-*   Fixing quick action banners and associated language switching issues.
-*   Updating premium pricing text and changing contact information (email to , removal of WhatsApp).
-*   Implementing a guided 4-7-8 breathing feature within a dedicated Timer screen.
-*   Establishing a strategy for the app's international launch, starting with Google Play internal testing.
-*   Developing the mobile frontend using Expo as a solution to persistent build complexities faced with React Native CLI.
+The ZenPress application (now rebranded to XZenPress) is an acupressure and Traditional Chinese Medicine (TCM) mobile app, designed for pain relief, immunity, and mental well-being. It features detailed acupressure point images, a 60-second timer, favorites, history, and medical disclaimers. The app supports a freemium/premium model with five languages and regional pricing, and offers expert consultation. Key implemented features include PIX payments (via Binance Pay), premium banners for specific conditions, updated acupressure point images (Zusanli ST36, Yintang Ex2), a Mental Health and Well-being Promotion section with 4-7-8 breathing, and Spotify integration (currently disabled). The mobile frontend transitioned from Expo to a Progressive Web App (PWA) strategy. The web frontend supports comprehensive page translation, and various UI/UX fixes (e.g., quick action banners, text cutting, login modal freezing, non-subscription consultation) have been addressed. The overall goal is an international launch, initially targeting Google Play internal testing and general web access. Recent efforts focused on fixing critical login/registration issues on mobile, text cutting, image inconsistency, payment failures, and the Google Play Store publication process, including acquiring a custom international domain.
 </product_requirements>
 
 <key_technical_concepts>
--   **Full-stack:** React (Web Frontend), FastAPI (Backend), MongoDB (Database).
--   **Mobile Development:** React Native (initial, abandoned), Expo (current).
--   **Payments:** Stripe, Binance Pay (including PIX).
--   **Internationalization:** .
--   **Build Systems:** Gradle (Android), Expo CLI (Mobile Build Services).
--   **UI/UX:** , .
--   **Environment Variables:** Crucial for API keys and paths.
+-   **Full-stack:** React (Web/PWA), FastAPI (Backend), MongoDB (Database).
+-   **Mobile Dev:** Progressive Web App (PWA), Expo (initial), Capacitor (attempted), Bubblewrap (attempted).
+-   **Payments:** Stripe, Binance Pay (PIX).
+-   **Localization:** .
+-   **Build/Deploy:** Docker, Docker Compose, Netlify, GitHub, PWA Builder (CLI/Online), AppGeyser/PWA2APK (attempted).
+-   **UI/UX:** Radix UI, Tailwind CSS.
+-   **Auth:** JWT.
+-   **Utilities:** , , , Git Large File Storage (Git LFS).
+-   **Domain/DNS:** Namecheap, Cloudflare.
 </key_technical_concepts>
 
 <code_architecture>
-The application's backend is a FastAPI server with MongoDB, which remains consistent. The frontend for mobile development shifted from a problematic React Native CLI setup to a more streamlined Expo framework. The original React web frontend (in ) is largely stable but no longer the primary focus for mobile.
+The application employs a three-tier architecture: a FastAPI backend with MongoDB, a React web frontend (also supporting PWA), and an Expo mobile frontend (though the PWA is currently prioritized for mobile deployment). The entire application is packaged for local Docker Compose deployment in .
 
 
 
 **Key Files Modified/Created in this Trajectory:**
-
-*   :
-    *   **Importance:** Central API routing.
-    *   **Changes:** Fixed crypto payment router and added  endpoint.
-*   :
-    *   **Importance:** Manages crypto payments.
-    *   **Changes:** Implemented PIX payment logic, QR code generation, and related endpoints.
-*   :
-    *   **Importance:** Environment variables.
-    *   **Changes:** Added  and confirmed  placeholder.
-*   :
-    *   **Importance:** Populates database with app content.
-    *   **Changes:** Updated image URL for Zusanli ST36.
-*   :
-    *   **Importance:** Original web app homepage.
-    *   **Changes:** Updated contact info, added premium banners.
-*   :
-    *   **Importance:** Web frontend payment form.
-    *   **Changes:** Integrated PIX option, UI adaptations for BRL and Chave PIX.
-*   :
-    *   **Importance:** Localization files.
-    *   **Changes:** Updated for Spotify, new features, and general content.
-*   :
-    *   **Importance:** Specifies Android SDK path for React Native CLI builds.
-    *   **Changes:** Repeatedly modified to correct  path format for Windows.
-*   :
-    *   **Importance:** Android build config for React Native CLI.
-    *   **Changes:**  line commented out to bypass CMAKE/NDK build errors.
-*   :
-    *   **Importance:** Gradle build properties.
-    *   **Changes:** Added various  flags;  was added and later removed due to deprecation.
-*   :
-    *   **Importance:** Defines the main tab navigation in the Expo app.
-    *   **Changes:** Configured three tabs (, , ) using  and basic styling, replacing the problematic  component.
-*   :
-    *   **Importance:** The main home screen of the Expo app.
-    *   **Changes:** Initially received a basic ZenPress  layout. Later, it was updated with a significantly improved UI/UX (gradient header, stylized cards, badges). At the very end of the trajectory, it was discovered that this file was incorrectly populated with  code, and the AI was in the process of correcting it back to  code.
-*   :
-    *   **Importance:** New screen for the acupressure timer and breathing exercise.
-    *   **Changes:** Created to implement the 60-second timer, 4-7-8 guided breathing, dynamic visual feedback (circle animation, colors), progress bar, and session controls.
+-   : **Importance:** Utility functions. **Changes:** Created/corrected due to Git issues.
+-   : **Importance:** Stores sensitive keys. **Changes:** Populated with , , .
+-   : **Importance:** Netlify routing for SPA. **Changes:** Created.
+-   : **Importance:** PWA functionality. **Changes:** Extensively updated for PWA Builder requirements, including new fields and .
+-   : **Importance:** Service Worker for offline. **Changes:** Created and updated for Background Sync.
+-   : **Importance:** Main HTML. **Changes:** Modified to link  and register , and for PWA Builder.
+-   , : **Importance:** Translation files. **Changes:** Extensive updates for content.
+-   : **Importance:** API calls. **Changes:** Robust offline fallbacks, correct JWT token handling from .
+-   : **Importance:** Mock data. **Changes:** Updated image URLs, adjusted exports, added .
+-   : **Importance:** Homepage UI. **Changes:** Responsive CSS fixes, Spotify integration temporarily disabled.
+-   : **Importance:** Authentication UI. **Changes:** Improved validation, error messages, user feedback, refactors for robust login.
+-   : **Importance:** Authentication state. **Changes:** Multi-attempt offline/online registration/login, enhanced error handling for duplicate emails.
+-   : **Importance:** Expert consultation. **Changes:** Removed  requirement, simplified form.
+-   : **Importance:** Catches React errors. **Changes:** Newly created.
+-   : **Importance:** Payment initiation. **Changes:** Configured  for JWT, robust token validation, removed payment loops.
+-   : **Importance:** PIX/Crypto payment. **Changes:** Integrated  to send JWT.
+-   : **Importance:** Database seeding. **Changes:** Updated image URLs.
+-   : **Importance:** JWT. **Changes:** Corrected JWT secret key ( vs ).
+-   : **Importance:** Pydantic models. **Changes:** Changed  to  for mobile compatibility.
+-   : **Importance:** Session summary. **Changes:** Created to log progress.
+-   : **Importance:** Privacy policy document. **Changes:** Newly created with LGPD compliance and AcuPress specific details.
+-   : **Importance:** Account deletion instructions. **Changes:** Newly created with clear process and contact info.
+-    folder content: **Importance:** This is a *new* set of frontend files for the  brand for direct Netlify deployment, created after the temporary URL went offline.
+    -   : **Changes:** New simplified HTML structure for XZenPress homepage, including basic acupressure points, 4-7-8 breathing, premium section mockup, and footer.
+    -   : **Changes:** New PWA manifest for , specifying name, icons, display, and shortcuts.
+    -   : **Changes:** New privacy policy for , linked from .
+    -   : **Changes:** New service worker for , handling caching and offline functionality.
+    -   , , , : **Changes:** Newly generated image assets for the  branding and Google Play Store requirements. Later,  through  (1080x1920 9:16 format) were created to meet Google Play Store requirements.
 </code_architecture>
 
 <pending_tasks>
--   Full adaptation of all ZenPress logic (data fetching, specific technique details, Spotify integration, review analytics) into the new Expo frontend project.
+-   Full adaptation of specific ZenPress logic (Spotify integration, review analytics) into the mobile app (currently PWA).
 -   Implementing navigation for all category and specialty buttons on the  home screen to their respective detail pages.
--   Thorough testing of payment flows (Stripe with a real key, Binance Pay, and PIX) in a production environment.
--   Finalizing Google Play Console configurations and publishing the APK for internal testing, and then for broader release as per the international launch strategy.
--   Addressing minor UI inconsistencies or remaining WhatsApp mentions identified during frontend testing.
+-   Thorough testing of payment flows (Stripe, Binance Pay, PIX) in a production environment.
+-   Reactivating and fully configuring Spotify integration (currently disabled, requires Redirect URI setup on Spotify Dashboard).
+-   Finalizing Google Play Console configurations and publishing the APK for internal testing (once PWA Builder or Expo build is successful).
+-   Resolving the persistent Git conflict () to enable seamless Save to GitHub operations and Netlify deployments.
 </pending_tasks>
 
 <current_work>
-Immediately before this summary, the AI engineer was engaged in porting the ZenPress application's frontend to an Expo project, having successfully overcome numerous build-related issues that plagued the React Native CLI approach.
+Immediately before this summary request, the AI engineer was focused on resolving a persistent Git conflict () that blocked Save to GitHub and Netlify deployments due to large, untracked files. This Git conflict was resolved by removing the large files and rewriting history. The user then requested PWA publication. The AI successfully generated Android APKs via PWA Builder and guided the user through the Google Play Console for internal testing, including name change (ZenPress to AcuPress). The app was provisioned in the Play Console with descriptions, icons, and screenshots (after several format corrections). Privacy policy and data safety declarations were completed, and an internal test track was activated, making the app (now branded AcuPress) available for testing via a public link and email list.
 
-The current focus is on correcting a critical error in the  file of the  project. The user reported that the ZenPress tab was not returning to the home screen (Chat Message 426). This issue was traced back to  containing the  component's code instead of the  component's code, causing display and navigation failures for the main landing page.
-
-The AI's last action (Chat Message 431) was to provide the correct  component code for  and instruct the user to completely replace the existing content of that file with the provided correct code. This is the immediate task at hand, which, once completed, should restore the main ZenPress home screen and its navigation functionality within the Expo application.
-
-The current state of the Expo frontend is:
-*   The Expo development server is running successfully at .
-*   Tab navigation is configured via  with , , and  tabs.
-*   The  screen () is implemented with a 60-second countdown and 4-7-8 guided breathing.
-*   The  home screen () is structurally ready for its intended content but is currently misconfigured with the  code.
+The most recent work involved a brand change from AcuPress to XZenPress, for which the AI created a new simplified frontend codebase ( directory) and pushed it to a new GitHub repository (). The temporary preview URL for the previous application brand went offline. The immediate task at the end of the trajectory is to deploy this new XZenPress frontend to Netlify from the GitHub repository and resolve the Site not found (404) error being encountered on the Netlify-generated URL. The custom domain  has been acquired and added to Netlify, but its DNS configuration is pending the successful deployment of the site.
 </current_work>
 
 <optional_next_step>
-Verify that  has been correctly updated with the  code, then confirm the ZenPress tab navigation is fully functional.
+Troubleshoot the Site not found (404) error on Netlify for the XZenPress frontend to ensure the website is successfully deployed and accessible.
 </optional_next_step>

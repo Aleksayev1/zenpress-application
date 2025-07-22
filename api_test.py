@@ -7,7 +7,7 @@ class AcuPressaoAPITest(unittest.TestCase):
     """Test suite for AcuPressão backend API"""
     
     # Base URL from frontend .env
-    BASE_URL = "https://7c91efa5-eccf-49fb-bbc9-fe44ce8fab17.preview.emergentagent.com/api"
+    BASE_URL = "https://429b38d5-6a73-460c-a938-66a7eb9ba46e.preview.emergentagent.com/api"
     
     def test_api_connection(self):
         """Test if the API is accessible"""
