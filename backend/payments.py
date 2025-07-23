@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends, status
-from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
+from stripe_mock import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
 from payment_models import *
 from auth import get_current_user
 from models import UserResponse
