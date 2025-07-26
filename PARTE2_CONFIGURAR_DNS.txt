@@ -1,0 +1,114 @@
+🔧 PARTE 2: CONFIGURAR DNS - EXECUTE AGORA
+
+==================================================
+ONDE VOCÊ COMPROU O DOMÍNIO xzenpress.com?
+==================================================
+
+□ Namecheap (namecheap.com)
+□ GoDaddy (godaddy.com)  
+□ Registro.br
+□ Hostinger
+□ Outro: _______________
+
+==================================================
+INSTRUÇÕES POR PLATAFORMA:
+==================================================
+
+🟢 SE FOR NAMECHEAP:
+1. Login: https://namecheap.com
+2. Account → Domain List
+3. Clique "Manage" ao lado de xzenpress.com
+4. Aba "Advanced DNS"
+5. Delete todos A Records e CNAME existentes
+6. ADD NEW RECORD:
+   - Type: A Record
+   - Host: @
+   - Value: 75.2.60.5
+   - TTL: Automatic
+7. ADD NEW RECORD:
+   - Type: CNAME
+   - Host: www
+   - Value: jazzy-arithmetic-0f0607.netlify.app
+   - TTL: Automatic
+8. SAVE ALL CHANGES
+
+🟡 SE FOR GODADDY:
+1. Login: https://godaddy.com
+2. My Products → DNS
+3. Encontre xzenpress.com
+4. Clique "DNS" 
+5. Delete registros A e CNAME antigos
+6. ADD:
+   - Type: A, Name: @, Value: 75.2.60.5
+   - Type: CNAME, Name: www, Value: jazzy-arithmetic-0f0607.netlify.app
+7. SAVE
+
+🔵 SE FOR REGISTRO.BR:
+1. Login: https://registro.br
+2. Painel → Domínios
+3. xzenpress.com → DNS
+4. Editar Zona DNS
+5. Remover A e CNAME antigos
+6. Adicionar:
+   - A: @ → 75.2.60.5
+   - CNAME: www → jazzy-arithmetic-0f0607.netlify.app
+7. Aplicar alterações
+
+==================================================
+REGISTROS EXATOS PARA ADICIONAR:
+==================================================
+
+✅ REGISTRO A:
+   Host/Name: @ (ou deixar vazio)
+   Type: A
+   Value/Points to: 75.2.60.5
+   TTL: 3600 (ou Automatic)
+
+✅ REGISTRO CNAME:
+   Host/Name: www
+   Type: CNAME  
+   Value/Points to: jazzy-arithmetic-0f0607.netlify.app
+   TTL: 3600 (ou Automatic)
+
+❌ DELETAR SE EXISTIR:
+   - A records antigos (192.0.2.1, etc.)
+   - CNAME www antigos
+   - Qualquer coisa apontando para outros serviços
+
+==================================================
+DICAS IMPORTANTES:
+==================================================
+
+⚠️ CUIDADO: Não delete registros MX (email)
+⚠️ SEMPRE: Salve/Apply changes depois de editar
+⚠️ AGUARDE: 15-30 min para DNS propagar
+
+==================================================
+APÓS CONFIGURAR DNS - AGUARDAR E TESTAR:
+==================================================
+
+⏰ AGUARDE: 15-30 minutos
+
+🔍 TESTE EM:
+- https://xzenpress.com
+- https://www.xzenpress.com
+
+✅ SE FUNCIONOU:
+   Vai aparecer sua aplicação XZenPress!
+
+❌ SE NÃO FUNCIONOU:
+   - Aguarde mais 15 min
+   - Verifique se salvou as alterações
+   - Me mande screenshot do DNS
+
+==================================================
+VERIFICADOR ONLINE (OPCIONAL):
+==================================================
+
+Use: https://dnschecker.org/
+Digite: xzenpress.com
+Deve mostrar: 75.2.60.5
+
+==================================================
+ME DIGA QUAL É SEU REGISTRADOR:
+==================================================

@@ -1,0 +1,152 @@
+🎯 RESOLVER xzenpress.com - PASSO A PASSO
+
+==================================================
+PARTE 1: CONFIGURAR NO NETLIFY (PRIMEIRO)
+==================================================
+
+1. ACESSE: https://app.netlify.com
+
+2. ENCONTRE SEU SITE:
+   - Procure por "jazzy-arithmetic-0f0607"
+   - OU site que mostra XZenPress funcionando
+
+3. CLIQUE NO SITE para entrar
+
+4. NO MENU LATERAL, CLIQUE:
+   - "Domain settings" 
+   - OU "Site settings" → "Domain management"
+
+5. PROCURE SEÇÃO "Custom domains"
+
+6. CLIQUE BOTÃO: "Add custom domain"
+
+7. DIGITE EXATAMENTE: xzenpress.com
+
+8. CLIQUE: "Verify" ou "Add domain"
+
+9. NETLIFY VAI MOSTRAR: 
+   ✅ "Domain added successfully"
+   ⚠️ "Check DNS configuration"
+
+10. ANOTE OS DNS que o Netlify mostrar
+    (geralmente será algo como):
+    - A record: 75.2.60.5
+    - CNAME: jazzy-arithmetic-0f0607.netlify.app
+
+==================================================
+PARTE 2: CONFIGURAR DNS NO REGISTRADOR
+==================================================
+
+ONDE VOCÊ COMPROU O DOMÍNIO:
+□ Namecheap
+□ GoDaddy  
+□ Registro.br
+□ Outro: ________________
+
+PASSOS GERAIS (ajuste conforme sua plataforma):
+
+1. FAZER LOGIN no site onde comprou o domínio
+
+2. ENCONTRAR: 
+   - "DNS Management"
+   - "DNS Settings" 
+   - "Advanced DNS"
+   - "Manage DNS"
+
+3. PROCURAR xzenpress.com na lista de domínios
+
+4. CLIQUE para gerenciar DNS
+
+5. DELETAR REGISTROS ANTIGOS:
+   - Remova A records existentes
+   - Remova CNAME www se existir
+   - Mantenha apenas MX (email) se houver
+
+6. ADICIONAR NOVOS REGISTROS:
+
+   REGISTRO A:
+   - Type: A
+   - Host: @ (ou deixar vazio)
+   - Value: 75.2.60.5
+   - TTL: 3600 (ou Automatic)
+
+   REGISTRO CNAME:
+   - Type: CNAME
+   - Host: www
+   - Value: jazzy-arithmetic-0f0607.netlify.app
+   - TTL: 3600 (ou Automatic)
+
+7. SALVAR ALTERAÇÕES
+
+==================================================
+PARTE 3: AGUARDAR E VERIFICAR
+==================================================
+
+TEMPO DE PROPAGAÇÃO: 15-30 minutos
+
+COMO VERIFICAR SE FUNCIONOU:
+
+1. AGUARDE 15 minutos
+
+2. TESTE NO NAVEGADOR:
+   - https://xzenpress.com
+   - https://www.xzenpress.com
+
+3. SE APARECER:
+   ✅ Sua aplicação XZenPress → SUCESSO!
+   ⚠️ "Site não encontrado" → Aguardar mais
+   ❌ Página em branco → Verificar DNS
+
+4. VERIFICADOR ONLINE:
+   - Use: https://dnschecker.org/
+   - Digite: xzenpress.com
+   - Veja se está apontando para Netlify
+
+==================================================
+COMANDOS PARA TESTAR (OPCIONAL)
+==================================================
+
+Windows:
+nslookup xzenpress.com
+
+Mac/Linux:
+dig xzenpress.com
+
+==================================================
+SE DER PROBLEMA - ME AVISE:
+==================================================
+
+❌ "Netlify não encontra o site"
+❌ "DNS propagation failed" 
+❌ "SSL certificate error"
+❌ "Domain verification failed"
+
+MANDE PRINT DA TELA OU MENSAGEM DE ERRO
+
+==================================================
+✅ CHECKLIST - MARQUE CONFORME FAZ:
+==================================================
+
+□ Acessei Netlify dashboard
+□ Encontrei site jazzy-arithmetic-0f0607  
+□ Cliquei em Domain settings
+□ Adicionei xzenpress.com como custom domain
+□ Netlify confirmou adição do domínio
+□ Anotei instruções DNS do Netlify
+□ Acessei registrador do domínio 
+□ Deletei registros DNS antigos
+□ Adicionei registro A: @ → 75.2.60.5
+□ Adicionei CNAME: www → jazzy-arithmetic-0f0607.netlify.app
+□ Salvei alterações no DNS
+□ Aguardei 15-30 minutos
+□ Testei https://xzenpress.com
+□ FUNCIONOU! ✅
+
+==================================================
+RESULTADO ESPERADO:
+==================================================
+
+ANTES: https://jazzy-arithmetic-0f0607.netlify.app/ 
+DEPOIS: https://xzenpress.com
+
+MESMO CONTEÚDO, URL PROFISSIONAL! 🎉

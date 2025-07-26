@@ -1,0 +1,106 @@
+🚀 PRÓXIMOS PASSOS - EXECUTAR AGORA
+
+==================================================
+PASSO 2: GERAR CERTIFICADO DIGITAL (CRÍTICO!)
+==================================================
+
+⚠️ ATENÇÃO: Guarde este certificado com SEGURANÇA! Se perder, nunca mais poderá atualizar o app.
+
+COMANDO:
+keytool -genkey -v -keystore zenpress-release-key.keystore -alias zenpress -keyalg RSA -keysize 2048 -validity 10000
+
+QUANDO PEDIR AS INFORMAÇÕES, DIGITE:
+- Primeiro e último nome: [Seu nome completo]
+- Nome da organização: ZenPress
+- Nome da cidade: [Sua cidade]
+- Estado: [Seu estado] 
+- Código do país: BR
+- Senha: [CRIAR SENHA FORTE E ANOTAR!]
+
+==================================================
+PASSO 3: INSTALAR BUBBLEWRAP
+==================================================
+
+COMANDO:
+npm install -g @bubblewrap/cli
+
+VERIFICAR SE INSTALOU:
+bubblewrap --version
+
+==================================================
+PASSO 4: CRIAR PROJETO ANDROID
+==================================================
+
+COMANDOS:
+mkdir zenpress-android
+cd zenpress-android
+
+bubblewrap init --manifest https://jazzy-arithmetic-0f0607.netlify.app/manifest.json
+
+DURANTE O PROCESSO, QUANDO PERGUNTAR:
+- Package name: com.zenpress.app
+- App name: ZenPress
+- Display mode: standalone  
+- Orientation: portrait
+- Theme color: #059669
+- Background color: #ffffff
+- Icon URL: https://jazzy-arithmetic-0f0607.netlify.app/images/icon-512.png
+
+==================================================
+PASSO 5: CONFIGURAR ASSINATURA
+==================================================
+
+Após o init, edite o arquivo twa-manifest.json:
+
+Na seção "signing", adicione:
+"signing": {
+  "keystore": "../zenpress-release-key.keystore",
+  "alias": "zenpress"
+}
+
+==================================================
+PASSO 6: BUILD DO APP
+==================================================
+
+COMANDOS:
+cd zenpress-android
+
+# Build de debug (para testar)
+bubblewrap build
+
+# Build de release (para Google Play)  
+bubblewrap build --mode=release
+
+ARQUIVOS GERADOS:
+- app/build/outputs/apk/debug/app-debug.apk (para testar)
+- app/build/outputs/bundle/release/app-release.aab (para Google Play)
+
+==================================================
+PASSO 7: TESTAR NO CELULAR
+==================================================
+
+OPÇÃO A - Via ADB (se celular conectado USB):
+adb install app/build/outputs/apk/debug/app-debug.apk
+
+OPÇÃO B - Manual:
+1. Copiar app-debug.apk para o celular
+2. Instalar diretamente (habilitar "fontes desconhecidas")
+
+==================================================
+✅ EXECUTE ESTES COMANDOS NA ORDEM
+==================================================
+
+1. keytool -genkey (gerar certificado)
+2. npm install -g @bubblewrap/cli (instalar ferramenta)  
+3. mkdir zenpress-android && cd zenpress-android (criar pasta)
+4. bubblewrap init --manifest [URL] (criar projeto)
+5. bubblewrap build (gerar APK)
+
+DEPOIS ME DIGA:
+- ✅ Se todos comandos funcionaram
+- ❌ Se deu algum erro (me mande a mensagem)
+- 📱 Se consegui instalar e testar no celular
+
+==================================================
+PRÓXIMO: GOOGLE PLAY CONSOLE ($25 USD)
+==================================================

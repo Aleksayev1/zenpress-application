@@ -1,0 +1,313 @@
+{
+  "app": {
+    "name": "ZenPress",
+    "tagline": "Natürliche Schmerzlinderung",
+    "description": "Entdecken Sie jahrtausendealte Akupressur- und Kraniopunktur-Techniken zur Behandlung von Kopfschmerzen, Muskelschmerzen, Verdauungsproblemen und zur Stärkung Ihrer Immunität"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "premium": "Premium",
+    "consultation": "Beratung",
+    "favorites": "Favoriten",
+    "history": "Verlauf",
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "fullName": "Vollständiger Name",
+    "loginButton": "Einloggen",
+    "registerButton": "Konto erstellen",
+    "forgotPassword": "Passwort vergessen?",
+    "alreadyAccount": "Bereits ein Konto?",
+    "noAccount": "Noch kein Konto?",
+    "loginSuccess": "Anmeldung erfolgreich!",
+    "registerSuccess": "Konto erfolgreich erstellt!",
+    "loginError": "Ungültige E-Mail oder Passwort",
+    "registerError": "Fehler beim Erstellen des Kontos",
+    "passwordMismatch": "Passwörter stimmen nicht überein",
+    "passwordTooShort": "Passwort muss mindestens 6 Zeichen haben"
+  },
+  "home": {
+    "developmentNotice": {
+      "title": "Diese App wird verbessert!",
+      "forQuestions": "Für Fragen",
+      "or": "oder"
+    },
+    "hero": {
+      "title": "Natürliche Schmerzlinderung",
+      "subtitle": "Entdecken Sie jahrtausendealte Akupressur- und Kraniopunktur-Techniken zur Behandlung von Kopfschmerzen, Muskelschmerzen, Verdauungsproblemen und zur Stärkung Ihrer Immunität"
+    },
+    "disclaimer": {
+      "title": "Medizinischer Hinweis:",
+      "text": "Diese Anwendung dient nur zu Bildungs- und Informationszwecken. Sie ersetzt keine professionelle medizinische Beratung. Konsultieren Sie immer einen Gesundheitsexperten für Diagnosen und Behandlungen."
+    },
+    "mentalHealth": {
+      "title": "Förderung der Geistigen Gesundheit und des Wohlbefindens",
+      "description": "Entdecken Sie, wie Akupressur-Techniken signifikant zu Ihrem emotionalen Gleichgewicht, Stressabbau, Schlafverbesserung und Förderung des geistigen Wohlbefindens beitragen können. Unser ganzheitlicher Ansatz verbindet Körper und Geist für ein erfüllteres und gesünderes Leben.",
+      "benefits": {
+        "stress": {
+          "title": "Stressabbau",
+          "description": "Spezifische Techniken zur Verringerung von Spannungen und Förderung tiefer Entspannung"
+        },
+        "sleep": {
+          "title": "Schlafverbesserung",
+          "description": "Akupressurpunkte, die erholsamen und qualitativen Schlaf fördern"
+        },
+        "balance": {
+          "title": "Emotionales Gleichgewicht",
+          "description": "Energieharmonisierung für größere emotionale und geistige Stabilität"
+        }
+      },
+      "exploreButton": "Techniken für Geistiges Wohlbefinden Erkunden",
+      "techniques": {
+        "title": "Schnelle Wellness-Techniken",
+        "subtitle": "Drücken Sie die Punkte für 1 Minute - Für alle verfügbar"
+      },
+      "premium": {
+        "badge": "Exklusive Techniken für Benutzer"
+      },
+      "breathing": {
+        "title": "🌬️ Geführte Atmung 4-7-8",
+        "description": "Atemtechnik für tiefe Entspannung und Angstreduktion"
+      }
+    },
+    "categories": {
+      "craniopuncture": {
+        "name": "Kraniopunktur",
+        "description": "Kopfhaut-Stimulationstechniken zur Schmerzlinderung und allgemeinen Gesundheitsverbesserung"
+      },
+      "tcm": {
+        "name": "TCM (Traditionelle Chinesische Medizin)",
+        "description": "Akupressurpunkte basierend auf traditioneller chinesischer Medizin für Energiebalance"
+      }
+    },
+    "exploreButton": "Techniken Erkunden",
+    "techniques": "Techniken",
+    "stats": {
+      "title": "Häufigste Beschwerden",
+      "subtitle": "Basierend auf Community-Nutzung - sehen Sie, was andere behandeln"
+    },
+    "quickActions": {
+      "title": "Schnelle Aktionen",
+      "subtitle": "Direkter Zugang zu den am häufigsten verwendeten Techniken für sofortige Linderung",
+      "beginnerFriendly": "Anfängerfreundlich",
+      "immediate": "Sofortige Linderung",
+      "personalized": "Personalisiert",
+      "complexCase": "Komplexer Fall?"
+    }
+  },
+  "techniques": {
+    "startTechnique": "Technik Starten",
+    "duration": "Dauer",
+    "pressure": "Druck",
+    "breathing": {
+      "title": "Geführte Atmung",
+      "prepare": "Drücken Sie Start, um mit geführter Atmung zu beginnen",
+      "inhale": "Atmen Sie langsam durch die Nase ein",
+      "hold": "Halten Sie den Atem an",
+      "exhale": "Atmen Sie vollständig durch den Mund aus",
+      "pause": "Natürliche Pause",
+      "diaphragmatic": "Atmen Sie natürlich und spüren Sie die Ausdehnung des Bauches",
+      "technique478": "4-7-8 Technik: Optimiert Sauerstoffversorgung und Entspannung",
+      "diaphragmaticInfo": "Zwerchfellatmung: Entspannender Abschluss"
+    },
+    "stats": {
+      "title": "Häufigste Beschwerden",
+      "subtitle": "Basierend auf Community-Nutzung - sehen Sie, was andere behandeln"
+    },
+    "quickActions": {
+      "beginner": {
+        "title": "Anfangen",
+        "description": "Neu bei Akupressur? Beginnen Sie mit grundlegenden und sicheren Techniken.",
+        "button": "Grundtechniken"
+      },
+      "quick": {
+        "title": "Schnelle Linderung",
+        "description": "Brauchen Sie sofortige Linderung? 1-Minuten-Notfall-Techniken.",
+        "button": "Yintang - Kopfschmerzen"
+      },
+      "personalized": {
+        "title": "Personalisiert",
+        "description": "Greifen Sie auf Ihre Lieblingstechniken und Behandlungsverlauf zu.",
+        "button": "Meine Favoriten"
+      },
+      "complex": {
+        "title": "Komplexer Fall?",
+        "description": "Chronische Schmerzen oder Zustände, die sich nicht verbessern? Sprechen Sie mit einem Spezialisten.",
+        "button": "WhatsApp Beratung"
+      }
+    },
+    "warnings": "Warnungen",
+    "instructions": "Anweisungen",
+    "location": "Standort",
+    "application": "Anwendung",
+    "benefits": "Vorteile",
+    "precautions": "Vorsichtsmaßnahmen",
+    "recommendedFor": "Empfohlen für",
+    "notRecommendedFor": "Nicht empfohlen für",
+    "timer": "Timer",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Zurücksetzen",
+    "completed": "Sitzung Abgeschlossen!",
+    "congratulations": "Glückwunsch! Sie haben die Technik abgeschlossen.",
+    "addToFavorites": "Zu Favoriten hinzufügen",
+    "removeFromFavorites": "Von Favoriten entfernen",
+    "shareResult": "Ergebnis teilen",
+    "backToCategory": "Zurück zur Kategorie",
+    "nextTechnique": "Nächste Technik",
+    "relatedTechniques": "Verwandte Techniken",
+    "difficulty": "Schwierigkeit",
+    "effectiveness": "Wirksamkeit",
+    "safetyLevel": "Sicherheitsniveau",
+    "warningsTitle": "Wichtige Warnungen",
+    "contraindications": "Kontraindikationen:",
+    "seekHelp": "Suchen Sie medizinische Hilfe wenn:"
+  },
+  "payment": {
+    "title": "Pläne und Kurse",
+    "subtitle": "Wählen Sie den besten Plan für Ihre Bedürfnisse",
+    "premium": {
+      "title": "Premium-Abonnements",
+      "monthly": "Monatlich",
+      "annual": "Jährlich",
+      "mostPopular": "Am Beliebtesten",
+      "subscribeNow": "Jetzt Abonnieren",
+      "features": "Funktionen"
+    },
+    "courses": {
+      "title": "Spezialisierte Kurse",
+      "duration": "Dauer:",
+      "instructor": "Dozent:",
+      "modules": "Module:",
+      "buyCourse": "Kurs Kaufen",
+      "beginner": "Anfänger",
+      "intermediate": "Mittelstufe",
+      "advanced": "Fortgeschritten"
+    },
+    "corporate": {
+      "title": "Unternehmenspläne",
+      "users": "Benutzer",
+      "month": "Monat",
+      "requestDemo": "Demo Anfordern"
+    },
+    "analytics": {
+      "title": "B2B Analytics",
+      "month": "Monat",
+      "hirePlan": "Plan Buchen"
+    },
+    "paymentSuccess": "Zahlung Genehmigt!",
+    "paymentError": "Zahlungsfehler",
+    "paymentCanceled": "Zahlung storniert. Sie können es jederzeit erneut versuchen.",
+    "backToHome": "Zurück zur Startseite",
+    "explorePremium": "Premium-Inhalt Erkunden"
+  },
+  "consultation": {
+    "title": "Spezialisierte Beratung",
+    "subtitle": "Für komplexe Fälle, die persönliche Aufmerksamkeit benötigen",
+    "form": {
+      "title": "Beratungsformular",
+      "subtitle": "Füllen Sie die unten stehenden Daten aus, um personalisierte Betreuung über WhatsApp zu erhalten",
+      "personalInfo": "Persönliche Informationen",
+      "medicalInfo": "Medizinische Informationen",
+      "fullName": "Vollständiger Name",
+      "whatsapp": "WhatsApp",
+      "email": "E-Mail",
+      "age": "Alter",
+      "gender": "Geschlecht",
+      "city": "Stadt",
+      "mainComplaint": "Hauptbeschwerde",
+      "symptoms": "Symptome",
+      "duration": "Dauer",
+      "intensity": "Schmerzintensität (0-10)",
+      "medications": "Aktuelle Medikamente",
+      "allergies": "Allergien",
+      "previousTreatments": "Vorherige Behandlungen",
+      "expectations": "Erwartungen",
+      "additionalNotes": "Zusätzliche Notizen",
+      "submit": "Beratung Senden",
+      "submitting": "Wird gesendet...",
+      "submitSuccess": "Beratung erfolgreich gesendet!",
+      "submitError": "Fehler beim Senden der Beratung"
+    },
+    "whatsapp": {
+      "title": "Direkter Kontakt über WhatsApp",
+      "subtitle": "Sprechen Sie direkt mit unseren Spezialisten",
+      "description": "Für dringende Fälle oder wenn Sie direkten Kontakt bevorzugen, klicken Sie auf die Schaltfläche unten, um mit unseren Spezialisten über WhatsApp zu sprechen.",
+      "button": "Über WhatsApp Kontaktieren",
+      "number": "WhatsApp Nummer:",
+      "hours": "Servicezeiten:",
+      "monday": "Montag bis Freitag: 8:00 bis 18:00",
+      "saturday": "Samstag: 8:00 bis 12:00",
+      "sunday": "Sonntag: Geschlossen"
+    }
+  },
+  "favorites": {
+    "title": "Meine Favoriten",
+    "subtitle": "Ihre gespeicherten Techniken für schnellen Zugriff",
+    "empty": "Noch keine Lieblingstechniken",
+    "emptyDescription": "Beginnen Sie mit der Erkundung von Techniken und fügen Sie Ihre Favoriten hier hinzu",
+    "removeConfirm": "Von Favoriten entfernen?",
+    "removeSuccess": "Von Favoriten entfernt",
+    "addSuccess": "Zu Favoriten hinzugefügt"
+  },
+  "history": {
+    "title": "Sitzungsverlauf",
+    "subtitle": "Verfolgen Sie Ihre Akupressur-Sitzungen",
+    "empty": "Noch keine Sitzungen aufgezeichnet",
+    "emptyDescription": "Beginnen Sie mit der Verwendung von Techniken, um Ihren Sitzungsverlauf aufzubauen",
+    "session": "Sitzung",
+    "date": "Datum",
+    "technique": "Technik",
+    "duration": "Dauer",
+    "notes": "Notizen",
+    "clearHistory": "Verlauf Löschen",
+    "clearConfirm": "Gesamten Verlauf löschen?",
+    "clearSuccess": "Verlauf gelöscht"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "sort": "Sortieren",
+    "all": "Alle",
+    "none": "Keine",
+    "yes": "Ja",
+    "no": "Nein",
+    "ok": "OK",
+    "retry": "Erneut versuchen",
+    "refresh": "Aktualisieren",
+    "minute": "Minute",
+    "minutes": "Minuten",
+    "second": "Sekunde",
+    "seconds": "Sekunden",
+    "loadingTechniques": "Techniken werden geladen...",
+    "noTechniques": "Keine Techniken gefunden",
+    "tryAgain": "Erneut versuchen",
+    "networkError": "Netzwerkfehler. Überprüfen Sie Ihre Verbindung.",
+    "serverError": "Serverfehler. Versuchen Sie es später erneut.",
+    "offline": "Offline-Daten verwenden",
+    "premium": "Premium",
+    "free": "Kostenlos",
+    "new": "Neu",
+    "updated": "Aktualisiert",
+    "popular": "Beliebt",
+    "recommended": "Empfohlen"
+  }
+}

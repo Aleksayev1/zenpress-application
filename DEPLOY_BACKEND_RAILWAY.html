@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Backend XZenPress - Railway</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .step-header {
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            margin: -25px -25px 20px -25px;
+            border-radius: 10px 10px 0 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .copy-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .checklist li.done:before {
+            content: "✅ ";
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Deploy Backend XZenPress</h1>
+        <p>Railway.app - Solução Definitiva</p>
+        <p><strong>Tempo estimado:</strong> 15-20 minutos</p>
+    </div>
+
+    <div class="section">
+        <div class="step-header">📋 PASSO 1: Preparar Código Backend</div>
+        
+        <div class="success">
+            <h3>✅ Arquivos já criados automaticamente:</h3>
+            <ul class="checklist">
+                <li class="done">railway.json - Configuração Railway</li>
+                <li class="done">Procfile - Comando de inicialização</li>
+                <li class="done">runtime.txt - Versão Python</li>
+                <li class="done">requirements.txt - Dependências</li>
+                <li class="done">server.py - API FastAPI</li>
+                <li class="done">models.py - Modelos de dados</li>
+                <li class="done">auth.py - Autenticação</li>
+            </ul>
+        </div>
+
+        <h3>Estrutura do Backend:</h3>
+        <div class="code-block">
+/app/backend/
+├── server.py              # API principal FastAPI
+├── models.py              # Estruturas de dados
+├── auth.py                # Sistema de autenticação
+├── requirements.txt       # Dependências Python
+├── railway.json           # Configuração Railway ✅
+├── Procfile              # Comando inicialização ✅
+├── runtime.txt           # Versão Python ✅
+├── payments.py           # Sistema pagamentos
+├── crypto_payments.py    # Pagamentos crypto
+└── seed_database.py      # Dados iniciais
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🌐 PASSO 2: Criar Conta Railway</div>
+        
+        <h3>2.1 - Acessar Railway</h3>
+        <p><strong>👆 Acesse:</strong> <a href="https://railway.app" target="_blank">https://railway.app</a></p>
+        
+        <h3>2.2 - Fazer Login</h3>
+        <ul class="checklist">
+            <li>Clique "Sign up" ou "Login"</li>
+            <li>Use GitHub (recomendado) ou email</li> 
+            <li>Confirme conta se necessário</li>
+        </ul>
+
+        <div class="success">
+            <p><strong>✅ Benefícios Railway:</strong></p>
+            <ul>
+                <li>500 horas gratuitas/mês</li>
+                <li>Deploy automático</li>
+                <li>HTTPS SSL automático</li>
+                <li>Logs em tempo real</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">📁 PASSO 3: Upload do Código</div>
+        
+        <h3>3.1 - Criar Novo Projeto</h3>
+        <ul class="checklist">
+            <li>No Railway dashboard, clique "New Project"</li>
+            <li>Selecione "Deploy from GitHub repo" (se conectou GitHub)</li>
+            <li>OU selecione "Empty Project" para upload manual</li>
+        </ul>
+
+        <div class="warning">
+            <h3>📁 Arquivos para fazer upload (se escolher manual):</h3>
+            <p>Você precisa compactar e fazer upload da pasta <strong>/app/backend/</strong> completa</p>
+            <ul>
+                <li>Vá em /app/backend/</li>
+                <li>Selecione TODOS os arquivos .py e arquivos de config</li>
+                <li>Crie um .zip com todos os arquivos</li>
+                <li>Faça upload no Railway</li>
+            </ul>
+        </div>
+
+        <h3>3.2 - Configurar Projeto</h3>
+        <div class="code-block">
+Nome do projeto: zenpress-backend
+Runtime: Python
+Framework: FastAPI
+Build Command: pip install -r requirements.txt
+Start Command: uvicorn server:app --host 0.0.0.0 --port $PORT
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🗄️ PASSO 4: Configurar MongoDB</div>
+        
+        <h3>4.1 - Adicionar MongoDB</h3>
+        <ul class="checklist">
+            <li>No projeto Railway, clique "Add Service"</li>
+            <li>Selecione "Database" → "MongoDB"</li>
+            <li>Railway criará automaticamente um banco MongoDB</li>
+        </ul>
+
+        <h3>4.2 - Obter String de Conexão</h3>
+        <ul class="checklist">
+            <li>Clique no serviço MongoDB criado</li>
+            <li>Vá em "Variables" ou "Connect"</li>
+            <li>Copie a MONGO_URL</li>
+        </ul>
+
+        <div class="success">
+            <p><strong>✅ A URL será algo como:</strong></p>
+            <div class="code-block">mongodb://mongo:senha@containers-us-west-region.railway.app:port/database</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">⚙️ PASSO 5: Configurar Variáveis de Ambiente</div>
+        
+        <h3>5.1 - Adicionar Variáveis</h3>
+        <p>No projeto Railway, vá em "Variables" e adicione:</p>
+        
+        <button class="copy-btn" onclick="copyToClipboard('env-vars')">📋 Copiar Variáveis</button>
+        <div class="code-block" id="env-vars">
+MONGO_URL=mongodb://[sua-string-do-railway]
+DB_NAME=zenpress_db
+JWT_SECRET=zenpress-jwt-secret-key-2025-secure
+PORT=8000
+
+# Opcionais (para funcionalidades avançadas)
+STRIPE_SECRET_KEY=sk_test_sua_chave_stripe
+BINANCE_PAY_API_KEY=sua_chave_binance
+        </div>
+
+        <div class="warning">
+            <p><strong>⚠️ IMPORTANTE:</strong> Use a MONGO_URL exata que o Railway forneceu para o MongoDB.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🚀 PASSO 6: Deploy e Teste</div>
+        
+        <h3>6.1 - Fazer Deploy</h3>
+        <ul class="checklist">
+            <li>Railway fará deploy automaticamente</li>
+            <li>Aguarde build completo (2-5 minutos)</li>
+            <li>Verifique logs para erros</li>
+        </ul>
+
+        <h3>6.2 - Obter URL Pública</h3>
+        <ul class="checklist">
+            <li>No dashboard do projeto, clique "Domains"</li>
+            <li>Clique "Generate Domain"</li>
+            <li>Anote a URL gerada (ex: zenpress-backend.up.railway.app)</li>
+        </ul>
+
+        <h3>6.3 - Testar API</h3>
+        <p>Teste se a API está funcionando:</p>
+        <div class="code-block">
+https://[sua-url-railway].up.railway.app/api/
+
+# Deve retornar:
+{"message": "ZenPress API - Sistema de Acupressão e Craniopuntura"}
+        </div>
+
+        <h3>6.4 - Testar Técnicas</h3>
+        <div class="code-block">
+https://[sua-url-railway].up.railway.app/api/techniques
+
+# Deve retornar lista de técnicas ou []
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🔄 PASSO 7: Atualizar Frontend</div>
+        
+        <h3>7.1 - Atualizar URL no Netlify</h3>
+        <ul class="checklist">
+            <li>Acesse Netlify dashboard</li>
+            <li>Vá em Site settings → Environment variables</li>
+            <li>Edite REACT_APP_BACKEND_URL</li>
+            <li>Coloque: https://[sua-url-railway].up.railway.app</li>
+            <li>Rebuild o site</li>
+        </ul>
+
+        <div class="success">
+            <h3>✅ Resultado Final:</h3>
+            <ul>
+                <li>Backend rodando em Railway (público)</li>
+                <li>Frontend no Netlify conectado ao backend</li>
+                <li>Técnicas carregando da API (sem erros)</li>
+                <li>Sistema completo funcional</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🧪 PASSO 8: Popular Banco de Dados</div>
+        
+        <h3>8.1 - Executar Seed</h3>
+        <p>Para adicionar técnicas ao banco:</p>
+        
+        <div class="code-block">
+# Via Railway Console ou localmente:
+python seed_database.py
+
+# Ou via endpoint (se configurado):
+POST https://[sua-url-railway].up.railway.app/api/admin/seed
+        </div>
+
+        <div class="warning">
+            <p><strong>⚠️ IMPORTANTE:</strong> Sem dados no banco, a API retornará listas vazias. Execute o seed para popular as técnicas.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">✅ CHECKLIST FINAL</div>
+        
+        <ul class="checklist">
+            <li>Conta Railway criada</li>
+            <li>Projeto backend deployado</li>
+            <li>MongoDB configurado</li>
+            <li>Variáveis de ambiente definidas</li>
+            <li>Deploy concluído sem erros</li>
+            <li>URL pública gerada</li>
+            <li>API testada (retorna JSON)</li>
+            <li>Frontend atualizado com nova URL</li>
+            <li>Netlify rebuild executado</li>
+            <li>Banco populado com técnicas</li>
+            <li>App testado sem erros</li>
+        </ul>
+
+        <div class="success">
+            <h3>🎉 SUCESSO ESPERADO:</h3>
+            <p>https://jazzy-arithmetic-0f0607.netlify.app/ funcionando com todas as técnicas carregando da API, sem mensagens de erro!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🆘 TROUBLESHOOTING</div>
+        
+        <h3>Problemas Comuns:</h3>
+        
+        <h4>❌ Build falhou</h4>
+        <ul>
+            <li>Verificar requirements.txt</li>
+            <li>Checar logs de build no Railway</li>
+            <li>Confirmar Python version no runtime.txt</li>
+        </ul>
+
+        <h4>❌ API não responde</h4>
+        <ul>
+            <li>Verificar se PORT está configurado</li>
+            <li>Checar start command (uvicorn)</li>
+            <li>Ver logs de runtime</li>
+        </ul>
+
+        <h4>❌ Erro de MongoDB</h4>
+        <ul>
+            <li>Confirmar MONGO_URL correta</li>
+            <li>Verificar se MongoDB está rodando</li>
+            <li>Testar conexão nos logs</li>
+        </ul>
+
+        <h4>❌ Frontend não conecta</h4>
+        <ul>
+            <li>Verificar REACT_APP_BACKEND_URL</li>
+            <li>Confirmar rebuild do Netlify</li>
+            <li>Testar URL backend diretamente</li>
+        </ul>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function() {
+                    alert('✅ Variáveis copiadas!\n\nCole no Railway.');
+                }, function(err) {
+                    console.error('Erro ao copiar: ', err);
+                    fallbackCopyTextToClipboard(text);
+                });
+            } else {
+                fallbackCopyTextToClipboard(text);
+            }
+        }
+        
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    alert('✅ Variáveis copiadas!');
+                } else {
+                    alert('❌ Selecione manualmente e use Ctrl+C');
+                }
+            } catch (err) {
+                alert('❌ Selecione manualmente e use Ctrl+C');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>

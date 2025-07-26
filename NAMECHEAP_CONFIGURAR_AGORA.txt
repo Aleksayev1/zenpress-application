@@ -1,0 +1,106 @@
+🟢 NAMECHEAP - INSTRUÇÕES ESPECÍFICAS
+
+==================================================
+PASSO A PASSO NO NAMECHEAP:
+==================================================
+
+1. 🌐 ACESSE: https://namecheap.com
+
+2. 🔑 FAÇA LOGIN na sua conta
+
+3. 📋 CLIQUE EM: "Account" (canto superior direito)
+
+4. 📁 CLIQUE EM: "Domain List" no menu lateral
+
+5. 🔍 ENCONTRE: xzenpress.com na lista
+
+6. ⚙️ CLIQUE EM: "Manage" ao lado de xzenpress.com
+
+7. 📡 CLIQUE NA ABA: "Advanced DNS"
+
+==================================================
+CONFIGURAR DNS (NA ABA ADVANCED DNS):
+==================================================
+
+8. 🗑️ DELETAR REGISTROS ANTIGOS:
+   - Procure por "Host Records"
+   - Delete TODOS os "A Record" existentes
+   - Delete TODOS os "CNAME Record" com www
+   - ⚠️ NÃO delete MX Records (email)
+
+9. ➕ ADICIONAR NOVO REGISTRO A:
+   - Clique "ADD NEW RECORD"
+   - Type: "A Record"
+   - Host: "@" (arroba)
+   - Value: "75.2.60.5"
+   - TTL: "Automatic" (ou 3600)
+   - ✅ Clique no checkmark verde para salvar
+
+10. ➕ ADICIONAR NOVO REGISTRO CNAME:
+    - Clique "ADD NEW RECORD"
+    - Type: "CNAME Record"  
+    - Host: "www"
+    - Value: "jazzy-arithmetic-0f0607.netlify.app"
+    - TTL: "Automatic" (ou 3600)
+    - ✅ Clique no checkmark verde para salvar
+
+11. 💾 SALVAR TUDO:
+    - Clique "SAVE ALL CHANGES" (botão verde)
+    - Aguarde confirmação "Changes Saved"
+
+==================================================
+RESULTADO FINAL NO NAMECHEAP:
+==================================================
+
+Deve ficar assim na lista de Host Records:
+
+Type    | Host | Value                              | TTL
+--------|------|------------------------------------|---------
+A       | @    | 75.2.60.5                         | 3600
+CNAME   | www  | jazzy-arithmetic-0f0607.netlify.app| 3600
+
+==================================================
+APÓS SALVAR - AGUARDAR:
+==================================================
+
+⏰ TEMPO: 15-30 minutos para DNS propagar
+
+🧪 TESTE EM 15 MINUTOS:
+   - https://xzenpress.com
+   - https://www.xzenpress.com
+
+✅ SUCESSO = Sua aplicação XZenPress aparece!
+
+==================================================
+SE DER PROBLEMA:
+==================================================
+
+❌ "Domain not found" = Aguarde mais 15 min
+❌ "SSL error" = Normal, SSL será gerado automaticamente  
+❌ "Site não carrega" = Verifique se salvou as alterações
+
+==================================================
+CHECKLIST NAMECHEAP:
+==================================================
+
+□ Fiz login no Namecheap
+□ Fui em Account → Domain List
+□ Cliquei "Manage" em xzenpress.com
+□ Entrei na aba "Advanced DNS"
+□ Deletei registros A antigos
+□ Deletei registros CNAME www antigos
+□ Adicionei A Record: @ → 75.2.60.5
+□ Adicionei CNAME: www → jazzy-arithmetic-0f0607.netlify.app
+□ Cliquei "SAVE ALL CHANGES"
+□ Vi confirmação "Changes Saved"
+□ Aguardei 15-30 minutos
+□ Testei https://xzenpress.com
+□ FUNCIONOU! 🎉
+
+==================================================
+EXECUTE AGORA - DEPOIS ME DIGA:
+==================================================
+
+✅ "Configurei DNS no Namecheap, aguardando propagação"
+❌ "Deu erro: [qual erro]"
+❓ "Não encontrei [o que não encontrou]"

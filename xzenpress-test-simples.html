@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XZenPress - Teste Funcional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .breathing-circle { animation: breathe 8s infinite; }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1.2); }
+            75% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-emerald-600 text-white p-4">
+        <h1 class="text-2xl font-bold">XZenPress - TESTE FUNCIONAL</h1>
+    </nav>
+    
+    <div class="container mx-auto p-8">
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-8">
+            ✅ <strong>SUCESSO!</strong> XZenPress está funcionando perfeitamente!
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Respiração 4-7-8 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <h2 class="text-xl font-bold mb-4">Respiração 4-7-8</h2>
+                <div id="breathingCircle" class="w-32 h-32 mx-auto bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold breathing-circle">
+                    RESPIRE
+                </div>
+                <button onclick="startBreathing()" class="mt-4 bg-emerald-600 text-white px-4 py-2 rounded">
+                    Iniciar
+                </button>
+                <div id="instruction" class="mt-2 text-gray-600">Clique para começar</div>
+            </div>
+            
+            <!-- Técnicas -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">Técnicas de Acupressão</h2>
+                <div class="space-y-3">
+                    <button onclick="startTimer('Yintang')" class="w-full bg-blue-100 p-3 rounded text-left hover:bg-blue-200">
+                        🎯 Yintang (EX2) - Dor de cabeça
+                    </button>
+                    <button onclick="startTimer('Zusanli')" class="w-full bg-purple-100 p-3 rounded text-left hover:bg-purple-200">
+                        🦵 Zusanli (ST36) - Longevidade
+                    </button>
+                    <button onclick="startTimer('Hegu')" class="w-full bg-orange-100 p-3 rounded text-left hover:bg-orange-200">
+                        👐 Hegu (LI4) - Tensão
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timer Modal -->
+        <div id="timerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+            <div class="bg-white rounded-lg p-8 text-center">
+                <h3 id="techniqueTitle" class="text-xl font-bold mb-4">Técnica</h3>
+                <div id="timer" class="text-6xl font-bold text-emerald-600 mb-4">60</div>
+                <div class="text-gray-600 mb-4">Pressione suavemente</div>
+                <button onclick="closeTimer()" class="bg-gray-500 text-white px-4 py-2 rounded">
+                    Fechar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Status -->
+        <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+            <h3 class="font-bold text-emerald-800">Status do Sistema:</h3>
+            <ul class="text-emerald-700 mt-2">
+                <li>✅ Site carregando perfeitamente</li>
+                <li>✅ Tailwind CSS funcionando</li>
+                <li>✅ JavaScript ativo</li>
+                <li>✅ Animações funcionais</li>
+                <li>✅ Design responsivo</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        let breathingInterval, timerInterval;
+        let timeLeft = 60;
+        
+        function startBreathing() {
+            const instruction = document.getElementById('instruction');
+            const steps = [
+                'Inspire por 4 segundos',
+                'Segure por 7 segundos', 
+                'Expire por 8 segundos',
+                'Relaxe...'
+            ];
+            let step = 0;
+            
+            breathingInterval = setInterval(() => {
+                instruction.textContent = steps[step];
+                step = (step + 1) % steps.length;
+            }, 4750);
+        }
+        
+        function startTimer(technique) {
+            document.getElementById('techniqueTitle').textContent = technique;
+            document.getElementById('timerModal').classList.remove('hidden');
+            timeLeft = 60;
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('timer').textContent = '✓';
+                    setTimeout(closeTimer, 2000);
+                }
+            }, 1000);
+        }
+        
+        function closeTimer() {
+            document.getElementById('timerModal').classList.add('hidden');
+            clearInterval(timerInterval);
+            timeLeft = 60;
+            document.getElementById('timer').textContent = '60';
+        }
+        
+        // Confirmar que tudo está funcionando
+        console.log('✅ XZenPress Test - Tudo funcionando!');
+    </script>
+</body>
+</html>

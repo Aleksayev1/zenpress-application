@@ -1,0 +1,89 @@
+========================================
+ZENPRESS - GOOGLE DRIVE PACKAGE
+========================================
+
+ARQUIVO PRINCIPAL: ZenPress-Package-Clean.zip (559 KB)
+
+LOCALIZAÇÃO: /app/ZenPress-Package-Clean.zip
+
+CONTEÚDO DO PACKAGE:
+📦 ZenPress-Package/
+├── 📄 README.md (documentação completa)
+├── 📄 CHANGELOG.md (histórico de mudanças)
+├── 📄 CONTRIBUTING.md (guia de contribuição)
+├── 📄 PACKAGE-INFO.md (informações detalhadas)
+├── 🐳 docker-compose.yml (configuração Docker)
+├── ⚙️ .env (variáveis de ambiente)
+├── 🚀 install.sh (instalação Linux/Mac)
+├── 🚀 install.bat (instalação Windows)
+├── 📂 backend/ (API FastAPI)
+│   ├── 🐍 server.py (servidor principal)
+│   ├── 🔐 auth.py (autenticação)
+│   ├── 💳 payments.py (pagamentos)
+│   ├── 💰 crypto_payments.py (pagamentos crypto)
+│   ├── 📊 reviews_analytics.py (analytics)
+│   ├── 🏥 models.py (modelos de dados)
+│   ├── 📝 requirements.txt (dependências)
+│   └── ⚙️ .env (config backend)
+├── 📂 frontend/ (React Web App)
+│   ├── 🎨 src/ (código fonte)
+│   ├── 📦 package.json (dependências)
+│   └── ⚙️ .env (config frontend)
+├── 📂 mobile/ (Expo Mobile App)
+│   ├── 📱 App.tsx (app principal)
+│   ├── 📦 package.json (dependências)
+│   └── ⚙️ .env (config mobile)
+└── 📂 scripts/ (scripts utilitários)
+    ├── 🚀 start.sh (iniciar)
+    ├── 🛑 stop.sh (parar)
+    ├── 📋 logs.sh (ver logs)
+    ├── 🔄 reset.sh (reset)
+    ├── 💾 backup.sh (backup)
+    ├── 🔍 health-check.sh (verificar)
+    └── 🔄 update.sh (atualizar)
+
+INSTALAÇÃO RÁPIDA:
+1. Descompactar: unzip ZenPress-Package-Clean.zip
+2. Entrar: cd ZenPress-Package
+3. Instalar: ./install.sh
+4. Acessar: http://localhost:3000
+
+ACESSO:
+- 🌐 Frontend: http://localhost:3000
+- 📱 Mobile: http://localhost:8082
+- 🔧 API: http://localhost:8001
+- 📊 Docs: http://localhost:8001/docs
+
+FUNCIONALIDADES:
+✅ Backend FastAPI (48 endpoints testados)
+✅ Frontend React (sistema de pagamentos)
+✅ Mobile Expo (timer + técnicas)
+✅ Autenticação JWT
+✅ 7 técnicas de acupressão
+✅ Sistema premium
+✅ Pagamentos crypto (Bitcoin, USDT, PIX)
+✅ Timer 60s com respiração 4-7-8
+✅ 5 idiomas suportados
+✅ Analytics completo
+✅ Sistema de favoritos
+✅ Integração Spotify
+✅ Docker compose setup
+
+TECNOLOGIAS:
+- Backend: Python 3.11 + FastAPI + MongoDB
+- Frontend: React 18 + Tailwind CSS
+- Mobile: Expo + React Native
+- Deploy: Docker + Docker Compose
+
+PARA USAR:
+1. Baixar arquivo ZIP do Google Drive
+2. Descompactar no computador
+3. Executar install.sh (Linux/Mac) ou install.bat (Windows)
+4. Acessar aplicação no navegador
+
+CONTATO: Aleksayev@zenpress.org
+VERSÃO: 1.0.0
+CRIADO: 17/01/2025
+STATUS: Pronto para produção
+
+========================================

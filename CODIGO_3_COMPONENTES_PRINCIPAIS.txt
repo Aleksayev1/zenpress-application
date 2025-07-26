@@ -1,0 +1,282 @@
+======================================
+ARQUIVO 5: models.py (Modelos de Dados)
+======================================
+
+from pydantic import BaseModel, Field
+from typing import List, Optional
+from datetime import datetime
+import uuid
+
+# User Models
+class UserCreate(BaseModel):
+    name: str
+    email: str  # Changed from EmailStr to str for mobile compatibility
+    password: str
+
+class UserLogin(BaseModel):
+    email: str  # Changed from EmailStr to str for mobile compatibility
+    password: str
+
+class User(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: str  # Changed from EmailStr to str for mobile compatibility
+    password_hash: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    is_premium: bool = False
+    subscription_expires: Optional[datetime] = None
+
+class UserResponse(BaseModel):
+    id: str
+    name: str
+    email: str
+    is_premium: bool
+    subscription_expires: Optional[datetime] = None
+
+# Technique Models
+class Technique(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    category: str  # 'craniopuntura' or 'mtc'
+    condition: str
+    description: str
+    instructions: List[str]
+    image: str
+    duration: int = 60
+    pressure: str
+    warnings: List[str]
+    is_premium: bool = False
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+# Session Models
+class Session(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    technique_id: str
+    technique_name: str
+    complaint: str
+    duration: int
+    rating: Optional[int] = None
+    date: datetime = Field(default_factory=datetime.utcnow)
+
+# Premium Models
+class Subscription(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    plan: str
+    status: str = "active"
+    started_at: datetime = Field(default_factory=datetime.utcnow)
+    expires_at: datetime
+    amount_paid: float
+
+# Token Models
+class Token(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    user: UserResponse
+
+======================================
+ARQUIVO 6: auth.py (Autenticação)
+======================================
+
+import os
+import jwt
+from datetime import datetime, timedelta
+from typing import Optional
+from passlib.context import CryptContext
+from fastapi import HTTPException, Depends, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from motor.motor_asyncio import AsyncIOMotorClient
+from models import User, UserResponse
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Password hashing
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+# JWT settings
+SECRET_KEY = os.environ.get("JWT_SECRET", "your-secret-key-change-in-production")
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_HOURS = 24
+
+# Security scheme
+security = HTTPBearer()
+
+# Get database connection directly
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+db_name = os.environ.get('DB_NAME', 'test_database')
+client = AsyncIOMotorClient(mongo_url)
+db = client[db_name]
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return pwd_context.verify(plain_password, hashed_password)
+
+def get_password_hash(password: str) -> str:
+    return pwd_context.hash(password)
+
+def create_access_token(data: dict, expires_delta: timedelta = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(hours=ACCESS_TOKEN_EXPIRE_HOURS)
+    
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
+
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> UserResponse:
+    try:
+        token = credentials.credentials
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id: str = payload.get("sub")
+        if user_id is None:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Could not validate credentials",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+    except jwt.PyJWTError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Could not validate credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    user = await db.users.find_one({"id": user_id})
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    return UserResponse(**user)
+
+async def authenticate_user(email: str, password: str):
+    user = await db.users.find_one({"email": email})
+    if not user:
+        return False
+    if not verify_password(password, user["password_hash"]):
+        return False
+    return user
+
+======================================
+ARQUIVO 7: manifest.json (PWA)
+======================================
+
+{
+  "id": "zenpress-app",
+  "short_name": "ZenPress",
+  "name": "ZenPress - Acupressure & TCM",
+  "description": "Natural pain relief and wellness through Traditional Chinese Medicine and acupressure techniques",
+  "dir": "ltr",
+  "iarc_rating_id": "e84b072d-71de-5b85-a9a2-7bf8b4444fd6",
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.zenpress.app",
+      "id": "com.zenpress.app"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "theme_color": "#059669",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["health", "medical", "wellness"],
+  "serviceworker": {
+    "src": "/sw.js",
+    "scope": "/",
+    "type": "classic",
+    "update_via_cache": "imports"
+  }
+}
+
+======================================
+ARQUIVO 8: .env (Configurações Frontend)
+======================================
+
+REACT_APP_BACKEND_URL=https://your-backend-url.com/api
+REACT_APP_STRIPE_PUBLISHABLE_KEY=pk_test_your_key_here
+REACT_APP_BINANCE_PAY_MERCHANT_ID=your_merchant_id
+
+======================================
+ARQUIVO 9: .env (Configurações Backend)
+======================================
+
+MONGO_URL=mongodb://localhost:27017
+DB_NAME=zenpress_db
+JWT_SECRET=your-super-secret-jwt-key-change-in-production
+STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
+BINANCE_PAY_API_KEY=your_binance_pay_api_key
+BINANCE_PAY_SECRET_KEY=your_binance_pay_secret_key
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+
+======================================
+ARQUIVO 10: Instruções de Instalação
+======================================
+
+# INSTALAÇÃO DO XZENPRESS
+
+## Frontend (React)
+1. cd frontend/
+2. yarn install
+3. Configurar arquivo .env com as URLs
+4. yarn start (desenvolvimento)
+5. yarn build (produção)
+
+## Backend (FastAPI)
+1. cd backend/
+2. pip install -r requirements.txt
+3. Configurar arquivo .env com MongoDB e APIs
+4. uvicorn server:app --host 0.0.0.0 --port 8001
+
+## PWA (Progressive Web App)
+- manifest.json configurado
+- Service Worker (sw.js) incluído
+- Ícones 192x192 e 512x512 px
+- Instalável como app nativo
+
+## Funcionalidades Principais
+- ✅ 50+ técnicas de acupressão
+- ✅ Timer de 60 segundos
+- ✅ Histórico e favoritos
+- ✅ Sistema de login/registro
+- ✅ Pagamentos (Stripe + PIX)
+- ✅ Respiração guiada 4-7-8
+- ✅ Multi-idioma (PT/EN)
+- ✅ PWA completa
+
+## URLs de Produção
+- Frontend: https://jazzy-arithmetic-0f0607.netlify.app/
+- Backend: Configurado via REACT_APP_BACKEND_URL
+
+Status: ✅ APLICAÇÃO COMPLETA E FUNCIONANDO

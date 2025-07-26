@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XZenPress - Setup Completo para Google Play Store</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .step-header {
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            margin: -25px -25px 20px -25px;
+            border-radius: 10px 10px 0 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .copy-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .checklist li.done:before {
+            content: "✅ ";
+        }
+        .file-tree {
+            background: #263238;
+            color: #eeff41;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 XZenPress → Google Play Store</h1>
+        <p>Guia Completo: De PWA para App Android Nativo</p>
+        <p><strong>Status:</strong> ✅ PWA Pronto | 🔄 TWA em Preparação | ⏳ Google Play Pendente</p>
+    </div>
+
+    <div class="section">
+        <div class="step-header">📋 PASSO 1: Pré-requisitos (Verificar Antes)</div>
+        
+        <div class="success">
+            <h3>✅ O QUE JÁ TEMOS (PRONTO):</h3>
+            <ul class="checklist">
+                <li class="done">PWA funcionando em https://jazzy-arithmetic-0f0607.netlify.app/</li>
+                <li class="done">Manifest.json completo com ícones 192x192 e 512x512</li>
+                <li class="done">Service Worker ativo</li>
+                <li class="done">HTTPS obrigatório</li>
+                <li class="done">Interface responsiva e offline</li>
+                <li class="done">Screenshots mobile e desktop</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ O QUE AINDA PRECISAMOS:</h3>
+            <ul class="checklist">
+                <li>Conta Google Play Console ($25 USD)</li>
+                <li>Android Studio instalado</li>
+                <li>Java Development Kit (JDK 8+)</li>
+                <li>Node.js instalado</li>
+                <li>Certificado digital para assinar o app</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🛡️ PASSO 2: Criar Certificado Digital</div>
+        
+        <p><strong>IMPORTANTE:</strong> Guarde este certificado com segurança! Se perder, nunca mais poderá atualizar o app.</p>
+        
+        <button class="copy-btn" onclick="copyToClipboard('cert-command')">📋 Copiar Comando</button>
+        <div class="code-block" id="cert-command">
+# Gerar certificado (substituir dados pelos seus)
+keytool -genkey -v -keystore zenpress-release-key.keystore -alias zenpress -keyalg RSA -keysize 2048 -validity 10000
+
+# Quando solicitado, informar:
+# - Nome: Seu nome completo
+# - Organização: ZenPress
+# - Cidade: Sua cidade  
+# - Estado: Seu estado
+# - País: BR
+# - Senha: Criar senha FORTE e ANOTAR
+        </div>
+
+        <div class="warning">
+            <strong>🔐 SEGURANÇA CRÍTICA:</strong>
+            <ul>
+                <li>Faça backup do arquivo .keystore</li>
+                <li>Anote a senha em local seguro</li>
+                <li>NUNCA compartilhe este arquivo</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">📱 PASSO 3: Instalar Bubblewrap (TWA Generator)</div>
+        
+        <button class="copy-btn" onclick="copyToClipboard('install-bubblewrap')">📋 Copiar Comandos</button>
+        <div class="code-block" id="install-bubblewrap">
+# Instalar Bubblewrap CLI globalmente
+npm install -g @bubblewrap/cli
+
+# Verificar instalação
+bubblewrap --version
+
+# Instalar dependências Android (se não tiver Android Studio)
+npm install -g @bubblewrap/cli @bubblewrap/android-tools
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🏗️ PASSO 4: Gerar TWA Android</div>
+        
+        <button class="copy-btn" onclick="copyToClipboard('generate-twa')">📋 Copiar Comandos</button>
+        <div class="code-block" id="generate-twa">
+# Criar pasta para o projeto Android
+mkdir zenpress-android
+cd zenpress-android
+
+# Inicializar TWA com nosso manifest
+bubblewrap init --manifest https://jazzy-arithmetic-0f0607.netlify.app/manifest.json
+
+# Durante o processo, informar:
+# - Application ID: com.zenpress.app
+# - App Name: ZenPress
+# - Theme Color: #059669
+# - Background Color: #ffffff
+# - Display Mode: standalone
+# - Orientation: portrait
+        </div>
+
+        <div class="success">
+            <p><strong>✅ Resultado esperado:</strong> Projeto Android criado na pasta zenpress-android/</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🔧 PASSO 5: Configurar twa-manifest.json</div>
+        
+        <p>O Bubblewrap criará um arquivo twa-manifest.json. Edite conforme abaixo:</p>
+        
+        <button class="copy-btn" onclick="copyToClipboard('twa-manifest')">📋 Copiar twa-manifest.json</button>
+        <div class="code-block" id="twa-manifest">{
+  "packageId": "com.zenpress.app",
+  "host": "jazzy-arithmetic-0f0607.netlify.app",
+  "name": "ZenPress - Acupressure & TCM",
+  "launcherName": "ZenPress",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#059669",
+  "backgroundColor": "#ffffff",
+  "iconUrl": "https://jazzy-arithmetic-0f0607.netlify.app/images/icon-512.png",
+  "startUrl": "/",
+  "manifestUrl": "https://jazzy-arithmetic-0f0607.netlify.app/manifest.json",
+  "shortcuts": [
+    {
+      "name": "Técnicas Rápidas",
+      "short_name": "Técnicas",
+      "url": "/category/craniopuntura",
+      "icon": "https://jazzy-arithmetic-0f0607.netlify.app/images/icon-192.png"
+    },
+    {
+      "name": "Meus Favoritos",
+      "short_name": "Favoritos", 
+      "url": "/favorites",
+      "icon": "https://jazzy-arithmetic-0f0607.netlify.app/images/icon-192.png"
+    }
+  ],
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": true
+    }
+  },
+  "signing": {
+    "keystore": "../zenpress-release-key.keystore",
+    "alias": "zenpress"
+  },
+  "appVersion": "1.0.0",
+  "appVersionCode": 1
+}</div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🏭 PASSO 6: Build do App Android</div>
+        
+        <button class="copy-btn" onclick="copyToClipboard('build-app')">📋 Copiar Comandos</button>
+        <div class="code-block" id="build-app">
+# Navegar para pasta do projeto
+cd zenpress-android
+
+# Fazer build de debug (para teste)
+bubblewrap build
+
+# Fazer build de release (para Google Play)
+bubblewrap build --mode=release
+
+# Localizar arquivos gerados
+ls -la app/build/outputs/bundle/release/
+# Arquivo principal: app-release.aab
+        </div>
+
+        <div class="success">
+            <p><strong>✅ Arquivos gerados:</strong></p>
+            <ul>
+                <li><strong>app-debug.apk</strong> - Para testar no celular</li>
+                <li><strong>app-release.aab</strong> - Para enviar ao Google Play</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">📱 PASSO 7: Testar o App</div>
+        
+        <div class="warning">
+            <strong>⚠️ TESTE OBRIGATÓRIO:</strong> Nunca envie para Google Play sem testar!
+        </div>
+
+        <button class="copy-btn" onclick="copyToClipboard('test-commands')">📋 Copiar Comandos</button>
+        <div class="code-block" id="test-commands">
+# Conectar celular Android via USB (modo desenvolvedor ativo)
+adb devices
+
+# Instalar APK de debug no celular
+adb install app/build/outputs/apk/debug/app-debug.apk
+
+# OU enviar arquivo por WhatsApp/email e instalar manualmente
+        </div>
+
+        <p><strong>✅ O que testar:</strong></p>
+        <ul class="checklist">
+            <li>App abre sem erros</li>
+            <li>Todas as páginas carregam</li>
+            <li>Funciona sem internet (modo offline)</li>
+            <li>Pagamentos funcionam</li>
+            <li>Timer e respiração funcionam</li>
+            <li>Login/registro funcionam</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🎯 PASSO 8: Google Play Console</div>
+        
+        <div class="warning">
+            <strong>💰 CUSTO:</strong> $25 USD (pagamento único) + taxa de 15-30% das vendas
+        </div>
+
+        <h3>8.1 - Criar Conta</h3>
+        <p>Acesse: <a href="https://play.google.com/console" target="_blank">https://play.google.com/console</a></p>
+        
+        <h3>8.2 - Criar App</h3>
+        <ul class="checklist">
+            <li>Nome do app: <span class="highlight">ZenPress - Acupressure & TCM</span></li>
+            <li>Idioma padrão: <span class="highlight">Português (Brasil)</span></li>
+            <li>Tipo de app: <span class="highlight">App</span></li>
+            <li>Gratuito ou pago: <span class="highlight">Gratuito (com compras no app)</span></li>
+        </ul>
+
+        <h3>8.3 - Upload do AAB</h3>
+        <button class="copy-btn" onclick="copyToClipboard('upload-info')">📋 Copiar Informações</button>
+        <div class="code-block" id="upload-info">
+Arquivo para upload: app-release.aab
+Localização: zenpress-android/app/build/outputs/bundle/release/
+
+Informações do app:
+- Nome: ZenPress - Acupressure & TCM
+- Categoria: Saúde e fitness  
+- Classificação: Livre (com disclaimer médico)
+- Países: Brasil (inicial), depois expandir internacional
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">📄 PASSO 9: Documentos Obrigatórios</div>
+        
+        <div class="warning">
+            <strong>⚠️ OBRIGATÓRIO:</strong> Google exige estes documentos para apps de saúde
+        </div>
+
+        <h3>9.1 - Política de Privacidade</h3>
+        <button class="copy-btn" onclick="copyToClipboard('privacy-policy')">📋 Copiar Política</button>
+        <div class="code-block" id="privacy-policy">
+POLÍTICA DE PRIVACIDADE - ZENPRESS
+
+Última atualização: [DATA]
+
+1. INFORMAÇÕES QUE COLETAMOS
+- Dados de registro: nome, email
+- Dados de uso: técnicas utilizadas, tempo de sessão
+- Dados de pagamento: processados por Stripe (não armazenamos)
+
+2. COMO USAMOS AS INFORMAÇÕES
+- Personalizar experiência do usuário
+- Melhorar nossos serviços
+- Processar pagamentos de assinaturas
+
+3. COMPARTILHAMENTO DE DADOS
+- NÃO vendemos ou compartilhamos dados pessoais
+- Stripe processa pagamentos (política própria)
+- Dados anonimizados para analytics
+
+4. SEGURANÇA
+- Dados criptografados em trânsito e repouso
+- Acesso restrito a dados pessoais
+- Backups seguros
+
+5. SEUS DIREITOS
+- Acesso aos seus dados
+- Correção de informações
+- Exclusão de conta
+
+Contato: privacy@zenpress.org
+        </div>
+
+        <h3>9.2 - Termos de Serviço</h3>
+        <button class="copy-btn" onclick="copyToClipboard('terms-service')">📋 Copiar Termos</button>
+        <div class="code-block" id="terms-service">
+TERMOS DE SERVIÇO - ZENPRESS
+
+1. DISCLAIMER MÉDICO
+- App é APENAS educativo e informativo
+- NÃO substitui consulta médica profissional
+- NÃO diagnostica, trata ou cura doenças
+- Consulte médico antes de usar técnicas
+
+2. USO DO APLICATIVO
+- Técnicas baseadas em medicina tradicional chinesa
+- Uso por sua própria responsabilidade
+- Pare se sentir desconforto
+
+3. ASSINATURAS
+- Cobrança automática via Google Play
+- Cancelamento a qualquer momento
+- Reembolso conforme política Google Play
+
+4. LIMITAÇÃO DE RESPONSABILIDADE
+- Não nos responsabilizamos por lesões
+- Uso adequado é responsabilidade do usuário
+
+Contato: legal@zenpress.org
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🎨 PASSO 10: Assets para Google Play</div>
+        
+        <p><strong>Tamanhos exatos exigidos pelo Google Play:</strong></p>
+        
+        <div class="file-tree">
+📱 ÍCONES NECESSÁRIOS:
+├── 📁 ic_launcher/
+│   ├── 🖼️ icon-48.png     (48x48)
+│   ├── 🖼️ icon-72.png     (72x72) 
+│   ├── 🖼️ icon-96.png     (96x96)
+│   ├── 🖼️ icon-144.png    (144x144)
+│   ├── 🖼️ icon-192.png    (192x192) ✅ JÁ TEMOS
+│   └── 🖼️ icon-512.png    (512x512) ✅ JÁ TEMOS
+
+📸 SCREENSHOTS OBRIGATÓRIOS:
+├── 📱 Telefone (OBRIGATÓRIO):
+│   ├── 🖼️ screenshot1.png (1080x1920 ou 720x1280)
+│   ├── 🖼️ screenshot2.png (mínimo 2, máximo 8)
+│   └── 🖼️ screenshot3.png
+├── 📱 Tablet 7" (opcional):
+│   └── 🖼️ tablet-screenshot.png (1200x1920)
+└── 📱 Tablet 10" (opcional):
+    └── 🖼️ tablet-large-screenshot.png (1920x1200)
+
+🎨 BANNER PROMOCIONAL:
+└── 🖼️ feature-graphic.png (1024x500) - OBRIGATÓRIO
+        </div>
+
+        <div class="success">
+            <p><strong>✅ Temos screenshots</strong> em /app/images/ - só precisamos redimensionar!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">⏱️ PASSO 11: Timeline e Revisão</div>
+        
+        <h3>📅 Cronograma Estimado:</h3>
+        <div class="file-tree">
+DIA 1-2: Preparação Técnica
+├── ⚡ Instalar ferramentas (2h)
+├── 🛡️ Gerar certificado (30min)  
+├── 🏗️ Criar TWA (1h)
+└── 📱 Testar app (2h)
+
+DIA 3: Google Play Console  
+├── 💳 Criar conta ($25) (1h)
+├── 📄 Preparar documentos (2h)
+├── 🎨 Otimizar imagens (1h)
+└── ⬆️ Upload inicial (1h)
+
+DIA 4-14: Revisão Google
+├── 🔍 Revisão automática (1-3 dias)
+├── 👤 Revisão humana (3-7 dias)
+├── ✅ Aprovação (ou ❌ rejeição)
+└── 🚀 Publicação ao vivo
+
+TOTAL: ~1-2 semanas
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Apps de saúde:</strong> Google revisa com MUITO cuidado (pode demorar mais)
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">🚨 CHECKLIST FINAL</div>
+        
+        <h3>Antes de enviar para Google Play:</h3>
+        <ul class="checklist">
+            <li>App testado em pelo menos 2 dispositivos diferentes</li>
+            <li>Todas as funcionalidades funcionam offline</li>
+            <li>Pagamentos testados (modo sandbox)</li>
+            <li>Política de privacidade publicada em URL acessível</li>
+            <li>Termos de serviço publicados</li>
+            <li>Screenshots em alta qualidade</li>
+            <li>Descrição otimizada (português e inglês)</li>
+            <li>Certificado digital guardado com segurança</li>
+            <li>AAB assinado corretamente</li>
+            <li>Compliance com políticas médicas do Google</li>
+        </ul>
+
+        <div class="success">
+            <h3>🎯 PRÓXIMOS PASSOS:</h3>
+            <ol>
+                <li><strong>Você:</strong> Instalar Android Studio + Node.js</li>
+                <li><strong>Eu:</strong> Ajudar com comandos específicos</li>
+                <li><strong>Juntos:</strong> Gerar e testar o APK</li>
+                <li><strong>Você:</strong> Criar conta Google Play Console</li>
+                <li><strong>Finalizar:</strong> Upload e publicação</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="step-header">📞 SUPORTE E CONTATO</div>
+        
+        <p><strong>Se algo der errado ou tiver dúvidas:</strong></p>
+        <ul>
+            <li>🐛 <strong>Erros técnicos:</strong> Me chame aqui mesmo</li>
+            <li>💰 <strong>Questões financeiras:</strong> Google Play Console Support</li>
+            <li>📱 <strong>Políticas:</strong> developer-support@google.com</li>
+            <li>🔧 <strong>Bugs do app:</strong> Podemos debugar juntos</li>
+        </ul>
+
+        <div class="warning">
+            <strong>💡 DICA IMPORTANTE:</strong> Documente cada passo! Se der erro, screenshot ajuda muito na solução.
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function() {
+                    alert('✅ Código copiado!\n\nColado na área de transferência.');
+                }, function(err) {
+                    console.error('Erro ao copiar: ', err);
+                    fallbackCopyTextToClipboard(text);
+                });
+            } else {
+                fallbackCopyTextToClipboard(text);
+            }
+        }
+        
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    alert('✅ Código copiado!');
+                } else {
+                    alert('❌ Selecione manualmente e use Ctrl+C');
+                }
+            } catch (err) {
+                alert('❌ Selecione manualmente e use Ctrl+C');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Auto-scroll suave quando clicar nos links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

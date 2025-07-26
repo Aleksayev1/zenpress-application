@@ -1,0 +1,302 @@
+{
+  "app": {
+    "name": "ZenPress",
+    "tagline": "Soulagement Naturel de la Douleur",
+    "description": "Découvrez les techniques millénaires d'acupression et de craniopuncture pour traiter les maux de tête, douleurs musculaires, problèmes digestifs et renforcer votre immunité"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "premium": "Premium",
+    "consultation": "Consultation",
+    "favorites": "Favoris",
+    "history": "Historique",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "auth": {
+    "login": "Se connecter",
+    "register": "S'inscrire",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "fullName": "Nom complet",
+    "loginButton": "Se connecter",
+    "registerButton": "Créer un compte",
+    "forgotPassword": "Mot de passe oublié ?",
+    "alreadyAccount": "Déjà un compte ?",
+    "noAccount": "Pas encore de compte ?",
+    "loginSuccess": "Connexion réussie !",
+    "registerSuccess": "Compte créé avec succès !",
+    "loginError": "Email ou mot de passe invalide",
+    "registerError": "Erreur lors de la création du compte",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères"
+  },
+  "home": {
+    "developmentNotice": {
+      "title": "Cette application est en cours d'amélioration !",
+      "forQuestions": "Pour des questions",
+      "or": "ou"
+    },
+    "hero": {
+      "title": "Soulagement Naturel de la Douleur",
+      "subtitle": "Découvrez les techniques millénaires d'acupression et de craniopuncture pour traiter les maux de tête, douleurs musculaires, problèmes digestifs et renforcer votre immunité"
+    },
+    "disclaimer": {
+      "title": "Avis Médical :",
+      "text": "Cette application est uniquement à des fins éducatives et informatives. Elle ne remplace pas une consultation médicale professionnelle. Consultez toujours un professionnel de la santé pour les diagnostics et traitements."
+    },
+    "mentalHealth": {
+      "title": "Promotion de la Santé Mentale et du Bien-être",
+      "description": "Découvrez comment les techniques d'acupression peuvent contribuer significativement à votre équilibre émotionnel, réduction du stress, amélioration du sommeil et promotion du bien-être mental. Notre approche holistique connecte le corps et l'esprit pour une vie plus épanouie et saine.",
+      "benefits": {
+        "stress": {
+          "title": "Réduction du Stress",
+          "description": "Techniques spécifiques pour diminuer les tensions et promouvoir une relaxation profonde"
+        },
+        "sleep": {
+          "title": "Amélioration du Sommeil",
+          "description": "Points d'acupression qui favorisent un sommeil réparateur et de qualité"
+        },
+        "balance": {
+          "title": "Équilibre Émotionnel",
+          "description": "Harmonisation énergétique pour une plus grande stabilité émotionnelle et mentale"
+        }
+      },
+      "exploreButton": "Explorer les Techniques de Bien-être Mental",
+      "techniques": {
+        "title": "Techniques Rapides pour le Bien-être",
+        "subtitle": "Pressez les points pendant 1 minute chacun - Disponible pour tous"
+      },
+      "premium": {
+        "badge": "Techniques Exclusives pour Utilisateurs"
+      },
+      "breathing": {
+        "title": "🌬️ Respiration Guidée 4-7-8",
+        "description": "Technique de respiration pour la relaxation profonde et la réduction de l'anxiété"
+      }
+    },
+    "categories": {
+      "craniopuncture": {
+        "name": "Craniopuncture",
+        "description": "Techniques de stimulation du cuir chevelu pour le soulagement de la douleur et l'amélioration de la santé générale"
+      },
+      "tcm": {
+        "name": "MTC (Médecine Traditionnelle Chinoise)",
+        "description": "Points d'acupression basés sur la médecine traditionnelle chinoise pour l'équilibre énergétique"
+      }
+    },
+    "exploreButton": "Explorer les Techniques",
+    "techniques": "techniques",
+    "stats": {
+      "title": "Plaintes les Plus Courantes",
+      "subtitle": "Basé sur l'utilisation de la communauté - voyez ce que les autres traitent"
+    },
+    "quickActions": {
+      "title": "Actions Rapides",
+      "subtitle": "Accès direct aux techniques les plus utilisées pour un soulagement immédiat",
+      "beginnerFriendly": "Pour Débutants",
+      "immediate": "Soulagement Immédiat",
+      "personalized": "Personnalisé",
+      "complexCase": "Cas Complexe ?"
+    }
+  },
+  "techniques": {
+    "startTechnique": "Commencer la Technique",
+    "duration": "Durée",
+    "pressure": "Pression",
+    "breathing": {
+      "title": "Respiration Guidée",
+      "prepare": "Appuyez sur Démarrer pour commencer avec la respiration guidée",
+      "inhale": "Inspirez par le nez lentement",
+      "hold": "Retenez votre respiration",
+      "exhale": "Expirez par la bouche complètement",
+      "pause": "Pause naturelle",
+      "diaphragmatic": "Respirez naturellement, en sentant l'expansion de l'abdomen",
+      "technique478": "Technique 4-7-8 : Optimise l'oxygénation et la relaxation",
+      "diaphragmaticInfo": "Respiration Diaphragmatique : Fin relaxante"
+    },
+    "stats": {
+      "title": "Plaintes les Plus Courantes",
+      "subtitle": "Basé sur l'utilisation de la communauté - voyez ce que les autres traitent"
+    },
+    "quickActions": {
+      "beginner": {
+        "title": "Commencer",
+        "description": "Nouveau dans l'acupression ? Commencez avec des techniques de base et sûres.",
+        "button": "Techniques de Base"
+      },
+      "quick": {
+        "title": "Soulagement Rapide",
+        "description": "Besoin d'un soulagement immédiat ? Techniques d'urgence de 1 minute.",
+        "button": "Yintang - Mal de Tête"
+      },
+      "personalized": {
+        "title": "Personnalisé",
+        "description": "Accédez à vos techniques favorites et à l'historique des traitements.",
+        "button": "Mes Favoris"
+      },
+      "complex": {
+        "title": "Cas Complexe ?",
+        "description": "Douleur chronique ou conditions qui ne s'améliorent pas ? Parlez à un spécialiste.",
+        "button": "Consultation WhatsApp"
+      }
+    },
+    "warnings": "Avertissements",
+    "instructions": "Instructions",
+    "location": "Localisation",
+    "application": "Application",
+    "benefits": "Bénéfices",
+    "precautions": "Précautions",
+    "recommendedFor": "Recommandé pour",
+    "notRecommendedFor": "Non recommandé pour",
+    "timer": "Minuteur",
+    "start": "Démarrer",
+    "pause": "Pause",
+    "reset": "Réinitialiser",
+    "completed": "Séance Terminée !",
+    "congratulations": "Félicitations ! Vous avez terminé la technique.",
+    "addToFavorites": "Ajouter aux Favoris",
+    "removeFromFavorites": "Retirer des Favoris",
+    "shareResult": "Partager le Résultat",
+    "backToCategory": "Retour à la Catégorie",
+    "nextTechnique": "Technique Suivante",
+    "relatedTechniques": "Techniques Associées",
+    "difficulty": "Difficulté",
+    "effectiveness": "Efficacité",
+    "safetyLevel": "Niveau de Sécurité",
+    "warningsTitle": "Avertissements Importants",
+    "contraindications": "Contre-indications :",
+    "seekHelp": "Consultez un médecin si :"
+  },
+  "payment": {
+    "title": "Plans et Cours",
+    "subtitle": "Choisissez le meilleur plan pour vos besoins",
+    "premium": {
+      "title": "Abonnements Premium",
+      "monthly": "Mensuel",
+      "annual": "Annuel",
+      "mostPopular": "Le Plus Populaire",
+      "subscribeNow": "S'abonner Maintenant",
+      "features": "Fonctionnalités"
+    },
+    "courses": {
+      "title": "Cours Spécialisés",
+      "duration": "Durée :",
+      "instructor": "Instructeur :",
+      "modules": "Modules :",
+      "buyCourse": "Acheter le Cours",
+      "beginner": "Débutant",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé"
+    },
+    "corporate": {
+      "title": "Plans Entreprise",
+      "users": "utilisateurs",
+      "month": "mois",
+      "requestDemo": "Demander une Démo"
+    },
+    "analytics": {
+      "title": "Analytics B2B",
+      "month": "mois",
+      "hirePlan": "Souscrire au Plan"
+    },
+    "paymentSuccess": "Paiement Approuvé !",
+    "paymentError": "Erreur de Paiement",
+    "paymentCanceled": "Paiement annulé. Vous pouvez réessayer quand vous voulez.",
+    "backToHome": "Retour à l'Accueil",
+    "explorePremium": "Explorer le Contenu Premium"
+  },
+  "consultation": {
+    "title": "Consultation Spécialisée",
+    "subtitle": "Pour les cas complexes nécessitant une attention personnalisée",
+    "form": {
+      "title": "Formulaire de Consultation",
+      "subtitle": "Remplissez les données ci-dessous pour recevoir un service personnalisé via WhatsApp",
+      "personalInfo": "Informations Personnelles",
+      "medicalInfo": "Informations Médicales",
+      "fullName": "Nom Complet",
+      "whatsapp": "WhatsApp",
+      "email": "Adresse e-mail",
+      "age": "Âge",
+      "gender": "Genre",
+      "city": "Ville",
+      "mainComplaint": "Plainte Principale",
+      "symptoms": "Symptômes",
+      "duration": "Durée",
+      "intensity": "Intensité de la Douleur (0-10)",
+      "medications": "Médicaments Actuels",
+      "allergies": "Allergies",
+      "previousTreatments": "Traitements Précédents",
+      "expectations": "Attentes",
+      "additionalNotes": "Notes Supplémentaires",
+      "submit": "Envoyer la Consultation",
+      "submitting": "Envoi en cours...",
+      "submitSuccess": "Consultation envoyée avec succès !",
+      "submitError": "Erreur lors de l'envoi de la consultation"
+    }
+  },
+  "favorites": {
+    "title": "Mes Favoris",
+    "subtitle": "Vos techniques sauvegardées pour un accès rapide",
+    "empty": "Aucune technique favorite encore",
+    "emptyDescription": "Commencez à explorer les techniques et ajoutez vos favorites ici",
+    "removeConfirm": "Retirer des favoris ?",
+    "removeSuccess": "Retiré des favoris",
+    "addSuccess": "Ajouté aux favoris"
+  },
+  "history": {
+    "title": "Historique des Séances",
+    "subtitle": "Suivez vos séances d'acupression",
+    "empty": "Aucune séance enregistrée encore",
+    "emptyDescription": "Commencez à utiliser les techniques pour construire votre historique de séances",
+    "session": "Séance",
+    "date": "Date",
+    "technique": "Technique",
+    "duration": "Durée",
+    "notes": "Notes",
+    "clearHistory": "Effacer l'Historique",
+    "clearConfirm": "Effacer tout l'historique ?",
+    "clearSuccess": "Historique effacé"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "save": "Sauvegarder",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "all": "Tous",
+    "none": "Aucun",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "retry": "Réessayer",
+    "refresh": "Actualiser",
+    "minute": "minute",
+    "minutes": "minutes",
+    "second": "seconde",
+    "seconds": "secondes",
+    "loadingTechniques": "Chargement des techniques...",
+    "noTechniques": "Aucune technique trouvée",
+    "tryAgain": "Réessayer",
+    "networkError": "Erreur réseau. Vérifiez votre connexion.",
+    "serverError": "Erreur serveur. Réessayez plus tard.",
+    "offline": "Utilisation des données hors ligne",
+    "premium": "Premium",
+    "free": "Gratuit",
+    "new": "Nouveau",
+    "updated": "Mis à jour",
+    "popular": "Populaire",
+    "recommended": "Recommandé"
+  }
+}

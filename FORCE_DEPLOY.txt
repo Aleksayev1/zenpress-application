@@ -1,0 +1,1 @@
+Fri Jul 25 18:10:52 UTC 2025: Force deploy para quebrar cache Netlify

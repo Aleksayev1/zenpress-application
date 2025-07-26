@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: zenpress_mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=zenpress
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - zenpress_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: zenpress_backend
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/zenpress
+      - JWT_SECRET=your-jwt-secret-key-here
+      - STRIPE_API_KEY=sk_test_your_stripe_key_here
+      - PIX_KEY=aleksayev@gmail.com
+    volumes:
+      - ./backend:/app
+    networks:
+      - zenpress_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: zenpress_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8001
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - zenpress_network
+
+  mobile:
+    build:
+      context: ./mobile
+      dockerfile: Dockerfile
+    container_name: zenpress_mobile
+    restart: unless-stopped
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./mobile:/app
+      - /app/node_modules
+    networks:
+      - zenpress_network
+
+volumes:
+  mongodb_data:
+
+networks:
+  zenpress_network:
+    driver: bridge

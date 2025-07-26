@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XZenPress - Código Completo</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .file-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .file-header {
+            background: #2563eb;
+            color: white;
+            padding: 10px 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2563eb;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧘‍♀️ XZenPress - Código Completo da Aplicação</h1>
+    
+    <div class="instructions">
+        <h3>📋 Como usar este arquivo:</h3>
+        <ol>
+            <li><strong>Selecione o código</strong> - Clique e arraste sobre o código que quer copiar</li>
+            <li><strong>Copie</strong> - Use Ctrl+C (Windows) ou Cmd+C (Mac)</li>
+            <li><strong>Cole no seu editor</strong> - Use Ctrl+V (Windows) ou Cmd+V (Mac)</li>
+            <li><strong>Salve o arquivo</strong> - Com a extensão correta (.js, .py, .json, etc.)</li>
+        </ol>
+        <p><strong>💡 Dica:</strong> Use um editor de código como VS Code, Sublime Text ou até mesmo o Bloco de Notas</p>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 1. App.js - Frontend Principal (React)</div>
+        <button class="copy-btn" onclick="copyToClipboard('app-js')">📋 Copiar App.js</button>
+        <div class="code-block" id="app-js">import { useState } from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./components/AuthContext";
+import ErrorBoundary from "./components/ErrorBoundary";
+import "./i18n/config"; // Initialize i18n
+import Home from "./components/Home";
+import CategoryView from "./components/CategoryView";
+import TechniqueDetail from "./components/TechniqueDetail";
+import Favorites from "./components/Favorites";
+import History from "./components/History";
+import PaymentPage from "./components/PaymentPage";
+import ConsultationPage from "./components/ConsultationPage";
+import DeveloperDashboard from "./components/DeveloperDashboard";
+import Navigation from "./components/Navigation";
+
+function App() {
+  return (
+    &lt;ErrorBoundary&gt;
+      &lt;AuthProvider&gt;
+        &lt;div className="App min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"&gt;
+          &lt;BrowserRouter&gt;
+            &lt;Navigation /&gt;
+            &lt;Routes&gt;
+              &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+              &lt;Route path="/category/:categoryId" element={&lt;CategoryView /&gt;} /&gt;
+              &lt;Route path="/technique/:techniqueId" element={&lt;TechniqueDetail /&gt;} /&gt;
+              &lt;Route path="/favorites" element={&lt;Favorites /&gt;} /&gt;
+              &lt;Route path="/history" element={&lt;History /&gt;} /&gt;
+              &lt;Route path="/payment" element={&lt;PaymentPage /&gt;} /&gt;
+              &lt;Route path="/consultation" element={&lt;ConsultationPage /&gt;} /&gt;
+              &lt;Route path="/admin/analytics" element={&lt;DeveloperDashboard /&gt;} /&gt;
+            &lt;/Routes&gt;
+          &lt;/BrowserRouter&gt;
+        &lt;/div&gt;
+      &lt;/AuthProvider&gt;
+    &lt;/ErrorBoundary&gt;
+  );
+}
+
+export default App;</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 2. package.json - Dependências Frontend</div>
+        <button class="copy-btn" onclick="copyToClipboard('package-json')">📋 Copiar package.json</button>
+        <div class="code-block" id="package-json">{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.8",
+    "@radix-ui/react-dialog": "^1.1.11",
+    "@radix-ui/react-dropdown-menu": "^2.1.12",
+    "axios": "^1.10.0",
+    "i18next": "^25.3.0",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "lucide-react": "^0.507.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.56.2",
+    "react-i18next": "^15.6.0",
+    "react-router-dom": "^7.5.1",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.4.17"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test"
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49"
+  }
+}</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 3. server.py - Backend Principal (FastAPI)</div>
+        <button class="copy-btn" onclick="copyToClipboard('server-py')">📋 Copiar server.py</button>
+        <div class="code-block" id="server-py">from fastapi import FastAPI, APIRouter, HTTPException, Depends, status
+from fastapi.security import HTTPAuthorizationCredentials
+from dotenv import load_dotenv
+from starlette.middleware.cors import CORSMiddleware
+from motor.motor_asyncio import AsyncIOMotorClient
+import os
+from typing import List, Optional
+from datetime import datetime, timedelta
+
+# Load environment variables
+load_dotenv()
+
+# Import models and auth
+from models import User, Technique, Favorite
+from auth import get_current_user, get_password_hash, authenticate_user, create_access_token
+
+# MongoDB connection
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+db_name = os.environ.get('DB_NAME', 'zenpress_db')
+client = AsyncIOMotorClient(mongo_url)
+db = client[db_name]
+
+# Create the main app
+app = FastAPI(title="ZenPress API", version="1.0.0")
+
+# Create a router with the /api prefix
+api_router = APIRouter(prefix="/api")
+
+# Authentication endpoints
+@api_router.post("/auth/register")
+async def register(user_data: UserCreate):
+    # Check if user already exists
+    existing_user = await db.users.find_one({"email": user_data.email})
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email already registered"
+        )
+    
+    # Create new user
+    hashed_password = get_password_hash(user_data.password)
+    user = User(
+        name=user_data.name,
+        email=user_data.email,
+        password_hash=hashed_password
+    )
+    
+    await db.users.insert_one(user.dict())
+    
+    # Create access token
+    access_token = create_access_token(data={"sub": user.id})
+    
+    return {
+        "access_token": access_token,
+        "user": user
+    }
+
+@api_router.post("/auth/login")
+async def login(user_data: UserLogin):
+    user = await authenticate_user(user_data.email, user_data.password)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password"
+        )
+    
+    access_token = create_access_token(data={"sub": user["id"]})
+    
+    return {
+        "access_token": access_token,
+        "user": user
+    }
+
+# Technique endpoints
+@api_router.get("/techniques")
+async def get_techniques(category: Optional[str] = None):
+    query = {}
+    if category:
+        query["category"] = category
+    
+    techniques = await db.techniques.find(query).to_list(100)
+    return techniques
+
+@api_router.get("/techniques/{technique_id}")
+async def get_technique(technique_id: str):
+    technique = await db.techniques.find_one({"id": technique_id})
+    if not technique:
+        raise HTTPException(status_code=404, detail="Technique not found")
+    
+    return technique
+
+# Include the router in the main app
+app.include_router(api_router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 4. models.py - Modelos de Dados</div>
+        <button class="copy-btn" onclick="copyToClipboard('models-py')">📋 Copiar models.py</button>
+        <div class="code-block" id="models-py">from pydantic import BaseModel, Field
+from typing import List, Optional
+from datetime import datetime
+import uuid
+
+# User Models
+class UserCreate(BaseModel):
+    name: str
+    email: str
+    password: str
+
+class UserLogin(BaseModel):
+    email: str
+    password: str
+
+class User(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: str
+    password_hash: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    is_premium: bool = False
+
+class UserResponse(BaseModel):
+    id: str
+    name: str
+    email: str
+    is_premium: bool
+
+# Technique Models
+class Technique(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    category: str  # 'craniopuntura' or 'mtc'
+    condition: str
+    description: str
+    instructions: List[str]
+    image: str
+    duration: int = 60
+    pressure: str
+    warnings: List[str]
+    is_premium: bool = False
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+# Session Models
+class Session(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    technique_id: str
+    technique_name: str
+    complaint: str
+    duration: int
+    rating: Optional[int] = None
+    date: datetime = Field(default_factory=datetime.utcnow)
+
+# Favorites Models
+class Favorite(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    technique_id: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 5. requirements.txt - Dependências Backend</div>
+        <button class="copy-btn" onclick="copyToClipboard('requirements-txt')">📋 Copiar requirements.txt</button>
+        <div class="code-block" id="requirements-txt">fastapi==0.110.1
+uvicorn==0.25.0
+python-dotenv>=1.0.1
+pymongo==4.5.0
+pydantic>=2.6.4
+pyjwt>=2.10.1
+passlib>=1.7.4
+motor==3.3.1
+requests>=2.31.0
+python-multipart>=0.0.9</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 6. .env Frontend - Configurações</div>
+        <button class="copy-btn" onclick="copyToClipboard('env-frontend')">📋 Copiar .env Frontend</button>
+        <div class="code-block" id="env-frontend">REACT_APP_BACKEND_URL=http://localhost:8001/api
+REACT_APP_STRIPE_PUBLISHABLE_KEY=pk_test_sua_chave_aqui</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 7. .env Backend - Configurações</div>
+        <button class="copy-btn" onclick="copyToClipboard('env-backend')">📋 Copiar .env Backend</button>
+        <div class="code-block" id="env-backend">MONGO_URL=mongodb://localhost:27017
+DB_NAME=zenpress_db
+JWT_SECRET=sua-chave-secreta-jwt-aqui</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">📁 8. manifest.json - PWA</div>
+        <button class="copy-btn" onclick="copyToClipboard('manifest-json')">📋 Copiar manifest.json</button>
+        <div class="code-block" id="manifest-json">{
+  "short_name": "ZenPress",
+  "name": "ZenPress - Acupressure & TCM",
+  "description": "Natural pain relief through acupressure techniques",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icon-512.png", 
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#059669",
+  "background_color": "#ffffff"
+}</div>
+    </div>
+
+    <div class="file-section">
+        <div class="file-header">🚀 Instruções de Instalação</div>
+        <div class="instructions">
+            <h3>Frontend (React):</h3>
+            <p>1. Criar pasta: <code>mkdir zenpress-frontend</code></p>
+            <p>2. Entrar na pasta: <code>cd zenpress-frontend</code></p>
+            <p>3. Copiar os arquivos: App.js, package.json, .env</p>
+            <p>4. Instalar: <code>npm install</code> ou <code>yarn install</code></p>
+            <p>5. Executar: <code>npm start</code> ou <code>yarn start</code></p>
+            
+            <h3>Backend (Python):</h3>
+            <p>1. Criar pasta: <code>mkdir zenpress-backend</code></p>
+            <p>2. Entrar na pasta: <code>cd zenpress-backend</code></p>
+            <p>3. Copiar os arquivos: server.py, models.py, requirements.txt, .env</p>
+            <p>4. Instalar: <code>pip install -r requirements.txt</code></p>
+            <p>5. Executar: <code>uvicorn server:app --reload --host 0.0.0.0 --port 8001</code></p>
+            
+            <h3>MongoDB:</h3>
+            <p>1. Instalar MongoDB ou usar MongoDB Atlas (cloud)</p>
+            <p>2. Configurar a URL no arquivo .env do backend</p>
+            
+            <h3>Aplicação Funcionando:</h3>
+            <p>🌐 <strong>https://jazzy-arithmetic-0f0607.netlify.app/</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function() {
+                    alert('✅ Código copiado para a área de transferência!\n\nAgora você pode colar no seu editor de código.');
+                }, function(err) {
+                    console.error('Erro ao copiar: ', err);
+                    fallbackCopyTextToClipboard(text);
+                });
+            } else {
+                fallbackCopyTextToClipboard(text);
+            }
+        }
+        
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    alert('✅ Código copiado para a área de transferência!\n\nAgora você pode colar no seu editor de código.');
+                } else {
+                    alert('❌ Não foi possível copiar automaticamente.\n\nPor favor, selecione o texto e use Ctrl+C para copiar.');
+                }
+            } catch (err) {
+                alert('❌ Não foi possível copiar automaticamente.\n\nPor favor, selecione o texto e use Ctrl+C para copiar.');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>

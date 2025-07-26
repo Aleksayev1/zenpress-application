@@ -1,0 +1,406 @@
+{
+  "app": {
+    "name": "ZenPress",
+    "tagline": "Alívio Natural da Dor",
+    "description": "Descubra técnicas milenares de acupressão e craniopuntura para tratar dores de cabeça, dores musculares, problemas digestivos e fortalecer sua imunidade"
+  },
+  "navigation": {
+    "home": "Início",
+    "premium": "Premium",
+    "consultation": "Consulta",
+    "favorites": "Favoritos",
+    "history": "Histórico",
+    "login": "Entrar",
+    "logout": "Sair"
+  },
+  "auth": {
+    "login": "Entrar",
+    "register": "Criar Conta",
+    "email": "Email",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "fullName": "Nome Completo",
+    "loginButton": "Entrar",
+    "registerButton": "Criar Conta",
+    "forgotPassword": "Esqueceu a senha?",
+    "alreadyAccount": "Já tem uma conta?",
+    "noAccount": "Não tem uma conta?",
+    "loginSuccess": "Login realizado com sucesso!",
+    "registerSuccess": "Conta criada com sucesso!",
+    "loginError": "Email ou senha inválidos",
+    "registerError": "Erro ao criar conta",
+    "passwordMismatch": "As senhas não coincidem",
+    "passwordTooShort": "A senha deve ter pelo menos 6 caracteres"
+  },
+  "crypto": {
+    "payment_title": "Pagamento com Criptomoedas",
+    "select_currency": "Escolha a Criptomoeda",
+    "price_brl": "Preço em Reais",
+    "price_usd": "Preço em Dólares",
+    "generate_payment": "Gerar Pagamento",
+    "payment_instructions": "Instruções de Pagamento",
+    "send_exactly": "Envie exatamente",
+    "scan_qr": "Escaneie o QR Code com sua carteira",
+    "wallet_address": "Endereço da Carteira",
+    "copy_address": "Copiar Endereço",
+    "confirm_payment": "Confirmar Pagamento",
+    "tx_hash": "Hash da Transação",
+    "optional": "opcional",
+    "message": "Mensagem",
+    "tx_hash_placeholder": "Cole aqui o hash da transação (opcional)",
+    "message_placeholder": "Adicione uma mensagem (opcional)",
+    "payment_confirmed": "Pagamento Confirmado!",
+    "verification_message": "Verificaremos seu pagamento em até 2 horas e ativaremos sua assinatura.",
+    "verification_time": "Verificação em até 2 horas",
+    "expires_at": "Expira em"
+  },
+  "premium": {
+    "monthly": "Premium Mensal",
+    "yearly": "Premium Anual"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "close": "Fechar"
+  },
+  "home": {
+    "developmentNotice": {
+      "title": "Este aplicativo está sendo aprimorado!",
+      "forQuestions": "Para dúvidas",
+      "or": "ou"
+    },
+    "hero": {
+      "title": "Alívio Natural da Dor",
+      "subtitle": "Descubra técnicas milenares de acupressão e craniopuntura para tratar dores de cabeça, dores musculares, problemas digestivos e fortalecer sua imunidade"
+    },
+    "disclaimer": {
+      "title": "Aviso Médico:",
+      "text": "Este aplicativo é apenas para fins educacionais e informativos. Não substitui consulta médica profissional. Consulte sempre um profissional de saúde para diagnósticos e tratamentos."
+    },
+    "mentalHealth": {
+      "title": "Promoção da Saúde Mental e Bem Estar",
+      "description": "Descubra como as técnicas de acupressão podem contribuir significativamente para o seu equilíbrio emocional, redução do estresse, melhoria do sono e promoção do bem-estar mental. Nossa abordagem holística conecta corpo e mente para uma vida mais plena e saudável.",
+      "benefits": {
+        "stress": {
+          "title": "Redução do Estresse",
+          "description": "Técnicas específicas para diminuir tensões e promover relaxamento profundo"
+        },
+        "sleep": {
+          "title": "Melhoria do Sono",
+          "description": "Pontos de acupressão que favorecem um sono reparador e de qualidade"
+        },
+        "balance": {
+          "title": "Equilíbrio Emocional",
+          "description": "Harmonização energética para maior estabilidade emocional e mental"
+        }
+      },
+      "exploreButton": "Explorar Técnicas para Bem Estar Mental",
+      "techniques": {
+        "title": "Técnicas Rápidas para Bem-Estar",
+        "subtitle": "Pressione os pontos por 1 minuto cada - Disponível para todos"
+      },
+      "premium": {
+        "badge": "Técnicas Exclusivas para Usuários"
+      },
+      "banners": {
+        "atm": {
+          "title": "Atendimento de Dor na ATM",
+          "description": "Protocolo especializado para disfunção temporomandibular"
+        },
+        "septicemia": {
+          "title": "Atendimento de Septicemia",
+          "description": "Técnicas complementares para suporte ao sistema imunológico"
+        }
+      },
+      "breathing": {
+        "title": "🌬️ Respiração Guiada 4-7-8",
+        "description": "Técnica de respiração para relaxamento profundo e redução da ansiedade"
+      }
+    },
+    "categories": {
+      "craniopuncture": {
+        "name": "Craniopuntura",
+        "description": "Técnicas de estimulação de pontos no couro cabeludo para alívio de dores e melhoria da saúde geral"
+      },
+      "tcm": {
+        "name": "MTC (Medicina Tradicional Chinesa)",
+        "description": "Pontos de acupressão baseados na medicina tradicional chinesa para equilibrio energético"
+      }
+    },
+    "techniques": "técnicas",
+    "exploreButton": "Explorar Técnicas",
+    "disclaimer": {
+      "title": "Aviso Médico:",
+      "text": "Este aplicativo é apenas para fins educacionais e informativos. Não substitui consulta médica profissional. Consulte sempre um profissional de saúde para diagnósticos e tratamentos."
+    }
+  },
+  "common": {
+    "categoryNotFound": "Categoria não encontrada",
+    "loadingTechniques": "Carregando técnicas...",
+    "available": "disponíveis", 
+    "seconds": "s",
+    "warnings": "avisos"
+  },
+  "techniques": {
+    "startTechnique": "Iniciar Técnica",
+    "duration": "Duração",
+    "pressure": "Pressão",
+    "breathing": {
+      "title": "Respiração Guiada",
+      "prepare": "Pressione Iniciar para começar com a respiração guiada",
+      "inhale": "Inspire pelo nariz lentamente",
+      "hold": "Segure a respiração",
+      "exhale": "Expire pela boca completamente", 
+      "pause": "Pausa natural",
+      "diaphragmatic": "Respire naturalmente, sentindo o abdômen se expandir",
+      "technique478": "Técnica 4-7-8: Otimiza oxigenação e relaxamento",
+      "diaphragmaticInfo": "Respiração Diafragmática: Finalização relaxante"
+    },
+    "stats": {
+      "title": "Queixas Mais Comuns",
+      "subtitle": "Baseado no uso da comunidade - veja o que outras pessoas estão tratando"
+    },
+    "quickActions": {
+      "beginner": {
+        "title": "Começando",
+        "description": "Novo na acupressão? Comece com técnicas básicas e seguras.",
+        "button": "Técnicas Básicas"
+      },
+      "quick": {
+        "title": "Alívio Rápido",
+        "description": "Precisa de alívio imediato? Técnicas de 1 minuto para emergências.",
+        "button": "Yintang - Dor de Cabeça"
+      },
+      "personalized": {
+        "title": "Personalizado",
+        "description": "Acesse suas técnicas favoritas e histórico de tratamentos.",
+        "button": "Meus Favoritos"
+      },
+      "complex": {
+        "title": "Caso Complexo?",
+        "description": "Dores crônicas ou condições que não melhoram? Fale com especialista.",
+        "button": "Consulta WhatsApp"
+      }
+    }
+  },
+  "techniques": {
+    "duration": "Duração",
+    "pressure": "Pressão",
+    "warnings": "Avisos",
+    "instructions": "Instruções Passo a Passo",
+    "timer": "Timer de Aplicação",
+    "start": "Iniciar",
+    "pause": "Pausar",
+    "reset": "Reiniciar",
+    "completed": "Sessão Concluída!",
+    "addToFavorites": "Adicionar aos Favoritos",
+    "removeFromFavorites": "Remover dos Favoritos",
+    "viewDetails": "Ver Detalhes & Aplicar",
+    "applyNow": "Aplicar Agora",
+    "previousStep": "Passo Anterior",
+    "nextStep": "Próximo Passo",
+    "sessionCompleted": "Sessão concluída! Como você se sente?",
+    "rateSession": "Avalie esta sessão"
+  },
+  "categories": {
+    "craniopuncture": "Craniopuntura",
+    "tcm": "MTC",
+    "techniques": "técnicas",
+    "availableTechniques": "técnicas disponíveis",
+    "safetyInfo": "Informações de Segurança",
+    "contraindications": "Contraindicações:",
+    "seekHelp": "Procure ajuda médica se:"
+  },
+  "payment": {
+    "title": "Planos e Cursos",
+    "subtitle": "Escolha o melhor plano para suas necessidades",
+    "premium": {
+      "title": "Assinaturas Premium",
+      "monthly": "Mensal",
+      "annual": "Anual",
+      "mostPopular": "Mais Popular",
+      "subscribeNow": "Assinar Agora",
+      "features": "Funcionalidades"
+    },
+    "courses": {
+      "title": "Cursos Especializados",
+      "duration": "Duração:",
+      "instructor": "Instrutor:",
+      "modules": "Módulos:",
+      "buyCourse": "Comprar Curso",
+      "beginner": "Iniciante",
+      "intermediate": "Intermediário",
+      "advanced": "Avançado"
+    },
+    "corporate": {
+      "title": "Planos Corporativos",
+      "users": "usuários",
+      "month": "mês",
+      "requestDemo": "Solicitar Demonstração"
+    },
+    "analytics": {
+      "title": "Analytics B2B",
+      "month": "mês",
+      "hirePlan": "Contratar Plano"
+    },
+    "paymentSuccess": "Pagamento Aprovado!",
+    "paymentError": "Erro no Pagamento",
+    "paymentCanceled": "Pagamento cancelado. Você pode tentar novamente quando quiser.",
+    "backToHome": "Voltar ao Início",
+    "explorePremium": "Explorar Conteúdo Premium"
+  },
+  "consultation": {
+    "title": "Consulta Especializada",
+    "subtitle": "Para casos complexos que precisam de atenção personalizada",
+    "form": {
+      "title": "Formulário de Consulta",
+      "subtitle": "Preencha os dados abaixo para receber atendimento personalizado via WhatsApp",
+      "personalInfo": "Dados Pessoais",
+      "medicalInfo": "Informações Médicas",
+      "fullName": "Nome Completo",
+      "whatsapp": "WhatsApp",
+      "urgency": "Nível de Urgência",
+      "mainCondition": "Condição Principal",
+      "symptomDuration": "Há quanto tempo tem esses sintomas?",
+      "symptomsDescription": "Descreva seus sintomas detalhadamente",
+      "previousTreatments": "Tratamentos já realizados",
+      "currentMedications": "Medicamentos atuais",
+      "preferredTime": "Preferência de horário para retorno",
+      "sendWhatsApp": "Enviar via WhatsApp",
+      "urgencyLevels": {
+        "low": "🟢 Baixa - Posso aguardar alguns dias",
+        "medium": "🟡 Média - Gostaria de resposta hoje",
+        "high": "🟠 Alta - Preciso de resposta urgente",
+        "emergency": "🔴 Emergência - Dor insuportável"
+      },
+      "timePreferences": {
+        "morning": "Manhã (8h-12h)",
+        "afternoon": "Tarde (12h-18h)",
+        "evening": "Noite (18h-22h)",
+        "anytime": "Qualquer horário"
+      }
+    },
+    "features": {
+      "specialist": {
+        "title": "Profissional Qualificado",
+        "description": "Alexandre Pinheiro - 15 anos de experiência"
+      },
+      "fastResponse": {
+        "title": "Resposta Rápida",
+        "description": "Retorno em até 2 horas durante horário comercial"
+      },
+      "whatsappDirect": {
+        "title": "WhatsApp Direto",
+        "description": "Atendimento personalizado via mensagem"
+      }
+    },
+    "whenToSeek": {
+      "title": "Quando Procurar?",
+      "items": [
+        "Dores crônicas que não melhoram",
+        "Condições neurológicas complexas",
+        "Casos que não respondem ao tratamento padrão",
+        "Necessidade de protocolo personalizado"
+      ]
+    },
+    "disclaimer": "Importante: Este serviço não substitui consulta médica. Em casos de emergência, procure atendimento médico imediatamente."
+  },
+  "favorites": {
+    "title": "Técnicas Favoritas",
+    "subtitle": "Suas técnicas de acupressão salvas para acesso rápido",
+    "empty": {
+      "title": "Nenhuma técnica favorita ainda",
+      "description": "Explore as técnicas e adicione suas favoritas para acesso rápido",
+      "button": "Explorar Técnicas"
+    },
+    "count": "técnica",
+    "countPlural": "técnicas",
+    "saved": "salva",
+    "exploreMore": "Explorar Mais Técnicas"
+  },
+  "history": {
+    "title": "Histórico de Tratamentos",
+    "subtitle": "Acompanhe seu progresso e análise suas sessões de acupressão",
+    "empty": {
+      "title": "Nenhuma sessão registrada ainda",
+      "description": "Comece a usar as técnicas para ver seu histórico e progresso aqui",
+      "button": "Iniciar Primeira Sessão"
+    },
+    "stats": {
+      "totalSessions": "Total de Sessões",
+      "averageRating": "Avaliação Média",
+      "mainComplaint": "Principal Queixa",
+      "sessionsPerformed": "sessões realizadas",
+      "outOf": "de 5"
+    },
+    "recentSessions": "Sessões Recentes",
+    "communityTrends": "Tendências da Comunidade",
+    "people": "pessoas"
+  },
+  "common": {
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "warning": "Aviso",
+    "info": "Informação",
+    "close": "Fechar",
+    "open": "Abrir",
+    "yes": "Sim",
+    "no": "Não",
+    "ok": "OK",
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "export": "Exportar",
+    "import": "Importar",
+    "share": "Compartilhar",
+    "copy": "Copiar",
+    "paste": "Colar",
+    "select": "Selecionar",
+    "selectAll": "Selecionar Tudo",
+    "clear": "Limpar",
+    "refresh": "Atualizar",
+    "retry": "Tentar Novamente",
+    "undo": "Desfazer",
+    "redo": "Refazer"
+  },
+  "currency": {
+    "symbol": "R$",
+    "code": "BRL"
+  },
+  "complaints": [
+    "Dor de cabeça tensional",
+    "Ansiedade e stress",
+    "Dor nas costas",
+    "Insônia",
+    "Fadiga mental",
+    "Problemas digestivos",
+    "Enxaqueca",
+    "Baixa imunidade"
+  ],
+  "spotify": {
+    "title": "Música Relaxante com Spotify",
+    "description": "Conecte sua conta Spotify para ouvir música relaxante durante suas sessões de acupressão",
+    "connectButton": "Conectar Spotify",
+    "disconnect": "Desconectar",
+    "search": "Buscar Música",
+    "searchPlaceholder": "Digite o nome da música ou artista...",
+    "searchButton": "Buscar",
+    "playlistsRecommended": "Playlists Recomendadas para Bem-Estar",
+    "tracksCount": "músicas",
+    "openPlaylist": "Abrir",
+    "premiumRequired": "Premium necessário para reprodução",
+    "greeting": "Olá",
+    "premium": "Premium",
+    "free": "Free"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "id": "zenpress-app",
+  "short_name": "AcuPress",
+  "name": "AcuPress - Natural Pain Relief",
+  "description": "Natural pain relief and wellness through Traditional Chinese Medicine and acupressure techniques",
+  "dir": "ltr",
+  "iarc_rating_id": "e84b072d-71de-5b85-a9a2-7bf8b4444fd6",
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.acupress.app",
+      "id": "com.acupress.app"
+    }
+  ],
+  "scope_extensions": [
+    {
+      "origin": "https://9dff3a0e-988b-4164-ad53-4584e53337ad.preview.emergentagent.com"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png", 
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512", 
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "theme_color": "#059669",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["health", "medical", "wellness", "lifestyle", "productivity"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "file_handlers": [
+    {
+      "action": "/technique/",
+      "accept": {
+        "application/json": [".json"]
+      }
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "zenpress",
+      "url": "/technique/%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share/",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "serviceworker": {
+    "src": "/sw.js",
+    "scope": "/",
+    "type": "classic",
+    "update_via_cache": "imports"
+  },
+  "background_sync": [
+    "zenpress-sync"
+  ],
+  "widgets": [
+    {
+      "name": "Quick Relief Widget",
+      "description": "Quick access to pain relief techniques",
+      "tag": "quick-relief",
+      "template": "timer",
+      "ms_ac_template": "timer",
+      "data": {
+        "title": "ZenPress Quick Relief",
+        "subtitle": "Tap for instant pain relief"
+      },
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/screenshot-desktop.png",
+      "sizes": "1920x1080", 
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quick Relief",
+      "short_name": "Relief",
+      "description": "Access quick pain relief techniques",
+      "url": "/category/craniopuntura",
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Mental Wellness",
+      "short_name": "Wellness", 
+      "description": "Mental health and breathing exercises",
+      "url": "/category/mental-health",
+      "icons": [
+        {
+          "src": "/images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Premium Access",
+      "short_name": "Premium",
+      "description": "Access premium techniques and features",
+      "url": "/payment",
+      "icons": [
+        {
+          "src": "/images/icon-192.png", 
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
